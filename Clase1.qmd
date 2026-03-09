@@ -1,0 +1,687 @@
+---
+title: "Orígenes de la Probabilidad"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Aspectos importantes
+
+-   **Información importante**
+
+    1.  [Mediación Virtual](https://mv1.mediacionvirtual.ucr.ac.cr/course/view.php?id=39199)
+
+    2.  [Programa del curso](https://christopher-tr.github.io/XS0122-II_2025/XS-0122%20carta%20al%20estudiante.pdf)
+
+    3.  [Llenar el formulario (pendiente)](https://docs.google.com/forms/d/e/1FAIpQLSdgFSfxnOi0x5OVJxdc85JVQRHa9dVdupvOzxTt5xzpocuNVQ/viewform)
+
+-   **Reglamentación**
+
+    -   [El Reglamento de Régimen Académico Estudiantil](https://www.cu.ucr.ac.cr/normativ/regimen_academico_estudiantil.pdf)
+    -   [El Reglamento de Orden y Disciplina de los Estudiantes](https://www.cu.ucr.ac.cr/normativ/orden_y_disciplina.pdf)
+    -   [El Reglamento de la Universidad de Costa Rica contra el Hostigamiento Sexual](https://www.cu.ucr.ac.cr/normativ/hostigamiento_sexual.pdf)
+        -   [Comisión Institucional Contra el Hostigamiento Sexual](https://hostigamientosexualucr.ucr.ac.cr/)
+            -   [Acerca de...](https://www.ucr.ac.cr/comision-institucional-contra-el-hostigamiento-sexual.html)
+            -   [Video](https://www.youtube.com/watch?v=OiUyqC8qrnI)
+
+
+## ¿Qué temas se abordarán en modelos probabilísticos I y II?
+
+<https://seeing-theory.brown.edu>
+
+<https://www.acsu.buffalo.edu/~adamcunn/probability/probability.html>
+
+---
+
+## Motivación
+
+- **¿Qué se entiende por probabilidad?**
+
+De manera intuitiva, la probabilidad puede entenderse como una medida cuantitativa que nos dice que tan favorable es la ocurrencia de un suceso o evento.
+
+Pero a esta definición le falta rigor matemático.
+
+- **¿Por qué es necesario conocer de teoría de probabilidad?**
+
+---
+
+## Orígenes de la probabilidad
+
+- Se origina a mediados del siglo XVII.
+- Para resolver problemas de juegos de azar (cartas, dados, ruletas, etc.).
+- El Caballero de Méré, Antoine Gombaud, planteó una aparente contradicción en juegos de dados.
+- Acudió a **Blaise Pascal** (1623–1662) y este la resolvió en conjunto con **Pierre de Fermat** (1601–1665).
+- Los matemáticos de la época desarrollaron teoría y modelos para el cálculo de las probabilidades.
+
+---
+
+
+## Orígenes de la probabilidad
+
+- **Bernoulli**, en su libro *El arte de la conjetura* (1713), publicó su teorema, el cual proporcionaba el fundamento matemático de las frecuencias relativas con que ocurre un cierto suceso en un juego de azar conforme el juego se repite un gran número de veces.
+
+- **Simón Laplace** (1749–1827), en su libro *Teoría analítica de las probabilidades* (1812), dio valiosos aportes y técnicas aplicadas a la teoría de probabilidad en errores de medición en física y astronomía, en actuarial y en mecánica estadística.
+
+---
+
+## Orígenes de la probabilidad
+
+- **Carl Friedrich Gauss** realizó aplicaciones a la teoría de la probabilidad en teoría de los errores de medición, métodos de mínimos cuadrados y distribución normal.
+
+- A finales del siglo XIX y principios del XX se desarrolló la axiomatización de la teoría de probabilidad —su desarrollo moderno— con el matemático **Andrei Kolmogorov**.
+
+
+---
+
+## Enfoques de la Probabilidad
+
+1.  **Enfoque Clásico.**
+
+2.  **Enfoque Frecuentista.**
+
+3.  **Enfoque Subjetivo.**
+
+4.  **Enfoque Axiomático.**
+
+---
+
+## Enfoque clásico
+
+Este enfoque surge de los juegos de azar y presenta **tres supuestos** importantes:
+
+1. Se tiene un espacio muestral **finito**.
+2. La variable aleatoria es **discreta**.
+3. Los resultados son **mutuamente excluyentes** e **igualmente probables**.
+
+> "Igualmente probables" significa que se espera que ocurran con igual frecuencia en un gran número de repeticiones, en condiciones similares.
+
+---
+
+## Enfoque clásico
+
+Si un suceso puede ocurrir de $n$ maneras mutuamente excluyentes e igualmente probables (*total de casos posibles*), y $n(A)$ de ellas posee un atributo $A$ (*total de casos favorables*), la probabilidad queda determinada por:
+
+$$P(A) = \frac{\text{Casos favorables}}{\text{Casos totales}} = \frac{n(A)}{n}$$
+
+---
+
+## Ejemplo
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Se lanza un dado y se desea conocer la probabilidad de obtener un número par.
+
+Existen seis casos posibles al lanzar un dado, y tres de ellos son favorables al evento, por lo que:
+
+$$P(\text{Obtener un número par}) = \frac{3}{6} = \frac{1}{2}$$
+
+:::
+
+---
+
+## Limitaciones del enfoque clásico
+
+Este enfoque tiene limitaciones que dificultan, en algunas ocasiones, el cálculo de las probabilidades mediante el cociente de casos favorables sobre casos posibles.
+
+Algunas limitaciones son:
+
+- El número de casos favorables es **desconocido** y, por esta razón, se dificulta el cálculo de la probabilidad buscada.
+- El total de resultados posibles podría ser **infinito**.
+- Los eventos **no son igualmente probables**, por ejemplo, al lanzar un dado cargado en que se favorece un resultado en particular.
+
+---
+
+## Consecuencias del enfoque clásico
+
+Sea $A$ un evento en el espacio muestral $\Omega$, con $|\Omega| = n$. Se tienen las siguientes propiedades:
+
+1. $0 \leq P(A) \leq 1$
+2. $P(\overline{A}) = 1 - P(A)$
+3. $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+4. $P(\emptyset) = 0$
+5. $P(\Omega) = 1$
+
+> La cardinalidad de un conjunto $A$ se denota por $card\left(A \right)$, $n(A)$, o bien $\left|A \right|$.
+
+---
+
+## Demostración — Propiedad 1: $0 \leq P(A) \leq 1$
+
+El número de casos favorables $n(A)$ satisface $0 \leq n(A) \leq n$, ya que:
+
+- No puede haber menos de cero casos favorables.
+- No puede haber más casos favorables que el total de casos posibles.
+
+Dividiendo entre $n > 0$:
+
+$$0 \leq \frac{n(A)}{n} \leq 1 \implies \boxed{0 \leq P(A) \leq 1} \qquad \blacksquare$$
+
+---
+
+## Demostración — Propiedad 5: $P(\Omega) = 1$
+
+Todo resultado del experimento pertenece al espacio muestral $\Omega$, por lo que todos los $n$ casos son favorables al evento $\Omega$:
+
+$$n(\Omega) = n$$
+
+Aplicando la definición clásica:
+
+$$P(\Omega) = \frac{n(\Omega)}{n} = \frac{n}{n} = \boxed{1} \qquad \blacksquare$$
+
+---
+
+## Demostración — Propiedad 4: $P(\emptyset) = 0$
+
+El evento imposible $\emptyset$ no contiene ningún resultado, por lo que $n(\emptyset) = 0$.
+
+Aplicando la definición clásica:
+
+$$P(\emptyset) = \frac{n(\emptyset)}{n} = \frac{0}{n} = \boxed{0} \qquad \blacksquare$$
+
+---
+
+## Demostración — Propiedad 2: $P(\overline{A}) = 1 - P(A)$
+
+Los eventos $A$ y $A^c$ son **mutuamente excluyentes** y su unión es $\Omega$:
+
+$$A \cup \overline{A} = \Omega \quad \text{y} \quad A \cap \overline{A} = \emptyset$$
+
+Por lo tanto $n(A) + n(A^c) = n$. Dividiendo entre $n$:
+
+$$\frac{n(A)}{n} + \frac{n(\overline{A})}{n} = 1$$
+
+$$P(A) + P(\overline{A}) = 1 \implies \boxed{P(\overline{A}) = 1 - P(A)} \qquad \blacksquare$$
+
+---
+
+## Demostración — Propiedad 3: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+Descomponemos $A \cup B$ en partes **mutuamente excluyentes**:
+
+$$A \cup B = (A \cap \overline{B}) \;\cup\; (A \cap B) \;\cup\; (B \cap \overline{A})$$
+
+Contando casos y usando que $A = (A \cap \overline{B}) \cup (A \cap B)$, se tiene:
+
+$$n(A \cup B) = n(A) + n(B) - n(A \cap B)$$
+
+Dividiendo entre $n$:
+
+$$\boxed{P(A \cup B) = P(A) + P(B) - P(A \cap B)} \qquad \blacksquare$$
+
+> **Nota:** se resta $P(A \cap B)$ porque los elementos de $A \cap B$ fueron contados dos veces, una en $P(A)$ y otra en $P(B)$.
+
+---
+
+## Enfoque frecuencial
+
+Este enfoque se basa en los **resultados empíricos**, y se interpreta como la frecuencia relativa de un determinado evento.
+
+Si se obtienen $n$ observaciones de una misma clase y se encuentra que el evento $A$ ocurre $n(A)$ de ellas, la probabilidad de ocurrencia del evento $A$ queda determinada por la **frecuencia relativa** de $A$:
+
+$$f(A) = \frac{n(A)}{n}$$
+
+De forma general, las repeticiones deben realizarse bajo condiciones similares y el número de ellas debe ser grande:
+
+$$\lim_{n \to \infty} \frac{n(A)}{n} = P(A)$$
+
+---
+
+## Ejemplo
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Se desea determinar la probabilidad de obtener un número par al lanzar un dado. Para tal fin, se realiza el experimento de lanzar el dado una cantidad grande de veces bajo condiciones similares; entonces, la frecuencia relativa se aproximará a $\dfrac{1}{2}$, y se concluirá que:
+
+$$P(\text{obt. número par}) = \frac{1}{2}$$
+:::
+
+---
+
+## Simulación — Enfoque frecuencial
+
+```{=html}
+<div style="font-family: sans-serif; font-size: 0.85em; padding: 4px 0 10px 0;">
+  <label for="sliderN"><b>Número de lanzamientos (n):</b></label>
+  <input id="sliderN" type="range" min="10" max="5000" step="10" value="100"
+    style="width: 55%; vertical-align: middle; margin: 0 10px;" oninput="actualizarSim()">
+  <span id="valN" style="font-weight:bold; font-size:1.05em;">100</span>
+  &nbsp;&nbsp;
+  <button onclick="actualizarSim()"
+    style="padding:3px 14px; border-radius:5px; border:1px solid #2a7ae2;
+           background:#2a7ae2; color:white; cursor:pointer; font-size:0.95em;">
+    ↺ Resimular
+  </button>
+</div>
+
+<div id="statsBox" style="font-size:0.88em; margin-bottom:8px; color:#333;">
+  📊 <b>n = <span id="statN">100</span></b> &nbsp;|&nbsp;
+  Frecuencia relativa = <b style="color:#2a7ae2"><span id="statFreq">—</span></b> &nbsp;|&nbsp;
+  Valor teórico = <b style="color:#e05252">0.5000</b>
+</div>
+
+<canvas id="simCanvas" width="760" height="310"
+  style="border:1px solid #ddd; border-radius:6px; background:#fafafa;"></canvas>
+
+<script>
+(function() {
+  function simular(n) {
+    let datos = [], pares = 0;
+    for (let i = 1; i <= n; i++) {
+      if (Math.ceil(Math.random() * 6) % 2 === 0) pares++;
+      datos.push(pares / i);
+    }
+    return datos;
+  }
+
+  function dibujar(datos) {
+    const canvas = document.getElementById('simCanvas');
+    const ctx    = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const ml = 58, mr = 20, mt = 18, mb = 44;
+    const pw = W - ml - mr, ph = H - mt - mb;
+    const n  = datos.length;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Fondo
+    ctx.fillStyle = '#fafafa';
+    ctx.fillRect(0, 0, W, H);
+
+    // Área del gráfico
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(ml, mt, pw, ph);
+
+    // Grid horizontal
+    ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 1;
+    [0, 0.25, 0.5, 0.75, 1].forEach(v => {
+      const y = mt + ph * (1 - v);
+      ctx.beginPath(); ctx.moveTo(ml, y); ctx.lineTo(ml + pw, y); ctx.stroke();
+      ctx.fillStyle = '#888'; ctx.font = '11px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v.toFixed(2), ml - 6, y + 4);
+    });
+
+    // Grid vertical
+    const pasos = Math.min(10, n);
+    for (let k = 0; k <= pasos; k++) {
+      const x = ml + pw * k / pasos;
+      const val = Math.round(n * k / pasos);
+      ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x, mt); ctx.lineTo(x, mt + ph); ctx.stroke();
+      ctx.fillStyle = '#888'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(val, x, mt + ph + 18);
+    }
+
+    // Ejes
+    ctx.strokeStyle = '#aaa'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(ml, mt, pw, ph);
+
+    // Línea teórica P = 0.5
+    const y05 = mt + ph * 0.5;
+    ctx.strokeStyle = '#e05252'; ctx.lineWidth = 2;
+    ctx.setLineDash([8, 5]);
+    ctx.beginPath(); ctx.moveTo(ml, y05); ctx.lineTo(ml + pw, y05); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#e05252'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('P(par) = 0.5', ml + 6, y05 - 6);
+
+    // Curva de frecuencia relativa
+    ctx.strokeStyle = '#2a7ae2'; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    datos.forEach((fr, i) => {
+      const x = ml + pw * i / (n - 1 || 1);
+      const y = mt + ph * (1 - fr);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Punto final
+    const xf = ml + pw, yf = mt + ph * (1 - datos[n - 1]);
+    ctx.fillStyle = '#2a7ae2';
+    ctx.beginPath(); ctx.arc(xf, yf, 4, 0, 2 * Math.PI); ctx.fill();
+
+    // Etiquetas de ejes
+    ctx.fillStyle = '#444'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Número de lanzamientos (n)', ml + pw / 2, H - 4);
+    ctx.save();
+    ctx.translate(13, mt + ph / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('Frecuencia relativa  f(A)', 0, 0);
+    ctx.restore();
+  }
+
+  window.actualizarSim = function() {
+    const n    = parseInt(document.getElementById('sliderN').value);
+    const datos = simular(n);
+    const freq  = datos[datos.length - 1];
+    document.getElementById('valN').textContent   = n;
+    document.getElementById('statN').textContent  = n;
+    document.getElementById('statFreq').textContent = freq.toFixed(4);
+    dibujar(datos);
+  };
+
+  // Ejecutar al cargar
+  actualizarSim();
+})();
+</script>
+```
+
+---
+
+## Limitaciones del enfoque frecuencial
+
+A pesar de ser razonable intuitivamente, esta interpretación tiene sus limitaciones:
+
+- Depende del **número de repeticiones** del experimento; es decir, se contaría solo con aproximaciones del verdadero valor de la probabilidad.
+- Depende de que se realice en **condiciones similares**, lo cual en algunos casos no es posible.
+- Existen casos en que las **frecuencias relativas no convergen** a un cierto valor límite.
+
+---
+
+## Interpretación subjetiva de la probabilidad
+
+Este enfoque concibe la probabilidad como una **medida de la creencia personal** de un cierto evento; es decir, cada persona tiene su propio juicio.
+
+> Una limitación evidente de este enfoque es que dos personas podrían asignar valores de probabilidad **diferentes** a un mismo evento.
+
+---
+
+## El enfoque axiomático de la probabilidad
+
+El enfoque axiomático evita las limitaciones de los enfoques:
+
+- Clásico 
+- Frecuencial
+- Subjetivo
+
+mediante un **conjunto de axiomas** (enfoque matemático).
+
+Este desarrollo axiomático está apoyado en la teoría de conjuntos, la definición de un espacio muestral y cada una de las definiciones y teoremas que se desarrollan en el capítulo.
+
+---
+
+## Algunos conceptos: Experimento
+
+Un **experimento** está determinado por la presencia de un conjunto de condiciones, las cuales pueden crearse de manera artificial o se producen independientemente de la voluntad del experimentador. Estos procesos permiten obtener información del objeto (sujeto) de estudio mediante mediciones.
+
+**Ejemplos:**
+
+- Lanzar al aire una moneda y ver la cara superior cuando cae al suelo.
+- Medir la temperatura promedio en un día $X$ del año en la provincia de Heredia.
+- Medir la precipitación promedio anual de la región Caribe de Costa Rica.
+
+---
+
+## Definición
+
+::: {.callout-tip icon=false}
+### Definición
+
+Un experimento se denomina **determinista** si no hay incertidumbre acerca del resultado que ocurrirá cuando estos son repetidos varias veces con las mismas condiciones iniciales.
+
+El **experimento aleatorio** es un fenomeno que se puede repetir en condiciones similares, no se puede predecir el resultado del experimeto previamente.
+:::
+
+---
+
+## Ejemplos
+
+::: {.callout-note icon=false}
+### Ejemplo — Experimento determinista
+
+1. Soltar un objeto desde cierta altura y medir su aceleración; esta siempre será $-9{,}8\ m/s^2$.
+2. Unir dos átomos de hidrógeno y uno de oxígeno; esto producirá una molécula de agua.
+3. Calentar agua a 100 grados centígrados; esto producirá que se evapore.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo — Experimento aleatorio
+
+1. Lanzar dos monedas al aire y anotar los símbolos que aparecen (escudo o corona).
+2. Lanzar un dado y anotar el número que aparece.
+3. Sacar una bola de una urna que contiene bolas de distinto color, sin ver su interior.
+:::
+
+---
+
+## Definición — Espacio muestral
+
+::: {.callout-tip icon=false}
+### Definición
+
+Al conjunto de todos los posibles resultados de un experimento aleatorio se le llama **espacio muestral**, y se denota por $\Omega$.
+:::
+
+**Ejemplos:**
+
+- Lanzar al aire una moneda y ver la cara superior cuando cae al suelo: $\Omega = \{E, C\}$
+- Medir la temperatura promedio en un día $X$ del año en la provincia de Heredia, en grados Centígrados: $\Omega = \{t \mid t \in \mathbb{R},\ -77° < t < 60°\}$
+- Lanzar al aire un dado y ver la cara superior cuando cae al suelo: $\Omega = \{1, 2, 3, 4, 5, 6\}$
+
+---
+
+## Definiciones
+
+::: {.callout-tip icon=false}
+### Definición — Espacio muestral discreto y continuo
+
+El espacio muestral $\Omega$ se llama **discreto** si es finito o numerable. Un experimento aleatorio se llama **finito** (discreto) si su espacio muestral es finito (discreto). El espacio muestral se llama **continuo** si es un intervalo.
+:::
+
+::: {.callout-tip icon=false}
+### Definición — Puntos muestrales
+
+A los elementos del espacio muestral $\omega \in \Omega$ se les llaman **puntos muestrales** o **eventualidades**.
+:::
+
+---
+
+## Definición — Suceso o evento
+
+::: {.callout-tip icon=false}
+### Definición
+
+Un **suceso** $A$ asociado a un experimento es un subconjunto del espacio muestral $\Omega$; es decir, $A$ es un evento si y solo si $A \subseteq \Omega$.
+:::
+
+---
+
+## Definición — Suceso imposible y seguro
+
+::: {.callout-tip icon=false}
+### Definición
+
+Se define el **suceso imposible** como aquel suceso que no ocurre nunca, al cual se denota por el conjunto vacío $\emptyset$, y al **suceso seguro** como aquel que ocurre siempre, al cual se denota con $\Omega$.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se define el evento $A$ como: "obtener un número menor o igual a 6", entonces este es un **evento seguro**.
+
+**Note que:** si $A = \{1,2,3,4,5,6\} = \Omega$, con $P(A) = 1$.
+:::
+
+---
+
+## Ejemplo
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Al lanzar dos monedas, el espacio muestral es:
+$$\Omega = \big\{\{E,E\},\{C,C\},\{E,C\},\{C,E\}\big\}$$
+
+Si se define el evento $A$ como: "obtener tres escudos", entonces este es un **evento imposible**.
+
+**Note que:** $A = \emptyset$, con $P(A) = 0$.
+:::
+
+---
+
+## Definición — Evento simple
+
+::: {.callout-tip icon=false}
+### Definición
+
+Un **evento simple** es cada uno de los posibles resultados de un experimento aleatorio; es decir, cada uno de los puntos muestrales.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se define el evento $A$ como: "obtener un 4", entonces $A$ es un **evento simple**.
+
+$A = \{4\}$, con $P(A) = \dfrac{1}{6}$.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Al lanzar dos monedas, el espacio muestral es $\Omega = \big\{\{E,E\},\{C,C\},\{E,C\},\{C,E\}\big\}$.
+
+Si se define el evento $A$ como: "obtener dos escudos", entonces $A$ es un **evento simple**.
+
+$A = \{\{E,E\}\}$, con $P(A) = \dfrac{1}{4}$.
+:::
+
+---
+
+## Definición — Evento compuesto
+
+::: {.callout-tip icon=false}
+### Definición
+
+Un **evento compuesto** es un conjunto de posibles resultados de un experimento aleatorio; es decir, un conjunto de eventos simples, por lo que es un subconjunto del espacio muestral.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se define el evento $A$ como: "obtener un número par", entonces $A = \{2,4,6\}$ es un **evento compuesto**.
+
+$P(A) = \dfrac{3}{6} = \dfrac{1}{2}$.
+:::
+
+---
+
+## Operaciones con eventos
+
+Empleando las operaciones de conjuntos con los eventos de $\Omega$, se pueden obtener otros eventos. Si $A$ y $B$ son eventos, entonces:
+
+- $A \cup B$: evento "$A$ o $B$ o ambos". Denota la **unión** de los eventos $A$ y $B$.
+- $A \cap B$: evento "$A$ y $B$". Denota la **intersección** entre los eventos $A$ y $B$.
+- $\overline{A} = \Omega - A$. Denota al **complemento** de $A$.
+- $A - B = A \cap \overline{B}$. Denota la **diferencia** de eventos, esta es igual a la intersección entre $A$ y el complemento de $B$.
+
+::: {.callout-tip icon=false}
+### Complemento de un suceso
+
+Se representa por $\overline{A}$ o $A^c$; es el subconjunto de puntos muestrales de $\Omega$ que **no** están en $A$.
+:::
+
+---
+
+## Demostración $A - B = A \cap \overline{B}$
+
+**Queremos demostrar** que el evento "$A$ pero no $B$" coincide con $A \cap B^c$.
+
+Se demostrará la doble contención: $A - B \subseteq A \cap \overline{B}$ y $A \cap \overline{B} \subseteq A - B$.
+
+---
+
+## Demostración $A - B = A \cap \overline{B}$
+
+**($\subseteq$)** Sea $\omega \in A - B$. Por definición de diferencia:
+
+$$\omega \in A \quad \text{y} \quad \omega \notin B$$
+
+Como $\omega \notin B$, entonces $\omega \in \overline{B}$. Por lo tanto $\omega \in A$ y $\omega \in \overline{B}$, es decir:
+
+$$\omega \in A \cap \overline{B}$$
+
+**($\supseteq$)** Sea $\omega \in A \cap B^c$. Entonces:
+
+$$\omega \in A \quad \text{y} \quad \omega \in \overline{B} \implies \omega \in A \quad \text{y} \quad \omega \notin B$$
+
+Por definición de diferencia: $\omega \in A - B$.
+
+Como ambas contenciones se cumplen:
+
+$$\boxed{A - B = A \cap \overline{B}} \qquad \blacksquare$$
+
+---
+
+## Definición — Eventos mutuamente excluyentes
+
+::: {.callout-tip icon=false}
+### Definición
+
+Dos eventos $A$ y $B$ son **mutuamente excluyentes** o disjuntos si ambos no pueden ocurrir al mismo tiempo; es decir, $A \cap B = \emptyset$.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se definen los eventos:
+- $A$: "obtener un número par" $\Rightarrow A = \{2,4,6\}$
+- $B$: "obtener un número impar" $\Rightarrow B = \{1,3,5\}$
+
+Entonces $A \cap B = \emptyset$; es decir, $A$ y $B$ son **mutuamente excluyentes**.
+
+**Note que:** Como $A \cap B = \emptyset$, se tiene $P(A \cup B) = P(A) + P(B) = \dfrac{1}{2} + \dfrac{1}{2} = 1$.
+:::
+
+## Algunas propiedades de conjuntos
+
+Sean $A,B,C$ tres conjuntos cualesquiera, entonces se cumple que:
+
+-   $A\cup \overline{A} = S$
+
+-   $A \cap \overline{A} = \emptyset$
+
+-   $A \cap  \emptyset =  \emptyset$
+
+-   $A \cup  \emptyset = A$
+
+-   $A \cap  \Omega =  A$
+
+-   $A \cup  \Omega =  \Omega$
+
+-   $A \cap(B\cup C) = (A\cap B)\cup (A \cap C)$ "Leyes Distributivas"
+
+-   $A \cup(B\cap C) = (A\cup B)\cap (A \cup C)$ "Leyes Distributivas"
+
+-   $\overline{A\cap B} = \overline{A} \cup \overline{B}$ "Leyes de Morgan"
+
+-   $\overline{A\cup B} = \overline{A} \cap \overline{B}$ "Leyes de Morgan"
+
+-   Si **A y B** son mutuamente excluyentes entonces $A\cap B = \emptyset$.
+
+
+## Ejercicios
+
+Suponga $\Omega$ como conjunto universo y sean $A$ y $B$ dos conjuntos cualesquiera. Demuestre que:
+
+**a)** $A = (A \cap B) \cup (A \cap \overline{B})$
+
+**b)** Si $B \subseteq A$ entonces $A = B \cup (A \cap \overline{B})$
