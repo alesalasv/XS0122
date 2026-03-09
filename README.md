@@ -6,7 +6,7 @@
 
 **Código:** XS-0122
 
-**Material del curso:** [https://alesalasv.github.io/XS0122/](https://alesalasv.github.io/XS0122/){:target="_blank"}
+**Material del curso:** [https://alesalasv.github.io/XS0122/](https://alesalasv.github.io/XS0122/)
 
 **Aula virtual:** [https://mv.mediacionvirtual.ucr.ac.cr/login/index.php](https://mv.mediacionvirtual.ucr.ac.cr/login/index.php){:target="_blank"}
 
@@ -23,6 +23,6 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 
 | Tema                                                                                  | Clase    |
 |---------------------------------------------------------------------------------------|----------|
-| Introducción                                                                          | [Clase 1](Clase1.html){:target="_blank"}  |
-| Métodos de Conteo                                                                     | [Clase 2](Clase2.html){:target="_blank"}   |
+| Introducción                                                                          | <a href="Clase1.html" target="_blank">Clase 1</a>|
+| Métodos de Conteo                                                                     | <a href="Clase2.html" target="_blank">Clase 2</a>  |
 
