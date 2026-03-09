@@ -11,7 +11,8 @@
 **Descripción del curso:**
 La teoría de probabilidad es requisito fundamental para introducir al estudiantado a la inferencia estadística. Este curso es teórico-práctico y se enfoca principalmente en proporcionar los fundamentos de la teoría de la probabilidad en espacios discretos y continuos con aplicaciones a fenómenos aleatorios como los juegos de azar, muestreo, salud, demografía y finanzas, entre otras disciplinas.
 
-[Programa del curso](Programa_XS0122_Modelos_Proba_Isemestre_2026.pdf)
+<!--[Programa del curso](Programa_XS0122_Modelos_Proba_Isemestre_2026.pdf)-->
+<a href="Programa_XS0122_Modelos_Proba_Isemestre_2026.pdf" target="_blank">Programa del curso</a>
 
 <!--   -->
 
@@ -19,5 +20,5 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 
 | Tema                                                                                  | Clase    |
 |---------------------------------------------------------------------------------------|----------|
-| Introducción                                                                          | [Clase 1](Clase1.html)    |
-| Métodos de Conteo                                                                     | [Clase 2](Clase2.html)    |
+| Introducción                                                                          | <a href="Clase1.html" target="_blank">Clase 1</a> |
+| Métodos de Conteo                                                                     | <a href="Clase2.html" target="_blank">Clase 2</a> |
