@@ -4,7 +4,7 @@
 
 **Material del curso:** [https://alesalasv.github.io/XS0122/](https://alesalasv.github.io/XS0122/)
 
-**Aula virtual:** [https://mv.mediacionvirtual.ucr.ac.cr/login/index.php](https://mv.mediacionvirtual.ucr.ac.cr/login/index.php)
+**Aula virtual:** <a href="https://mv.mediacionvirtual.ucr.ac.cr/login/index.php" target="_blank">https://mv.mediacionvirtual.ucr.ac.cr/login/index.php</a>
 
 **Profesores:** M.Sc. Alejandro Salas Vargas.
 
@@ -22,3 +22,4 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 |---------------------------------------------------------------------------------------|----------|
 | Introducción                                                                          | <a href="Clase1.html" target="_blank">Clase 1</a> |
 | Métodos de Conteo                                                                     | <a href="Clase2.html" target="_blank">Clase 2</a> |
+
