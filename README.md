@@ -23,6 +23,6 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 
 | Tema                                                                                  | Clase    |
 |---------------------------------------------------------------------------------------|----------|
-| Introducción                                                                          | [Clase 1](Clase1.html)    |
-| Métodos de Conteo                                                                     | [Clase 2](Clase2.html)    |
+| Introducción                                                                          | [Clase 1](Clase1.html){target="_blank"}   |
+| Métodos de Conteo                                                                     | [Clase 2](Clase2.html){target="_blank"}   |
 
