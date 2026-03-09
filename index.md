@@ -1,4 +1,4 @@
-**Curso:** Modelos Probabilísticos I
+## Modelos Probabilísticos I
 
 **Código:** XS-0122
 
@@ -22,4 +22,5 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 |---------------------------------------------------------------------------------------|----------|
 | Introducción                                                                          | <a href="Clase1.html" target="_blank">Clase 1</a> |
 | Métodos de Conteo                                                                     | <a href="Clase2.html" target="_blank">Clase 2</a> |
+
 
