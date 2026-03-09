@@ -601,7 +601,7 @@ Se representa por $\overline{A}$ o $A^c$; es el subconjunto de puntos muestrales
 
 ## Demostración $A - B = A \cap \overline{B}$
 
-**Queremos demostrar** que el evento "$A$ pero no $B$" coincide con $A \cap B^c$.
+**Queremos demostrar** que el evento "$A$ pero no $B$" coincide con $A \cap \overline{B}$.
 
 Se demostrará la doble contención: $A - B \subseteq A \cap \overline{B}$ y $A \cap \overline{B} \subseteq A - B$.
 
@@ -617,7 +617,7 @@ Como $\omega \notin B$, entonces $\omega \in \overline{B}$. Por lo tanto $\omega
 
 $$\omega \in A \cap \overline{B}$$
 
-**($\supseteq$)** Sea $\omega \in A \cap B^c$. Entonces:
+**($\supseteq$)** Sea $\omega \in A \cap \overline{B}$. Entonces:
 
 $$\omega \in A \quad \text{y} \quad \omega \in \overline{B} \implies \omega \in A \quad \text{y} \quad \omega \notin B$$
 
