@@ -268,10 +268,10 @@
 <p>Sea <span class="math inline">\(A\)</span> un evento en el espacio muestral <span class="math inline">\(\Omega\)</span>, con <span class="math inline">\(|\Omega| = n\)</span>. Se tienen las siguientes propiedades:</p>
 <ol type="1">
 <li><span class="math inline">\(0 \leq P(A) \leq 1\)</span></li>
+<li><span class="math inline">\(P(\Omega) = 1\)</span></li>
+<li><span class="math inline">\(P(\emptyset) = 0\)</span></li>
 <li><span class="math inline">\(P(\overline{A}) = 1 - P(A)\)</span></li>
 <li><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></li>
-<li><span class="math inline">\(P(\emptyset) = 0\)</span></li>
-<li><span class="math inline">\(P(\Omega) = 1\)</span></li>
 </ol>
 <blockquote>
 <p>La cardinalidad de un conjunto <span class="math inline">\(A\)</span> se denota por <span class="math inline">\(card\left(A \right)\)</span>, <span class="math inline">\(n(A)\)</span>, o bien <span class="math inline">\(\left|A \right|\)</span>.</p>
@@ -287,29 +287,29 @@
 <p>Dividiendo entre <span class="math inline">\(n &gt; 0\)</span>:</p>
 <p><span class="math display">\[0 \leq \frac{n(A)}{n} \leq 1 \implies \boxed{0 \leq P(A) \leq 1} \qquad \blacksquare\]</span></p>
 </section>
-<section id="demostración-propiedad-5-pomega-1" class="slide level2">
-<h2>Demostración — Propiedad 5: <span class="math inline">\(P(\Omega) = 1\)</span></h2>
+<section id="demostración-propiedad-2-pomega-1" class="slide level2">
+<h2>Demostración — Propiedad 2: <span class="math inline">\(P(\Omega) = 1\)</span></h2>
 <p>Todo resultado del experimento pertenece al espacio muestral <span class="math inline">\(\Omega\)</span>, por lo que todos los <span class="math inline">\(n\)</span> casos son favorables al evento <span class="math inline">\(\Omega\)</span>:</p>
 <p><span class="math display">\[n(\Omega) = n\]</span></p>
 <p>Aplicando la definición clásica:</p>
 <p><span class="math display">\[P(\Omega) = \frac{n(\Omega)}{n} = \frac{n}{n} = \boxed{1} \qquad \blacksquare\]</span></p>
 </section>
-<section id="demostración-propiedad-4-pemptyset-0" class="slide level2">
-<h2>Demostración — Propiedad 4: <span class="math inline">\(P(\emptyset) = 0\)</span></h2>
+<section id="demostración-propiedad-3-pemptyset-0" class="slide level2">
+<h2>Demostración — Propiedad 3: <span class="math inline">\(P(\emptyset) = 0\)</span></h2>
 <p>El evento imposible <span class="math inline">\(\emptyset\)</span> no contiene ningún resultado, por lo que <span class="math inline">\(n(\emptyset) = 0\)</span>.</p>
 <p>Aplicando la definición clásica:</p>
 <p><span class="math display">\[P(\emptyset) = \frac{n(\emptyset)}{n} = \frac{0}{n} = \boxed{0} \qquad \blacksquare\]</span></p>
 </section>
-<section id="demostración-propiedad-2-poverlinea-1---pa" class="slide level2">
-<h2>Demostración — Propiedad 2: <span class="math inline">\(P(\overline{A}) = 1 - P(A)\)</span></h2>
+<section id="demostración-propiedad-4-poverlinea-1---pa" class="slide level2">
+<h2>Demostración — Propiedad 4: <span class="math inline">\(P(\overline{A}) = 1 - P(A)\)</span></h2>
 <p>Los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(A^c\)</span> son <strong>mutuamente excluyentes</strong> y su unión es <span class="math inline">\(\Omega\)</span>:</p>
 <p><span class="math display">\[A \cup \overline{A} = \Omega \quad \text{y} \quad A \cap \overline{A} = \emptyset\]</span></p>
 <p>Por lo tanto <span class="math inline">\(n(A) + n(A^c) = n\)</span>. Dividiendo entre <span class="math inline">\(n\)</span>:</p>
 <p><span class="math display">\[\frac{n(A)}{n} + \frac{n(\overline{A})}{n} = 1\]</span></p>
 <p><span class="math display">\[P(A) + P(\overline{A}) = 1 \implies \boxed{P(\overline{A}) = 1 - P(A)} \qquad \blacksquare\]</span></p>
 </section>
-<section id="demostración-propiedad-3-pa-cup-b-pa-pb---pa-cap-b" class="slide level2">
-<h2>Demostración — Propiedad 3: <span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></h2>
+<section id="demostración-propiedad-5-pa-cup-b-pa-pb---pa-cap-b" class="slide level2">
+<h2>Demostración — Propiedad 5: <span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></h2>
 <p>Descomponemos <span class="math inline">\(A \cup B\)</span> en partes <strong>mutuamente excluyentes</strong>:</p>
 <p><span class="math display">\[A \cup B = (A \cap \overline{B}) \;\cup\; (A \cap B) \;\cup\; (B \cap \overline{A})\]</span></p>
 <p>Contando casos y usando que <span class="math inline">\(A = (A \cap \overline{B}) \cup (A \cap B)\)</span>, se tiene:</p>

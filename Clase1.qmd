@@ -149,10 +149,10 @@ Algunas limitaciones son:
 Sea $A$ un evento en el espacio muestral $\Omega$, con $|\Omega| = n$. Se tienen las siguientes propiedades:
 
 1. $0 \leq P(A) \leq 1$
-2. $P(\overline{A}) = 1 - P(A)$
-3. $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
-4. $P(\emptyset) = 0$
-5. $P(\Omega) = 1$
+2. $P(\Omega) = 1$
+3. $P(\emptyset) = 0$
+4. $P(\overline{A}) = 1 - P(A)$
+5. $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 
 > La cardinalidad de un conjunto $A$ se denota por $card\left(A \right)$, $n(A)$, o bien $\left|A \right|$.
 
@@ -171,7 +171,7 @@ $$0 \leq \frac{n(A)}{n} \leq 1 \implies \boxed{0 \leq P(A) \leq 1} \qquad \black
 
 ---
 
-## Demostración — Propiedad 5: $P(\Omega) = 1$
+## Demostración — Propiedad 2: $P(\Omega) = 1$
 
 Todo resultado del experimento pertenece al espacio muestral $\Omega$, por lo que todos los $n$ casos son favorables al evento $\Omega$:
 
@@ -183,7 +183,7 @@ $$P(\Omega) = \frac{n(\Omega)}{n} = \frac{n}{n} = \boxed{1} \qquad \blacksquare$
 
 ---
 
-## Demostración — Propiedad 4: $P(\emptyset) = 0$
+## Demostración — Propiedad 3: $P(\emptyset) = 0$
 
 El evento imposible $\emptyset$ no contiene ningún resultado, por lo que $n(\emptyset) = 0$.
 
@@ -193,7 +193,7 @@ $$P(\emptyset) = \frac{n(\emptyset)}{n} = \frac{0}{n} = \boxed{0} \qquad \blacks
 
 ---
 
-## Demostración — Propiedad 2: $P(\overline{A}) = 1 - P(A)$
+## Demostración — Propiedad 4: $P(\overline{A}) = 1 - P(A)$
 
 Los eventos $A$ y $A^c$ son **mutuamente excluyentes** y su unión es $\Omega$:
 
@@ -207,7 +207,7 @@ $$P(A) + P(\overline{A}) = 1 \implies \boxed{P(\overline{A}) = 1 - P(A)} \qquad 
 
 ---
 
-## Demostración — Propiedad 3: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+## Demostración — Propiedad 5: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 
 Descomponemos $A \cup B$ en partes **mutuamente excluyentes**:
 
