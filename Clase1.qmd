@@ -1,7 +1,9 @@
 ---
 title: "Orígenes de la Probabilidad"
 subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
-format: clean-revealjs
+format:
+  clean-revealjs:
+    css: estilos.css
 html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -19,11 +21,11 @@ lang: es
 
 -   **Información importante**
 
-    1.  [Mediación Virtual](https://mv1.mediacionvirtual.ucr.ac.cr/course/view.php?id=39199)
+    1.  [Mediación Virtual](https://mv.mediacionvirtual.ucr.ac.cr/login/index.php)
 
-    2.  [Programa del curso](https://christopher-tr.github.io/XS0122-II_2025/XS-0122%20carta%20al%20estudiante.pdf)
+    2.  [Programa del curso](https://alesalasv.github.io/XS0122/Programa_XS0122_Modelos_Proba_Isemestre_2026.pdf)
 
-    3.  [Llenar el formulario (pendiente)](https://docs.google.com/forms/d/e/1FAIpQLSdgFSfxnOi0x5OVJxdc85JVQRHa9dVdupvOzxTt5xzpocuNVQ/viewform)
+    3.  [Llenar el formulario (pendiente)](https://forms.gle/euz8suVheucsQjxm7)
 
 -   **Reglamentación**
 
@@ -411,7 +413,7 @@ Este desarrollo axiomático está apoyado en la teoría de conjuntos, la definic
 
 ---
 
-## Algunos conceptos: Experimento
+## Experimento
 
 Un **experimento** está determinado por la presencia de un conjunto de condiciones, las cuales pueden crearse de manera artificial o se producen independientemente de la voluntad del experimentador. Estos procesos permiten obtener información del objeto (sujeto) de estudio mediante mediciones.
 
@@ -423,7 +425,7 @@ Un **experimento** está determinado por la presencia de un conjunto de condicio
 
 ---
 
-## Definición
+## Experimento
 
 ::: {.callout-tip icon=false}
 ### Definición
@@ -455,7 +457,7 @@ El **experimento aleatorio** es un fenomeno que se puede repetir en condiciones 
 
 ---
 
-## Definición — Espacio muestral
+## Espacio muestral
 
 ::: {.callout-tip icon=false}
 ### Definición
@@ -474,20 +476,20 @@ Al conjunto de todos los posibles resultados de un experimento aleatorio se le l
 ## Definiciones
 
 ::: {.callout-tip icon=false}
-### Definición — Espacio muestral discreto y continuo
+### Espacio muestral discreto y continuo
 
 El espacio muestral $\Omega$ se llama **discreto** si es finito o numerable. Un experimento aleatorio se llama **finito** (discreto) si su espacio muestral es finito (discreto). El espacio muestral se llama **continuo** si es un intervalo.
 :::
 
 ::: {.callout-tip icon=false}
-### Definición — Puntos muestrales
+### Puntos muestrales
 
 A los elementos del espacio muestral $\omega \in \Omega$ se les llaman **puntos muestrales** o **eventualidades**.
 :::
 
 ---
 
-## Definición — Suceso o evento
+## Suceso o evento
 
 ::: {.callout-tip icon=false}
 ### Definición
@@ -497,7 +499,7 @@ Un **suceso** $A$ asociado a un experimento es un subconjunto del espacio muestr
 
 ---
 
-## Definición — Suceso imposible y seguro
+## Suceso imposible y seguro
 
 ::: {.callout-tip icon=false}
 ### Definición
@@ -532,7 +534,7 @@ Si se define el evento $A$ como: "obtener tres escudos", entonces este es un **e
 
 ---
 
-## Definición — Evento simple
+## Evento simple
 
 ::: {.callout-tip icon=false}
 ### Definición
@@ -545,9 +547,7 @@ Un **evento simple** es cada uno de los posibles resultados de un experimento al
 
 Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
 
-Si se define el evento $A$ como: "obtener un 4", entonces $A$ es un **evento simple**.
-
-$A = \{4\}$, con $P(A) = \dfrac{1}{6}$.
+Si se define el evento $A$ como: "obtener un 4", entonces $A = \{4\}$ es un **evento simple**.
 :::
 
 ::: {.callout-note icon=false}
@@ -555,14 +555,13 @@ $A = \{4\}$, con $P(A) = \dfrac{1}{6}$.
 
 Al lanzar dos monedas, el espacio muestral es $\Omega = \big\{\{E,E\},\{C,C\},\{E,C\},\{C,E\}\big\}$.
 
-Si se define el evento $A$ como: "obtener dos escudos", entonces $A$ es un **evento simple**.
+Si se define el evento $A$ como: "obtener dos escudos", entonces $A = \{\{E,E\}\}$ es un **evento simple**.
 
-$A = \{\{E,E\}\}$, con $P(A) = \dfrac{1}{4}$.
 :::
 
 ---
 
-## Definición — Evento compuesto
+## Evento compuesto
 
 ::: {.callout-tip icon=false}
 ### Definición
@@ -577,7 +576,6 @@ Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
 
 Si se define el evento $A$ como: "obtener un número par", entonces $A = \{2,4,6\}$ es un **evento compuesto**.
 
-$P(A) = \dfrac{3}{6} = \dfrac{1}{2}$.
 :::
 
 ---
@@ -629,7 +627,7 @@ $$\boxed{A - B = A \cap \overline{B}} \qquad \blacksquare$$
 
 ---
 
-## Definición — Eventos mutuamente excluyentes
+## Eventos mutuamente excluyentes
 
 ::: {.callout-tip icon=false}
 ### Definición
