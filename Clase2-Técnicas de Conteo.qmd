@@ -1,0 +1,495 @@
+---
+title: "Técnicas de Conteo"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Principio de la suma
+
+Si en una universidad se pueden matricular tres cursos de matemática, cuatro de física y dos de didáctica, todos diferentes, ¿de cuántas maneras se puede seleccionar un curso en esta universidad? El **principio de la suma** ayuda a resolver esta pregunta.
+
+Por ejemplo, de los tres cursos de matemática se podrían seleccionar 3, de física 4 y de didáctica 2; por lo que hay $3 + 4 + 2 = 9$ maneras de seleccionar un curso en esta universidad.
+
+De forma general, si una tarea se puede realizar en $k$ casos, y $n_i$ representa el número de formas de realizar el caso $i = 1, 2, 3, \ldots, k$, entonces el número total de maneras de realizar la tarea es:
+
+$$n_1 + n_2 + \cdots + n_k$$
+
+Este proceso se generaliza en el siguiente principio, denominado **principio de la suma**.
+
+---
+
+## Teorema — Principio de la suma
+
+::: {.callout-tip icon=false}
+### Teorema (Principio de la suma)
+
+Sean $A_1, A_2, \ldots, A_k$ conjuntos finitos **disjuntos dos a dos**, es decir, $A_i \cap A_j = \emptyset$ con $i \neq j$, entonces:
+
+$$\left|A_1 \cup A_2 \cup \cdots \cup A_k\right| = \left|A_1\right| + \left|A_2\right| + \cdots + \left|A_k\right|$$
+:::
+
+Se puede pensar que cada conjunto $A_i$ está formado por las distintas maneras de realizar el caso $i$ de una cierta tarea, y que no se pueden realizar dos casos simultáneamente.
+
+---
+
+## Ejemplo — Principio de la suma
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+La sección 10-1 del C.T.P. de Puriscal está compuesta por diecisiete hombres y trece mujeres. Si se desea elegir a un estudiante o una estudiante para que represente al grupo en un acto cívico, ¿de cuántas formas se puede realizar esta elección?
+
+**Solución:** Si se selecciona a una mujer, habrá 13 formas de hacerlo, y 17 si se selecciona a un hombre. Por lo que hay en total $13 + 17 = 30$ formas de realizar esta selección.
+
+**R/** 30 formas.
+:::
+
+---
+
+## Principio del producto
+
+El **principio del producto** establece que si hay $n_1$ formas posibles de realizar una tarea $A$, y $n_2$ formas posibles de realizar una tarea $B$, donde ambas tareas deben realizarse en secuencia, entonces hay $n_1 \cdot n_2$ formas posibles de realizar ambas tareas en orden.
+
+Por ejemplo, si se desea contar el número de formas posibles de elegir primero una camisa y luego un pantalón, de un armario que contiene 5 camisas y 3 pantalones, entonces el número de formas posibles es $5 \cdot 3 = 15$.
+
+Retomando el ejemplo anterior: si se desea saber de cuántas formas se puede elegir un curso de cada área, la elección del curso de matemática se puede hacer de tres formas, la de física de cuatro maneras y la de didáctica de dos formas, es decir, hay $3 \cdot 4 \cdot 2 = 24$ formas de realizar la elección.
+
+---
+
+## Teorema — Principio del producto
+
+De forma general, si una tarea se puede dividir en $k$ subtareas consecutivas e independientes, de forma que hay $n_i$ maneras de realizar la subtarea $i = 1, 2, 3, \ldots, k$, entonces el número total de maneras en las que se puede completar la tarea es $n_1 \cdot n_2 \cdot \ldots \cdot n_k$.
+
+::: {.callout-tip icon=false}
+### Teorema (Principio del producto)
+
+Sean $A_1, A_2, \ldots, A_k$ conjuntos finitos, entonces:
+
+$$\left|A_1 \times A_2 \times \cdots \times A_k\right| = \left|A_1\right| \cdot \left|A_2\right| \cdot \ldots \cdot \left|A_k\right|$$
+:::
+
+---
+
+## Ejemplo — Principio del producto
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+La sección 10-1 del C.T.P. de Puriscal está compuesta por diecisiete hombres y trece mujeres. Si se desea elegir a un estudiante hombre y a una estudiante mujer para que representen al grupo en un acto cívico, ¿de cuántas formas se puede realizar esta elección?
+
+**Solución:** Hay 17 formas para seleccionar a un hombre de los diecisiete, y 13 formas para seleccionar a una mujer. Entonces, hay $17 \cdot 13 = 221$ formas de realizar la selección de un hombre y una mujer.
+
+**R/** 221 formas.
+:::
+
+---
+
+## Ejemplo — Confección de carnés
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Se desea confeccionar un carné con código personal para cada estudiante de una universidad; este debe consistir en dos letras mayúsculas (26 del alfabeto sin la Ñ) seguidas de cuatro cifras (del 0 al 9). Se pueden repetir las letras, pero no las cifras. ¿Cuántos números de carné se pueden confeccionar?
+:::
+
+---
+
+## Ejemplo — Confección de carnés (solución)
+
+::: {.callout-note icon=false}
+### Solución
+
+El carné tiene seis caracteres. Determinando la cantidad de formas para cada posición:
+
+- **1.er carácter** (letra): 26 formas.
+- **2.º carácter** (letra, puede repetirse): 26 formas.
+- **3.er carácter** (cifra): 10 posibilidades.
+- **4.º carácter** (cifra, sin repetir la anterior): 9 formas.
+- **5.º carácter** (cifra, sin repetir las anteriores): 8 formas.
+- **6.º carácter** (cifra, sin repetir las anteriores): 7 formas.
+
+Por el principio del producto:
+
+$$26 \cdot 26 \cdot 10 \cdot 9 \cdot 8 \cdot 7 = 3\,407\,040 \text{ carnés con codificación distinta.}$$
+
+**R/** $3\,407\,040$ carnés.
+:::
+
+---
+
+## Ejercicio
+
+::: {.callout-warning icon=false}
+### Ejercicio
+
+Una universidad ofrece 3 cursos diferentes de Historia, 4 cursos diferentes de Literatura y 2 cursos diferentes de Ciencias, para los cuales no existe requisito alguno.
+
+- ¿De cuántas formas diferentes se puede escoger un único curso?
+- ¿De cuántas formas diferentes se puede escoger un curso de cada materia?
+
+**R/** Un único curso: $3 + 4 + 2 = 9$ formas.
+
+**R/** Un curso de cada materia: $3 \cdot 4 \cdot 2 = 24$ formas.
+:::
+
+---
+
+## Muestra ordenada con reemplazo
+
+Sea una población de $N$ elementos. Una **muestra ordenada con reemplazo** de tamaño $n$ de esa población es todo arreglo de $n$ elementos de la población en el que cualquier elemento puede aparecer más de una vez.
+
+Por ejemplo, se extrae una bola tres veces (con reemplazo) de una bolsa que contiene bolas de los colores $\{\text{rojo, azul, verde, amarillo}\}$. La secuencia (rojo, azul, amarillo) no es la misma que (azul, rojo, amarillo), aunque contengan los mismos colores. El orden importa:
+
+- Secuencia A: $1.^{\circ}=\text{rojo},\ 2.^{\circ}=\text{azul},\ 3.^{\circ}=\text{amarillo}$
+- Secuencia B: $1.^{\circ}=\text{azul},\ 2.^{\circ}=\text{rojo},\ 3.^{\circ}=\text{amarillo}$
+
+---
+
+## Teorema — Muestra ordenada con reemplazo
+
+::: {.callout-tip icon=false}
+### Teorema
+
+El total de muestras ordenadas con reemplazo de tamaño $n$ de una población de $N$ elementos es $N^n$.
+
+**Prueba:** Por el principio del producto, para el primer elemento se dispone de $N$ opciones, para el segundo $N$ opciones, $\ldots$, y para el $n$-ésimo término $N$ opciones. Por lo tanto el total es:
+
+$$\underbrace{N \cdot N \cdots N}_{n \text{ veces}} = N^n \qquad \blacksquare$$
+:::
+
+---
+
+## Permutación de $n$ objetos
+
+::: {.callout-tip icon=false}
+### Definición
+
+Una **permutación** de $n$ objetos es un arreglo ordenado, sin repetición, de los $n$ elementos. El número de permutaciones distintas de $n$ objetos es $n!$.
+:::
+
+**Prueba:** Para la primera posición se cuenta con $n$ objetos, para la segunda posición $n-1$, para la tercera $n-2$, así sucesivamente hasta llegar a la última posición para la cual solo se contará con 1 objeto. Por el principio del producto:
+
+$$n \cdot (n-1) \cdot (n-2) \cdots 2 \cdot 1 = n! \qquad \blacksquare$$
+
+---
+
+## Ejemplos — Permutación de $n$ objetos
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+En una clase se tienen 5 estudiantes para conformar la directiva de sección: presidente, vicepresidente, secretario, tesorero y fiscal. Para la elección del presidente se cuenta con los 5 estudiantes iniciales, para vicepresidente 4, para secretario 3, para tesorero 2 y para fiscal 1. Es decir:
+
+$$5! = 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 120$$
+
+Existen **120 formas** de elegir esta directiva.
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+¿De cuántas formas se pueden permutar las letras de la palabra ANGULO? Observe que todas las letras son distintas (sin repetición), por lo que la cantidad de permutaciones será:
+
+$$6! = 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 720$$
+:::
+
+---
+
+## Permutación de $r$ elementos de $n$ — $_{n}P_{r}$
+
+::: {.callout-tip icon=false}
+### Definición
+
+Una **permutación de $r$ elementos** de un conjunto $S$ con $n$ elementos es un arreglo ordenado, sin repeticiones, de $r$ elementos distintos de $S$:
+
+$$_{n}P_{r} = P(n, r) = \frac{n!}{(n-r)!}, \quad \text{con } r \leq n$$
+:::
+
+**Prueba:**
+
+$$_{n}P_{r} = n(n-1)(n-2)\cdots(n-r+1) = n(n-1)\cdots(n-r+1)\cdot\frac{(n-r)!}{(n-r)!} = \frac{n!}{(n-r)!} \qquad \blacksquare$$
+
+---
+
+## Ejemplo — $_{n}P_{r}$
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Un equipo de fútbol de 11 jugadores. Hallar el número de posibles formas de asignar 5 mediocampistas, si se excluye al guardameta (quedan 10 jugadores disponibles).
+
+$$_{10}P_{5} = P(10, 5) = \frac{10!}{(10-5)!} = \frac{10!}{5!} = 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 = 30\,240$$
+
+**R/** $30\,240$ formas.
+:::
+
+---
+
+## Teorema — Muestra ordenada sin reemplazo
+
+::: {.callout-tip icon=false}
+### Teorema
+
+De una población de $N$ elementos, el total de muestras **ordenadas sin reemplazo** de tamaño $n$ que se pueden tomar es:
+
+$$_{N}P_{n} = P(N, n) = \frac{N!}{(N-n)!}$$
+:::
+
+---
+
+## Permutación con repetición en los elementos
+
+::: {.callout-tip icon=false}
+### Definición — Permutación por clases
+
+El número de permutaciones de un conjunto de $n$ objetos de los cuales hay $n_1$ de una clase, $n_2$ de otra clase, $\ldots$, y $n_r$ de una $r$-ésima clase, donde $n = n_1 + n_2 + \cdots + n_r$, es:
+
+$$P(n,\, n_1, n_2, \ldots, n_r) = \frac{n!}{n_1!\, n_2!\, \cdots\, n_r!}$$
+:::
+
+---
+
+## Prueba — Permutación por clases
+
+Se divide primero el conjunto de $n$ elementos en dos grupos: uno de $n_1$ y otro con $n - n_1$ elementos. Luego se subdivide el segundo grupo en dos: uno con $n_2$ y otro con $n - n_1 - n_2$ elementos, y así sucesivamente hasta obtener los $r$ grupos:
+
+$$\binom{n}{n_1}\binom{n-n_1}{n_2}\binom{n-n_1-n_2}{n_3}\cdots\binom{n-n_1-\cdots-n_{r-1}}{n_r}$$
+
+$$= \frac{n!}{n_1!\,(n-n_1)!} \cdot \frac{(n-n_1)!}{n_2!\,(n-n_1-n_2)!} \cdots \frac{(n-n_1-\cdots-n_{r-1})!}{n_r!\cdot 0!} = \frac{n!}{n_1!\,n_2!\cdots n_r!} \qquad \blacksquare$$
+
+---
+
+## Ejemplo — Permutación por clases
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+¿Cuántas palabras distintas se pueden formar con las letras de "MATEMATICA"?
+
+Aquí $n = 10$. Las frecuencias son: M se repite $n_1 = 2$ veces, A se repite $n_2 = 3$ veces, T se repite $n_3 = 2$ veces, E aparece $n_4 = 1$ vez, I aparece $n_5 = 1$ vez y C aparece $n_6 = 1$ vez.
+
+$$P(10,\,2,3,2,1,1,1) = \frac{10!}{2!\,3!\,2!\,1!\,1!\,1!} = 151\,200 \text{ palabras}$$
+
+**R/** $151\,200$ palabras distintas.
+:::
+
+---
+
+## Permutación con repetición en la secuencia
+
+::: {.callout-tip icon=false}
+### Definición
+
+El número de permutaciones de $n$ objetos distintos, tomando $r$ de ellos a la vez y **permitiendo repeticiones** en la secuencia es:
+
+$$P(n, r) = n^r, \quad \text{con } r < n$$
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+El número de ordenamientos diferentes que se pueden formar, tomando tres letras del conjunto $\{A, B, C, D, E, F, G\}$ y permitiendo que se repitan, es:
+
+$$P(7, 3) = 7^3 = 343$$
+
+**R/** 343 ordenamientos.
+:::
+
+---
+
+## Combinaciones — Definición
+
+::: {.callout-tip icon=false}
+### Definición
+
+Una **$r$-combinación** sobre un conjunto $A$ con $n$ elementos es un subconjunto de $A$ con $r$ elementos (el orden **no** importa).
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo motivador
+
+Considere el conjunto $\{A, B, C, D\}$ y suponga que se quieren extraer dos elementos, sin repeticiones, y que el orden **sí** importa. Entonces hay $\dfrac{4!}{(4-2)!} = 12$ formas (permutaciones).
+
+Pero si el orden **no** importa, las extracciones AB y BA, AC y CA, AD y DA, BC y CB, BD y DB, CD y DC serían la misma, y no se deberían contar en el resultado final.
+
+Así, las únicas extracciones por contar, sin tomar en cuenta el orden y sin repeticiones, son: AB, AC, AD, BC, BD, CD, es decir, hay **6 combinaciones**.
+:::
+
+---
+
+## Combinaciones sin repetición — $C(n,r)$
+
+::: {.callout-tip icon=false}
+### Definición — Combinaciones sin repetición
+
+El número de $r$-combinaciones sobre un conjunto de $n$ elementos distintos está dado por:
+
+$$C(n, r) = \binom{n}{r} = \frac{n!}{r!\,(n-r)!}, \quad \text{con } 0 < r \leq n$$
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Se desea conformar una junta directiva compuesta por cinco personas de un total de 20 candidatos. ¿De cuántas formas se puede realizar la junta directiva?
+
+$$C(20, 5) = \binom{20}{5} = \frac{20!}{5!\,(20-5)!} = \frac{20!}{5!\,15!} = 15\,504$$
+
+**R/** La junta directiva se puede conformar de $15\,504$ formas.
+:::
+
+---
+
+## Teorema — Muestra no ordenada sin reemplazo
+
+::: {.callout-tip icon=false}
+### Teorema
+
+El total de muestras **sin reemplazo, no ordenadas**, de tamaño $r$ de una población de $n$ elementos es:
+
+$$\binom{n}{r} = \frac{n!}{r!\,(n-r)!}$$
+:::
+
+Se llama **muestreo simple al azar** al método de extraer $r$ elementos sin reemplazo de una población de $n$ elementos, de tal manera que cada una de las $\binom{n}{r}$ muestras posibles tenga la misma probabilidad de ser seleccionada:
+
+$$P(\text{muestra}) = \frac{1}{\dbinom{n}{r}}$$
+
+Cada una de las muestras se llama **muestra aleatoria simple**.
+
+---
+
+## Combinaciones con repetición — $CR(n,r)$
+
+::: {.callout-tip icon=false}
+### Definición — Combinaciones con repetición
+
+El número de $r$-combinaciones **con repetición** sobre un conjunto de $n$ elementos está dado por:
+
+$$CR(n, r) = \binom{n+r-1}{r} = \frac{(n+r-1)!}{r!\,(n-1)!}, \quad \text{con } r, n > 0$$
+:::
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+Del conjunto $\{A, B, C\}$, las posibles combinaciones de dos elementos tomados del conjunto, permitiendo que se repitan elementos, son: AB, AC, BC, AA, BB, CC. Es decir:
+
+$$CR(3, 2) = \binom{3+2-1}{2} = \binom{4}{2} = \frac{4!}{2!\,2!} = 6$$
+
+**R/** 6 combinaciones con repetición.
+:::
+
+---
+
+## Ejemplo — Heladería
+
+::: {.callout-note icon=false}
+### Ejemplo
+
+En una heladería se cuenta con 12 diferentes sabores de helado. ¿Cuántos conos de dos bolitas de sabores diferentes se pueden hacer? ¿Cuántos conos de dos bolitas, si se permite repetir sabores, se pueden formar?
+
+**Solución:**
+
+Sin repetición (sabores diferentes):
+
+$$C(12, 2) = \frac{12!}{2!\,10!} = 66 \text{ formas}$$
+
+Con repetición de sabores:
+
+$$CR(12, 2) = \binom{13}{2} = \frac{13!}{2!\,11!} = 78 \text{ formas}$$
+
+**R/** 66 conos sin repetir sabores; 78 conos permitiendo repetir.
+:::
+
+---
+
+## Teorema — Muestra no ordenada con reemplazo
+
+::: {.callout-tip icon=false}
+### Teorema
+
+El total de muestras **sin ordenar, con reemplazo**, de $r$ elementos de una población de $n$ elementos es igual a:
+
+$$\binom{n+r-1}{r}$$
+:::
+
+---
+
+## Resumen — Tipos de muestras
+
+El siguiente cuadro resume el total de muestras de tamaño $r$ que se pueden tomar de una población de $n$ elementos según el tipo de muestreo:
+
+|  | **Con reemplazo** | **Sin reemplazo** |
+|---|:---:|:---:|
+| **Con orden** | $n^r$ | $\dfrac{n!}{(n-r)!}$ |
+| **Sin orden** | $\dbinom{n+r-1}{r}$ | $\dbinom{n}{r}$ |
+
+---
+
+## Ejercicios
+
+**1.** ¿Cuántas permutaciones pueden formarse con las letras de la palabra LIBERTAD? ¿Cuántas empiezan con A y terminan con B?
+
+**2.** Un turista alemán quiere visitar seis países de Latinoamérica. La distancia recorrida y el costo del viaje dependerán no solo de los países que decida visitar sino también del orden en que planee hacer su ruta. ¿De entre cuántos itinerarios diferentes podrá elegir el turista su ruta?
+
+**3.** Las cifras que componen un número son 1, 2, 3, 4 y 5. ¿Cuántos números diferentes de cinco cifras, menores de 54 000, pueden formarse sin que se repita ninguna de las cifras?
+
+
+**4.** Tres boletos de lotería se extraen de un total de 50. Si los boletos se distribuirán a cada una de tres personas en el orden en que son extraídos: 1.er premio de ₡50 000, 2.º de ₡20 000 y 3.er de ₡10 000. ¿De cuántas maneras se pueden extraer los boletos?
+
+---
+
+## Ejercicios
+
+**5.** Una pieza de equipo está compuesta de cinco partes que pueden ensamblarse en cualquier orden. Se realiza una prueba para determinar cuánto tiempo toma armar el equipo en cada orden de ensamblaje. Si cada orden se prueba solo una vez, ¿cuántas pruebas se deben llevar a cabo?
+
+**6.** María desea realizar una fiesta y quiere ofrecer a sus invitados 3 diferentes sabores de helado. Cuando llega al supermercado encuentra helados de vainilla, chocolate, fresa, napolitano y caramelo. ¿De cuántas formas diferentes puede escoger los helados?
+
+
+**7.** De un grupo de 12 estudiantes se necesita escoger tres para formar el comité cívico escolar. ¿De cuántas formas diferentes se pueden escoger los tres estudiantes? Si el comité debe elegir presidente, secretario y vocal, ¿de cuántas formas diferentes se puede hacer la elección?
+
+**8.** Si tenemos 12 libros en un estante, ¿de cuántas maneras puede hacerse una selección de cinco libros cuando se tiene que incluir un libro determinado? ¿Y si se debe excluir un determinado libro?
+
+---
+
+## Ejercicios
+
+**9.** ¿De cuántas formas diferentes se pueden ordenar las letras de la palabra CAPACIDAD?
+
+**10.** Un ingeniero debe ajustar el tiempo de cambio de luz en una serie de 10 semáforos. En un momento dado, el semáforo puede estar con las luces en rojo, amarillo o verde encendidas. ¿Cuántas variantes de colores de la serie de semáforos son posibles en un principio? Si las luces se encienden aleatoriamente al inicio, ¿cuál es la probabilidad de que inicialmente se tengan tres semáforos con luz roja, cinco con amarilla y dos con verde?
+
+**11.** En un grupo hay 4 estudiantes $\{A, B, C, D\}$. Enumere todas las muestras posibles con y sin reemplazo, ordenadas y sin ordenar, de tamaño 3:
+
+- Sin ordenar y sin reemplazo
+- Sin ordenar y con reemplazo
+- Ordenadas sin reemplazo
+- Ordenadas con reemplazo
+
+---
+
+## Ejercicios
+
+**12.** ¿Cuántas permutaciones se pueden hacer de la palabra "COMPETIRÁS" si:
+
+- **a)** No hay restricciones.
+
+- **b)** Las vocales deben estar juntas en cualquier orden.
+
+- **c)** Tanto las vocales como las consonantes deben ir juntas en cualquier orden.
+
+**13.** Cuatro libros distintos de matemáticas, seis diferentes de física y dos diferentes de química se colocan en un estante. ¿De cuántas formas distintas es posible ordenarlos para cada caso?
+
+- **a)** Los libros de cada asignatura deben estar todos juntos.
+
+- **b)** Solamente los libros de matemáticas deben estar juntos.
