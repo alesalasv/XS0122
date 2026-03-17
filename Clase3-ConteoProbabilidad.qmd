@@ -1,0 +1,376 @@
+---
+title: "Combinatoria y Probabilidad"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Probabilidad y Combinatoria
+
+A un jugador se le dan 13 cartas tomadas al azar de una baraja de 52 cartas. Encuentre la probabilidad de que el jugador tenga:
+
+A) Solamente un as
+
+B) Al menos un as
+
+C) El as de corazones
+
+D) Solamente un as y este debe ser de corazones
+
+---
+
+## Probabilidad y Combinatoria
+
+A un jugador se le dan 13 cartas tomadas al azar de una baraja de 52 cartas. Encuentre la probabilidad de que el jugador tenga:
+
+**A) Solamente un as**
+
+- Sea el evento $A$: "solamente un AS"
+
+- $|A| = \dbinom{4}{1}\dbinom{48}{12}$
+
+- Aquí $\Omega$: Todas las formas de repartirle 13 cartas a un jugador.
+
+- $|\Omega| = \dbinom{52}{13}$
+
+- $P(A) = \dfrac{\dbinom{4}{1}\dbinom{48}{12}}{\dbinom{52}{13}} = 0{,}4388$
+
+---
+
+## Probabilidad y Combinatoria
+
+A un jugador se le dan 13 cartas tomadas al azar de una baraja de 52 cartas. Encuentre la probabilidad de que el jugador tenga:
+
+**B) Al menos un as**
+
+- Sean los eventos $B$: "al menos un AS" y $B^c$: "no tiene ASES"
+
+- $|B^c| = \dbinom{4}{0}\dbinom{48}{13}$
+
+- Aquí $\Omega$: Todas las formas de repartirle 13 cartas a un jugador.
+
+- $|\Omega| = \dbinom{52}{13}$
+
+- $P(B) = 1 - P(B^c) = 1 - \dfrac{\dbinom{4}{0}\dbinom{48}{13}}{\dbinom{52}{13}} = 0{,}69618$
+
+---
+
+## Probabilidad y Combinatoria
+
+A un jugador se le dan 13 cartas tomadas al azar de una baraja de 52 cartas. Encuentre la probabilidad de que el jugador tenga:
+
+**C) El as de corazones**
+
+- Sea el evento $C$: "tiene el AS de corazones"
+
+- $|C| = \dbinom{1}{1}\dbinom{51}{12}$
+
+- Aquí $\Omega$: Todas las formas de repartirle 13 cartas a un jugador.
+
+- $|\Omega| = \dbinom{52}{13}$
+
+- $P(C) = \dfrac{\dbinom{1}{1}\dbinom{51}{12}}{\dbinom{52}{13}} = 0{,}25$
+
+---
+
+## Probabilidad y Combinatoria
+
+A un jugador se le dan 13 cartas tomadas al azar de una baraja de 52 cartas. Encuentre la probabilidad de que el jugador tenga:
+
+**D) Solamente un as y este debe ser de corazones**
+
+- Sea el evento $D$: "solamente un AS y este de corazones"
+
+- $|D| = \dbinom{1}{1}\dbinom{48}{12}$
+
+- Aquí $\Omega$: Todas las formas de repartirle 13 cartas a un jugador.
+
+- $|\Omega| = \dbinom{52}{13}$
+
+- $P(D) = \dfrac{\dbinom{1}{1}\dbinom{48}{12}}{\dbinom{52}{13}} = 0{,}10971$
+
+---
+
+## Probabilidad y Combinatoria
+
+Un establecimiento brinda servicio automotriz especializado a autos de la marca HYUNDAI. Un sábado en la mañana esperan para ser atendidos nueve autos del estilo Elantra y catorce del estilo Sonata. Por disposición de la empresa, los sábados se cierra al medio día, por lo que el encargado de planta informa que solo se podrán atender cinco automóviles. Si los cinco autos se eligen al azar:
+
+- ¿Cuál es la probabilidad de que tres de los autos seleccionados sean del estilo Sonata?
+
+- ¿Cuál es la probabilidad de que al menos tres de los autos seleccionados sean del estilo Sonata?
+
+---
+
+## Probabilidad y Combinatoria
+
+¿Cuál es la probabilidad de que tres de los autos seleccionados sean del estilo Sonata?
+
+- Sea el evento $A$: "se seleccionan tres Sonatas"
+
+- $|A| = \dbinom{14}{3}\dbinom{9}{2}$
+
+- Aquí $\Omega$: Formas de seleccionar 5 autos de 23.
+
+- $|\Omega| = \dbinom{23}{5}$
+
+- $P(A) = \dfrac{\dbinom{14}{3}\dbinom{9}{2}}{\dbinom{23}{5}} = 0{,}3894$
+
+---
+
+## Probabilidad y Combinatoria
+
+¿Cuál es la probabilidad de que al menos tres de los autos seleccionados sean del estilo Sonata?
+
+- Sea el evento $B$: "al menos tres de los autos son Sonatas"
+
+- $|B| = \underbrace{\dbinom{14}{3}\dbinom{9}{2}}_{1^{\text{er}}\text{ caso}} + \underbrace{\dbinom{14}{4}\dbinom{9}{1}}_{2^{\text{do}}\text{ caso}} + \underbrace{\dbinom{14}{5}\dbinom{9}{0}}_{3^{\text{er}}\text{ caso}}$
+
+- Aquí $\Omega$: Formas de seleccionar 5 autos de 23.
+
+- $|\Omega| = \dbinom{23}{5}$
+
+- $P(B) = \dfrac{\dbinom{14}{3}\dbinom{9}{2} + \dbinom{14}{4}\dbinom{9}{1} + \dbinom{14}{5}\dbinom{9}{0}}{\dbinom{23}{5}} = 0{,}7167$
+
+---
+
+## Probabilidad y Combinatoria
+
+Un ingeniero de planta, que trabaja para una compañía agrícola, descubre que cuatro máquinas de empacar están dañadas, el defecto en las cuatro máquinas es el mismo y el problema se soluciona cambiando un pequeño empaque. En la bodega hay 9 empaques disponibles y se eligen cuatro de ellos al azar.
+
+- ¿De cuántas formas diferentes se podrían escoger los cuatro empaques que necesita el ingeniero, si es importante el orden en que se toman?
+
+- ¿De cuántas formas diferentes se podrían escoger los cuatro empaques que necesita el ingeniero, si el orden no es importante?
+
+- Si tres de los empaques de la bodega son defectuosos, ¿cuál es la probabilidad de seleccionar exactamente un empaque defectuoso? (el orden no importa)
+
+---
+
+## Probabilidad y Combinatoria
+
+¿De cuántas formas diferentes se podrían escoger los cuatro empaques que necesita el ingeniero, si es importante el orden en que se toman?
+
+$$_{9}P_{4} = \frac{9!}{(9-4)!} = 3\,024$$
+
+¿De cuántas formas diferentes se podrían escoger los cuatro empaques que necesita el ingeniero, si el orden no es importante?
+
+
+
+$$_{9}C_{4} = \binom{9}{4} = \frac{9!}{4!\,(9-4)!} = 126$$
+
+---
+
+## Probabilidad y Combinatoria
+
+Si tres de los empaques de la bodega son defectuosos, ¿cuál es la probabilidad de seleccionar exactamente un empaque defectuoso? (el orden no importa)
+
+- Sea el evento $A$: "seleccionar exactamente un empaque defectuoso"
+
+- $|A| = \dbinom{3}{1}\dbinom{6}{3}$
+
+- Aquí $\Omega$: Todas las formas de seleccionar 4 empaques de 9.
+
+- $|\Omega| = \dbinom{9}{4}$
+
+- $P(A) = \dfrac{\dbinom{3}{1}\dbinom{6}{3}}{\dbinom{9}{4}} = 0{,}4762$
+
+---
+
+## Probabilidad y Combinatoria
+
+Considere un lote de 50 artículos de los cuales 5 son defectuosos. Si se extraen 4 artículos al azar y sin sustitución:
+
+a) ¿Cuál es la probabilidad de que exactamente 2 sean defectuosos?
+
+b) ¿Cuál es la probabilidad de que al menos 2 sean defectuosos?
+
+---
+
+## Probabilidad y Combinatoria
+
+Considere un lote de 50 artículos de los cuales 5 son defectuosos. Si se extraen 4 artículos al azar y sin sustitución:
+
+**a) ¿Cuál es la probabilidad de que exactamente 2 sean defectuosos?**
+
+- Sea el evento $A$: "de la extracción, 2 son defectuosos"
+
+- $|A| = \dbinom{5}{2}\dbinom{45}{2}$
+
+- Aquí $\Omega$: Formas de seleccionar 4 artículos de 50.
+
+- $|\Omega| = \dbinom{50}{4}$
+
+- $P(A) = \dfrac{\dbinom{5}{2}\dbinom{45}{2}}{\dbinom{50}{4}} \approx 0{,}043$
+
+---
+
+## Probabilidad y Combinatoria
+
+Considere un lote de 50 artículos de los cuales 5 son defectuosos. Si se extraen 4 artículos al azar y sin sustitución:
+
+**b) ¿Cuál es la probabilidad de que al menos 2 sean defectuosos?**
+
+- Sean los eventos $B$: "al menos 2 defectuosos" y $B^c$: "a lo sumo 1 defectuoso"
+
+- $|B^c| = \underbrace{\dbinom{5}{1}\dbinom{45}{3}}_{1^{\text{er}}\text{ caso}} + \underbrace{\dbinom{5}{0}\dbinom{45}{4}}_{2^{\text{do}}\text{ caso}}$
+
+- Aquí $\Omega$: Formas de seleccionar 4 artículos de 50.
+
+- $|\Omega| = \dbinom{50}{4}$
+
+- $P(B) = 1 - P(B^c) = 1 - \dfrac{\dbinom{5}{1}\dbinom{45}{3} + \dbinom{5}{0}\dbinom{45}{4}}{\dbinom{50}{4}} \approx 0{,}045$
+
+---
+
+## Probabilidad y Combinatoria
+
+¿Cuál es la probabilidad de que al permutar la palabra TOTAL las 2 T queden juntas?
+
+¿Cuál es la probabilidad de que la O ocupe el primer lugar?
+
+---
+
+## Probabilidad y Combinatoria
+
+¿Cuál es la probabilidad de que al permutar la palabra TOTAL las 2 T queden juntas?
+
+- Sea el evento $A$: "las T quedan juntas"
+
+- $|A| = 4! = 24$
+
+- Aquí $\Omega$: Permutaciones de la palabra TOTAL.
+
+- $|\Omega| = \dfrac{5!}{2!\,1!\,1!\,1!} = 60$
+
+- $P(A) = \dfrac{24}{60} = 0{,}40$
+
+---
+
+## Probabilidad y Combinatoria
+
+¿Cuál es la probabilidad de que al permutar la palabra TOTAL las 2 T queden juntas?
+
+¿Cuál es la probabilidad de que la O ocupe el primer lugar?
+
+- Sea el evento $B$: "la O ocupa el primer lugar"
+
+- $|B| = 1 \cdot \underbrace{\dfrac{4!}{2!\,1!\,1!}}_{\text{Perm. con Rep.}} = 12$
+
+- Aquí $\Omega$: Permutaciones de la palabra TOTAL.
+
+- $|\Omega| = \dfrac{5!}{2!\,1!\,1!\,1!} = 60$
+
+- $P(B) = \dfrac{12}{60} = 0{,}2$
+
+---
+
+## Probabilidad y Combinatoria
+
+Suponga que se seleccionan 20 personas al azar y se registran sus fechas de cumpleaños. Si se supone que solo hay 365 días en el año (no se cuentan los bisiestos), encuentre el número de puntos muestrales para este experimento. ¿Cuál es la probabilidad de que al menos dos personas cumplan el mismo día?
+
+- Sea el evento $A$: "al menos 2 personas cumplen el mismo día"
+- Sea el evento $A^c$: "nadie cumple el mismo día que otra persona"
+
+- $|\Omega| = 365 \cdot 365 \cdots 365 = 365^{20}$
+
+- $|A^c| = 365 \cdot 364 \cdots 347 \cdot 346$
+
+- $P(A) = 1 - \dfrac{365 \cdot 364 \cdots 347 \cdot 346}{365^{20}} = 1 - \dfrac{365!}{365^{20}\,(365-20)!} = 0{,}41144$
+
+- En general: $P(A) = 1 - \dfrac{365!}{365^n\,(365-n)!}$
+
+---
+
+## Ejercicios
+
+1. Considere todos los números de 3 cifras que se pueden formar con los dígitos del 1 al 6 sin repetición. Considere el evento compuesto $A = \{612, 613, 614, 615\}$. ¿Cuál es la probabilidad de observar el evento $A$?
+
+2. Si un arreglo binario de 12 elementos contiene 8 unos y cuatro ceros, ¿cuál es la probabilidad de que los cuatro ceros queden juntos?
+
+3. Dada la palabra RASGUÑO, ¿de cuántas maneras se pueden reordenar sus letras? ¿Cuál es la probabilidad de que la R quede antes que la O?
+
+4. Considere el problema de seleccionar 2 aspirantes de un grupo de 5 para un empleo. Los aspirantes difieren en su grado de preparación: 1 al mejor preparado, 2, 3, 4 y 5 al menos preparado. El jefe de selección del personal desconoce esta clasificación.
+
+  a. ¿Cuál es el espacio muestral y cuántos puntos muestrales contiene?
+  b. Calcule la probabilidad de seleccionar al mejor aspirante y uno de los dos peores.
+  c. Calcule la probabilidad de seleccionar al menos uno de los dos mejores aspirantes.
+
+---
+
+## Ejercicios
+
+5. Considere un lote de 50 artículos de los cuales 5 son defectuosos. Si se extraen 4 artículos al azar y sin sustitución:
+
+a) ¿Cuál es la probabilidad de que exactamente 2 sean defectuosos?
+b) ¿Cuál es la probabilidad de que al menos 2 sean defectuosos?
+
+6. En una empresa de 100 empleados se seleccionan 2 personas al azar para asistir a una convención. ¿Cuál es la probabilidad de que el empleado con más años en la empresa sea elegido?
+
+7. Se desea alinear 8 bolas negras y 2 rojas.
+
+a) ¿Cuál es la probabilidad de que las rojas queden juntas?
+b) ¿Cuál es la probabilidad de que las bolas rojas ocupen los extremos?
+
+---
+
+## Ejercicios
+
+8. De 6 números positivos y 8 negativos se eligen cuatro sin sustitución y se multiplican.
+
+a) ¿Cuál es la probabilidad de que el producto sea positivo?
+b) Si se seleccionan los números pero con sustitución, ¿cuál es la probabilidad de que el producto sea positivo?
+
+9. En un consejo municipal de una ciudad hay 8 miembros de los cuales 2 son contratistas locales. Si se seleccionan 2 concejales al azar para llenar las vacantes en el comité de demarcación de zonas, ¿cuál es la probabilidad de que ambos contratistas sean seleccionados?
+
+10. Dos paquetes de 6 pilas contienen 2 defectuosas cada uno. Si se seleccionan al azar 2 pilas de cada paquete, ¿cuál es la probabilidad de que las cuatro pilas extraídas estén en buenas condiciones?
+
+11. Quince autos participan de una carrera. Se considera que todos los pilotos tienen la misma habilidad. ¿Cuál es la probabilidad de que el auto #15 llegue en los primeros 3 lugares?
+
+---
+
+## Ejercicios
+
+12. Al permutar la palabra TOTAL:
+
+a) ¿Cuál es la probabilidad de que las 2 T queden juntas?
+b) ¿Cuál es la probabilidad de que la O ocupe el primer lugar?
+
+13. Una caja contiene 2 bolas negras, 3 blancas y 4 rojas. Si se extraen 2 bolas sin reemplazo, ¿cuál es la probabilidad de obtener una negra y una blanca sin importar el orden?
+
+14. Se cuenta con 12 músicos: 3 de instrumentos de cuerda, 4 de percusión y 5 de viento. Se necesita seleccionar cuatro personas para formar una banda.
+
+a) ¿Cuál es la probabilidad de que se seleccionen 2 expertos en percusión, uno de instrumento de viento y otro de cuerda?
+b) ¿Cuál es la probabilidad de que se seleccione, por lo menos, un experto de cada clase de instrumento?
+
+15. Se distribuye aleatoriamente 52 cartas entre cuatro personas de modo que cada una reciba 13 cartas. ¿Cuál es la probabilidad de que a alguno le toquen cuatro reyes?
+
+---
+
+## Ejercicios
+
+16. Si de un cajón que contiene 10 calcetines de 5 colores diferentes se seleccionan cuatro al azar, determine la probabilidad de obtener al menos 2 del mismo color.
+
+17. Demostrar las siguientes igualdades:
+
+  a) $\displaystyle\binom{n}{r} = \frac{n-r+1}{r} \cdot \binom{n}{r-1}$
+  
+  b) $\displaystyle\binom{n}{r} = \frac{n}{n-r} \cdot \binom{n-1}{r}$
+  
+  c) $\displaystyle n \cdot \binom{n-1}{r} = (r+1)\binom{n}{r+1}$
+  
+  d) $\displaystyle\binom{n}{r} = \binom{n-1}{r} + \binom{n-1}{r-1}$
+  
+  e) $\displaystyle\binom{n+1}{r} = \binom{n}{r} + \binom{n}{r-1}$
+  
+  
