@@ -1,0 +1,393 @@
+---
+title: "Enfoque Axiomático"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Axiomas
+
+::: {.callout-note}
+### Definición
+
+Al conjunto de todos los posibles resultados de un experimento aleatorio, se llama **espacio muestral**, y se denota por $\Omega$.
+:::
+
+::: {.callout-note}
+### Definición
+
+El espacio muestral $\Omega$ se llama **discreto** si es finito o numerable. Un experimento aleatorio se llama **finito** (discreto) si su espacio muestral es finito (discreto). El espacio muestral se llama **continuo** si es un intervalo.
+:::
+
+---
+
+## Axiomas
+
+::: {.callout-note}
+### Definición
+
+A los elementos del espacio muestral $\omega \in \Omega$ se les llaman **puntos muestrales** o **eventualidades**.
+:::
+
+::: {.callout-note}
+### Definición
+
+Un suceso $A$ asociado a un experimento es un subconjunto del espacio muestral $\Omega$, es decir, $A$ es un evento si y solo si $A \subseteq \Omega$.
+:::
+
+---
+
+## Axiomas
+
+::: {.callout-note}
+### Definición
+
+Un **evento simple** es cada uno de los posibles resultados de un experimento aleatorio, es decir, cada uno de los puntos muestrales.
+:::
+
+::: {.callout-tip}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se define el evento $A$ como $A$: "obtener un 4", entonces $A$ es un evento simple.
+:::
+
+::: {.callout-tip}
+### Ejemplo
+
+Al lanzar dos monedas, el espacio muestral es $\Omega = \{\{E,E\},\{C,C\},\{E,C\},\{C,E\}\}$.
+
+Si se define el evento $A$ como $A$: "obtener dos escudos", entonces $A$ es un evento simple.
+:::
+
+---
+
+## Axiomas
+
+::: {.callout-note}
+### Definición
+
+Un **evento compuesto** es un conjunto de posibles resultados de un experimento aleatorio, es decir, un conjunto de eventos simples; por lo que es un subconjunto del espacio muestral.
+:::
+
+::: {.callout-tip}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se define el evento $A$ como $A$: "obtener un número par", entonces $A = \{2,4,6\}$ es un evento compuesto.
+:::
+
+---
+
+## Axiomas
+
+Empleando las operaciones de conjuntos con los eventos de $\Omega$, se pueden obtener otros eventos de $\Omega$. Por ejemplo, si $A$ y $B$ son eventos, entonces:
+
+- $A \cup B$ es el evento "$A$ o $B$ o ambos". $A \cup B$ se llama la unión de los eventos $A$ y $B$.
+
+- $A \cap B$ es el evento "$A$ y $B$". $A \cap B$ se denomina la intersección entre los eventos $A$ y $B$.
+
+- $\bar{A}$ se llama el complemento de $A$ y está definido por $\bar{A} = \Omega - A$.
+
+- $A - B = A \cap \bar{B}$.
+
+---
+
+## Axiomas
+
+::: {.callout-note}
+### Definición
+
+Dos eventos $A$ y $B$ son **mutuamente excluyentes** o disjuntos si ambos no pueden ocurrir al mismo tiempo, es decir, $A \cap B = \varnothing$.
+:::
+
+::: {.callout-tip}
+### Ejemplo
+
+Al lanzar un dado, el espacio muestral es $\Omega = \{1,2,3,4,5,6\}$.
+
+Si se definen los eventos $A$ y $B$ como $A$: "obtener un número par" y $B$: "obtener un número impar", entonces $A \cap B = \varnothing$, es decir, son mutuamente excluyentes.
+:::
+
+---
+
+## Axiomas — Conjunto Potencia
+
+El conjunto potencia de $A$ es la clase o colección de los subconjuntos de $A$:
+
+::: {.callout-note}
+El **conjunto potencia** de $A$ (o **conjunto de partes**) es el conjunto $\mathcal{P}(A)$ formado por todos los subconjuntos de $A$:
+
+$$B \in \mathcal{P}(A) \text{ cuando } B \subseteq A$$
+:::
+
+**Ejemplos**
+
+- El conjunto potencia de $A = \{a, 2, c\}$ es:
+
+$$\mathcal{P}(A) = \{\varnothing,\{a\},\{2\},\{c\},\{a,2\},\{a,c\},\{2,c\},\{a,2,c\}\}$$
+
+- El conjunto potencia de $B = \{x\}$ es:
+
+$$\mathcal{P}(B) = \{\varnothing, \{x\}\}$$
+
+---
+
+## Axiomas (Para eventos)
+
+::: {.callout-note}
+### Definición
+
+Sea $\mathcal{P}(\Omega)$ el conjunto formado por todos los subconjuntos de un espacio muestral $\Omega$, y sea $\mathcal{A} \subseteq \mathcal{P}(\Omega)$. Se dice que $\mathcal{A}$ es una $\sigma$-álgebra en $\Omega$ si cumple con los axiomas:
+
+- **Axioma 1:** $\Omega \in \mathcal{A}$.
+
+- **Axioma 2:** Si $A \in \mathcal{A}$, entonces $\bar{A} \in \mathcal{A}$.
+
+- **Axioma 3:** Si $A_1, A_2, A_3, \ldots \in \mathcal{A}$, entonces $\displaystyle\bigcup_{i=1}^{\infty} A_i \in \mathcal{A}$.
+:::
+
+---
+
+## Axiomas
+
+::: {.callout-note}
+### Definición
+
+A la dupla $(\Omega, \mathcal{A})$ se le llama **espacio medible** si $\Omega \neq \varnothing$ y $\mathcal{A}$ es una $\sigma$-álgebra en $\Omega$.
+:::
+
+---
+
+## Axiomas
+
+::: {.callout-tip}
+### Ejemplo
+
+Suponga que un experimento aleatorio consiste en lanzar una moneda. Se puede definir un conjunto de eventos que conforman una $\sigma$-álgebra sobre $\Omega = \{E, C\}$ incluyendo los siguientes elementos:
+
+1. El conjunto vacío $\{\;\}$, que representa el evento imposible de que no salga ni escudo ni corona.
+2. El conjunto que contiene el resultado $\{E\}$, que representa el evento simple de que la moneda caiga en escudo.
+3. El conjunto que contiene el resultado $\{C\}$, que representa el evento simple de que la moneda caiga en corona.
+4. El conjunto que contiene los resultados $\{E,C\}$, que representa el evento seguro de que la moneda caiga en escudo o corona.
+
+Puede verificar que el conjunto $\{\{\;\},\{E\},\{C\},\{E,C\}\}$ cumple con las propiedades de una $\sigma$-álgebra, ya que incluye al conjunto $\Omega$ (axioma 1), es cerrado bajo complemento (axioma 2), y es cerrado bajo uniones numerables (axioma 3).
+:::
+
+---
+
+## Axiomas
+
+::: {.callout-tip}
+### Ejemplo
+
+Sea un espacio muestral $\Omega \neq \varnothing$.
+
+**a.** El conjunto potencia $\mathcal{P}(\Omega) = \{A \mid A \subseteq \Omega\}$ de $\Omega$ es la $\sigma$-álgebra más grande en $\Omega$. También se le llama la "$\sigma$-álgebra total".
+
+**Note que:**
+
+- $\Omega \in \mathcal{P}(\Omega)$.
+- Si $A \in \mathcal{P}(\Omega)$, entonces $A \subseteq \Omega$ y por lo tanto $\bar{A} \subseteq \Omega$, es decir, $\bar{A} \in \mathcal{P}(\Omega)$.
+- Si $A_i \in \mathcal{P}(\Omega)$, $\forall\, i \geq 1$, entonces $A_i \subseteq \Omega$ y $\displaystyle\bigcup_{i=1}^{\infty} A_i \subseteq \Omega$, por lo que $\displaystyle\bigcup_{i=1}^{\infty} A_i \in \mathcal{P}(\Omega)$.
+
+**b.** El conjunto $\{\varnothing, \Omega\}$ es la $\sigma$-álgebra más pequeña en $\Omega$. También se le conoce como "$\sigma$-álgebra trivial" o "vacía".
+
+Se le invita a verificar que $\{\varnothing, \Omega\}$ es una $\sigma$-álgebra sobre $\Omega$.
+:::
+
+---
+
+## Axiomas (para probabilidades)
+
+::: {.callout-note}
+### Definición
+
+Sea $\mathcal{A}$ una $\sigma$-álgebra en $\Omega$. Se define una probabilidad, o lo que es equivalente, una **medida de probabilidad** sobre $\Omega$, a la función $\displaystyle P:\mathcal{A} \rightarrow \mathbb{R}$ la cual cumple con los **axiomas de Kolmogorov**:
+
+- **Axioma 4:** $P(A) \geq 0$ para todo evento $A \in \mathcal{A}$.
+- **Axioma 5:** $P(\Omega) = 1$.
+- **Axioma 6:** Para cada sucesión de eventos $A_1, A_2, A_3, \ldots \in \mathcal{A}$, disjuntos dos a dos, se cumple que: $\displaystyle P\!\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$
+
+La cual corresponde a una serie convergente, pues el primer axioma asegura que $P(A_i) \geq 0$, y el segundo que $\displaystyle P\!\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i) \leq P(\Omega) = 1$.
+:::
+
+---
+
+## Axiomas — Propiedades
+
+Las siguientes son propiedades de toda medida de probabilidad:
+
+1. $P(\varnothing) = 0$.
+2. Si $A \cap B = \varnothing$, entonces $P(A \cup B) = P(A) + P(B)$.
+3. Si $A$ es cualquier evento, entonces $P(\bar{A}) = 1 - P(A)$.
+4. Si $A$ y $B$ son eventos tales que $A \subseteq B$, entonces $P(B - A) = P(B) - P(A)$.
+5. Si $A$ y $B$ son eventos tales que $A \subseteq B$, entonces $P(A) \leq P(B)$.
+
+A continuación se describen las demostraciones de las propiedades 1, 3 y 5. Puede desarrollar las respectivas demostraciones de las propiedades 2 y 4 como ejercicio.
+
+<!--
+::: {.callout-warning}
+### Ejercicio
+
+Demuestre las propiedades 2 y 4.
+
+**R/ Propiedad 2:** Como $A \cap B = \varnothing$, los eventos $A$ y $B$ son disjuntos. Aplicando el Axioma 6 (con $A_1 = A$, $A_2 = B$, $A_i = \varnothing$ para $i \geq 3$): $P(A \cup B) = P(A) + P(B)$.
+
+**R/ Propiedad 4:** Como $A \subseteq B$, se puede escribir $B = A \cup (B \cap \bar{A})$, donde $A$ y $B \cap \bar{A}$ son disjuntos. Por la propiedad 2: $P(B) = P(A) + P(B \cap \bar{A}) = P(A) + P(B - A)$. Despejando: $P(B - A) = P(B) - P(A)$.
+:::
+-->
+
+---
+
+## Axiomas — Demostraciones
+
+**1.** Para probar que $P(\varnothing) = 0$, note que:
+
+$$\begin{align}
+P(\varnothing) &= P(\bar{\Omega}) \\
+               &= 1 - P(\Omega) \\
+               &= 1 - 1 \\
+               &= 0
+\end{align}$$
+
+**3.** Considere $\Omega = A \cup \bar{A}$, con $A \neq \varnothing$. Como $A \cap \bar{A} = \varnothing$, entonces por la propiedad 2:
+
+$$\begin{align}
+P(A \cup \bar{A}) &= P(\Omega) \\
+P(A) + P(\bar{A}) &= 1 \qquad \bigl(A \cap \bar{A} = \varnothing\bigr) \\
+P(\bar{A})        &= 1 - P(A)
+\end{align}$$
+
+---
+
+## Axiomas — Demostraciones
+
+**5.** Como $A \subseteq B$, se puede escribir $B = A \cup (B \cap \bar{A})$, donde $A$ y $B \cap \bar{A}$ son disjuntos ($A \cap (B \cap \bar{A}) = \varnothing$). Por la propiedad 2:
+
+$$\begin{align}
+P(B) &= P\bigl(A \cup (B \cap \bar{A})\bigr) \\
+     &= P(A) + P(B \cap \bar{A})
+\end{align}$$
+
+Por el Axioma 4, $P(B \cap \bar{A}) \geq 0$, por lo que se concluye que $P(A) \leq P(B)$.
+
+---
+
+## Axiomas — Espacio de Probabilidad
+
+::: {.callout-note}
+### Definición
+
+A la terna $(\Omega, \mathcal{A}, P)$, donde $\mathcal{A}$ es una $\sigma$-álgebra sobre $\Omega$ y $P$ es una medida de probabilidad, se le llama **espacio de probabilidad**. Si $A \in \mathcal{A}$, al valor $P(A)$ se le llama **la probabilidad de $A$**.
+:::
+
+---
+
+## Axiomas — Ley de Laplace
+
+La ley de Laplace es la medida de probabilidad que se emplea con frecuencia para determinar el valor de las probabilidades.
+
+::: {.callout-note}
+### Teorema
+
+Sea $\Omega \neq \varnothing$ un espacio muestral finito y $\mathcal F=\mathcal P(\Omega)$. La función $P:\mathcal F\to[0,1]$ con $$P(A)=\frac{|A|}{|\Omega|}$$ define una medida de probabilidad sobre $(\Omega,\mathcal F)$.
+
+:::
+
+
+
+---
+
+## Axiomas — Demostración (Teorema 6.1)
+
+::: {.callout-note}
+### Demostración
+
+Para probar este teorema, se debe definir $\Omega = \{x_1, x_2, \ldots, x_n\}$ y
+
+$$p_i = P\bigl(\{x_i\}\bigr) = \frac{|\{x_i\}|}{|\Omega|} = \frac{1}{n}, \quad \forall\, i = 1, 2, 3, \ldots, n.$$
+
+Es claro que $\displaystyle\sum_{i=1}^{n} p_i = 1$, y si $A \subseteq \Omega$, entonces:
+
+$$\sum_{x_i \in A} p_i = \sum_{x_i \in A} \frac{1}{n} = \frac{1}{n}\sum_{x_i \in A} 1 = \frac{1}{n} \cdot |A| = \frac{|A|}{|\Omega|} = P(A)$$
+
+por lo que se concluye que $P$ es una medida de probabilidad.
+:::
+
+---
+
+## Axiomas
+
+En la demostración anterior, se parte del hecho de que la probabilidad para cada punto muestral es $\dfrac{1}{n}$, así que la suma de todas esas probabilidades es 1. Posteriormente, para $A \subseteq \Omega$, se define la suma de las probabilidades de los puntos muestrales contenidos en $A$ como $\displaystyle\sum_{x_i \in A} \dfrac{1}{n}$ que, por manipulación algebraica, es igual a $\dfrac{1}{n}\displaystyle\sum_{x_i \in A} 1$; luego, $\displaystyle\sum_{x_i \in A} 1$ es equivalente a $|A|$. Finalmente, se llega a que $P(A) = \dfrac{|A|}{|\Omega|}$.
+
+---
+
+## Axiomas — Ley de Laplace
+
+::: {.callout-note}
+### Definición
+
+Sea $\Omega$ un conjunto finito no vacío. La función de probabilidad:
+
+$$P(A) = \frac{|A|}{|\Omega|}$$
+
+definida por $P:\mathcal{P}(\Omega) \to [0,1]$, se conoce como **ley de Laplace**, y usualmente se lee como:
+
+$$P(A) = \frac{\text{Casos favorables}}{\text{Casos totales}}$$
+:::
+
+---
+
+## Axiomas — Teorema de la Unión
+
+::: {.callout-note}
+### Teorema (Principio de inclusión-exclusión):
+Para $A_1, A_2, \ldots, A_n$ eventos cualesquiera, se cumple que:
+
+$$\begin{align}
+P\!\left(\bigcup_{i=1}^{n} A_i\right) &= \sum_{i=1}^{n} P(A_i) - \sum_{i < j} P(A_i \cap A_j) \\
+&\quad + \sum_{i < j < k} P(A_i \cap A_j \cap A_k) - \cdots \\
+&\quad + (-1)^{n+1}\, P(A_1 \cap A_2 \cap \cdots \cap A_n)
+\end{align}$$
+
+De manera particular, se tiene que para $A$ y $B$ eventos cualesquiera, se cumple que:
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+:::
+---
+## Axiomas — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+Se lanza un dado equilibrado y se definen los eventos $A$ y $B$ como:
+
+- $A$: "El resultado es divisible por 3" y $B$: "El resultado es par"
+
+¿Cuál es la probabilidad de que se obtenga un número divisible por 3 o sea par?
+
+**Solución:**
+
+Se tiene que $\Omega = \{1,2,3,4,5,6\}$, y los resultados de $A$ y $B$ son $A = \{3,6\}$ y $B = \{2,4,6\}$. Entonces, como $A \cap B = \{6\}$:
+
+$$P(A) = \frac{\#\text{divisibles por }3}{\text{Total de resultados}} = \frac{2}{6} = \frac{1}{3}$$
+
+$$P(B) = \frac{\#\text{pares}}{\text{Total de resultados}} = \frac{3}{6} = \frac{1}{2}$$
+
+$P(A \cup B) = P(A) + P(B) - P(A \cap B) = \dfrac{1}{3} + \dfrac{1}{2} - \dfrac{1}{6} = \dfrac{2}{3}$
+:::
