@@ -1,0 +1,624 @@
+---
+title: "Probabilidad Condicional"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Probabilidad condicional
+
+::: {.columns}
+
+::: {.column width="48%"}
+
+```{=html}
+<svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;max-width:370px;display:block;margin:auto;">
+  <!-- Contenedor Omega: borde redondeado blanco -->
+  <rect x="15" y="15" width="390" height="390" rx="28" ry="28"
+        fill="white" stroke="#222" stroke-width="2.5"/>
+  <!-- Etiqueta Omega top-left -->
+  <text x="42" y="60" font-size="26" font-weight="bold"
+        font-family="serif" fill="#111">&#937;</text>
+
+  <!-- Rectángulo B (amarillo dorado) dibujado primero -->
+  <rect x="72" y="242" width="280" height="138" rx="22" ry="22"
+        fill="#D4A017" stroke="#8a6000" stroke-width="1.6"/>
+  <!-- Etiqueta B -->
+  <text x="363" y="318" font-size="22" font-family="sans-serif"
+        font-weight="bold" fill="#111">B</text>
+
+  <!-- Rectángulo A (violeta) dibujado encima -->
+  <rect x="158" y="66" width="114" height="228" rx="18" ry="18"
+        fill="#7C3AED" stroke="#4a1390" stroke-width="1.6"/>
+  <!-- Etiqueta A -->
+  <text x="283" y="92" font-size="22" font-family="sans-serif"
+        font-weight="bold" fill="#111">A</text>
+
+  <!-- Intersección A∩B (verde) -->
+  <rect x="158" y="242" width="114" height="98" rx="15" ry="15"
+        fill="#16A34A" stroke="#064e14" stroke-width="1.6"/>
+  <!-- Etiqueta A∩B en blanco -->
+  <text x="215" y="296" text-anchor="middle" font-size="16"
+        font-family="serif" font-style="italic" font-weight="bold"
+        fill="white">A &#8745; B</text>
+</svg>
+```
+
+:::
+
+::: {.column width="52%"}
+
+$$P(A \mid B) = \frac{\dfrac{|A \cap B|}{|\Omega|}}{\dfrac{|B|}{|\Omega|}} = \frac{P(A \cap B)}{P(B)}, \quad P(B) \neq 0$$
+:::
+
+:::
+
+---
+
+## Probabilidad condicional — Motivación
+
+Suponga que se lanza un dado equilibrado y el resultado es un número par; si se desea conocer la probabilidad de que ese número sea divisible por 3, entonces se realiza lo siguiente:
+
+- Se define el espacio muestral: $\Omega = \{1,2,3,4,5,6\}$.
+- Se definen los eventos $A$: "Es divisible por 3" y $B$: "Es par".
+- Se desea determinar la probabilidad de que ese número sea divisible por 3 dado que es par, es decir, $P(A \mid B)$.
+
+Al suponer que las eventualidades son equiprobables, que el espacio muestral es finito y utilizando la ley de Laplace, se tiene que:
+
+$P(A \mid B) = \frac{\text{Casos favorables}}{\text{Casos totales}} = \frac{\dfrac{|A \cap B|}{|\Omega|}}{\dfrac{|B|}{|\Omega|}} = \frac{P(A \cap B)}{P(B)} = \frac{1/6}{3/6} = \frac{1}{3}$
+Entonces, la probabilidad de que se obtenga un número divisible por 3 dado que es par es de $\dfrac{1}{3}$.
+
+---
+
+## Probabilidad condicional
+
+::: {.callout-note}
+### Teorema
+
+Sean $A$ y $B$ dos eventos cualesquiera de un espacio muestral $\Omega$. La **probabilidad condicional** de $A$ dado que ha ocurrido $B$, denotada por $P(A \mid B)$, es:
+
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
+:::
+
+**Demostración:** Como se sabe que ha ocurrido $B$, todos los puntos muestrales que no estén en $B$ se descartan, lo que produce que el nuevo espacio muestral sea $B$. Por lo que $P(A \mid B)$ se puede interpretar como, tomando los casos en los que $B$ se cumple, la fracción en los que también se cumple $A$:
+
+$$P(A \mid B) = \frac{|A \cap B|}{|B|} = \frac{\dfrac{|A \cap B|}{|\Omega|}}{\dfrac{|B|}{|\Omega|}} = \frac{P(A \cap B)}{P(B)}$$
+
+---
+
+## Probabilidad condicional — Teorema auxiliar
+
+::: {.callout-note}
+### Teorema
+
+Sea $P$ una función de probabilidad sobre $\Omega$. Dados los eventos $A$ y $B$, se tiene que:
+
+$$P(A - B) = P(A) - P(A \cap B)$$
+
+:::
+
+**Demostración:** Se parte del hecho que
+
+$$A = (A \cap B) \cup (A \cap \bar{B}) = (A \cap B) \cup (A - B)$$
+
+Entonces, como $(A \cap B)$ y $(A - B)$ son disjuntos:
+
+$$P(A) = P\bigl((A \cap B) \cup (A - B)\bigr) = P(A \cap B) + P(A - B)$$
+
+Finalmente se obtiene:
+
+$$P(A - B) = P(A) - P(A \cap B) \qquad \blacksquare$$
+
+---
+
+## Probabilidad condicional — Propiedades
+
+::: {.callout-note}
+### Teorema
+
+Sea $P$ una función de probabilidad sobre $\Omega$. Sea $C$ un evento de probabilidad no nula. Dados los eventos $A$ y $B$, se tiene que:
+
+1. $P(\bar{A} \mid C) = 1 - P(A \mid C)$
+2. $P(\varnothing \mid C) = 0$
+3. $P(A \cup B \mid C) = P(A \mid C) + P(B \mid C) - P(A \cap B \mid C)$
+4. $A \subseteq B \Rightarrow P(A \mid C) \leq P(B \mid C)$
+:::
+
+---
+
+## Probabilidad condicional — Demostración propiedad 1
+
+**Demostración de** $P(\bar{A} \mid B) = 1 - P(A \mid B)$:
+
+$$\begin{align}
+P(\bar{A} \mid B) &= \frac{P(\bar{A} \cap B)}{P(B)} = \frac{P\bigl[(\Omega - A) \cap B\bigr]}{P(B)} = \frac{P\bigl[(\Omega \cap B) - (A \cap B)\bigr]}{P(B)} \\[6pt]
+&= \frac{P\bigl[B - (A \cap B)\bigr]}{P(B)} = \frac{P(B) - P(A \cap B)}{P(B)} \\[6pt]
+&= \frac{P(B)}{P(B)} - \frac{P(A \cap B)}{P(B)} = 1 - P(A \mid B) \qquad \blacksquare
+\end{align}$$
+
+::: {.callout-warning}
+### Ejercicio
+
+Demuestre las propiedades 2, 3 y 4 para el caso condicionado sobre $C$.
+:::
+
+---
+
+## Probabilidad condicional — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+Una muestra aleatoria de 80 personas adultas se ha clasificado según se observa en el siguiente cuadro:
+
+| Nivel de escolaridad | Hombre | Mujer | Totales |
+|----------------------|--------|-------|---------|
+| Primaria             | 12     | 19    | 31      |
+| Secundaria           | 10     | 23    | 33      |
+| Universidad          | 9      | 7     | 16      |
+| **Totales**          | **31** | **49**| **80**  |
+
+Si se elige una persona al azar de este grupo, determine la probabilidad de que:
+
+1. La persona seleccionada sea hombre, dado que su nivel de escolaridad es de secundaria.
+2. La persona no tiene un nivel de escolaridad universitario, dado que la persona sea mujer.
+
+:::
+
+---
+
+## Probabilidad condicional — Solución
+
+**Solución:**
+
+1. Se define el evento $A$: "es hombre", $B$: "escolaridad de secundaria". Se debe determinar:
+
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{10/80}{33/80} = \frac{10}{33} \approx 0{,}303$$
+
+2. Se define el evento $A$: "no tiene escolaridad universitaria", $B$: "es mujer". Se debe determinar:
+
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{(19+23)/80}{49/80} = \frac{42}{49} \approx 0{,}857$$
+
+Si la probabilidad de que ocurra el evento $B$ no se ve afectada por la ocurrencia o la no ocurrencia de otro evento $A$, entonces se dice que $A$ y $B$ son eventos **independientes**.
+
+---
+
+## Probabilidad condicional — Independencia
+
+::: {.callout-note}
+### Teorema
+
+Los eventos $A$ y $B$ son **independientes** si y solo si $P(A \mid B) = P(A)$ y $P(B \mid A) = P(B)$.
+
+Note que, por ejemplo:
+
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A)$$
+:::
+
+::: {.callout-tip}
+### Ejemplo
+
+Se lanzan dos dados equilibrados, y se definen los eventos $A$ y $B$ de la siguiente manera:
+
+- $A$: "el resultado de la suma es impar",$B$: "el resultado del producto es un múltiplo de 3".
+
+Como $P(A) = \frac{18}{36} = \frac{1}{2}$ y $P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{10/36}{20/36} = \frac{1}{2}$, se concluye que $A$ y $B$ son eventos independientes.
+:::
+
+---
+
+## Probabilidad condicional — Regla del producto 1
+
+::: {.callout-note}
+### Teorema (Regla del producto 1)
+
+Los eventos $A$ y $B$ son eventos independientes si y solo si:
+
+$$P(A \cap B) = P(A)P(B)$$
+
+Este teorema se generaliza; es decir, los eventos $A_1, A_2, \ldots, A_n$ son mutuamente independientes si y solo si:
+
+$$P\!\left(\bigcap_{i=1}^{n} A_i\right) = \prod_{i=1}^{n} P(A_i) = P(A_1)P(A_2)\cdots P(A_n)$$
+:::
+
+---
+
+## Probabilidad condicional — Demostración
+
+**Prueba:** Suponiendo que $A$ y $B$ son independientes y $P(B) \neq 0$, entonces:
+
+$$P(A \mid B) = P(A) \;\Rightarrow\; \frac{P(A \cap B)}{P(B)} = P(A) \;\Rightarrow\; P(A \cap B) = P(A)P(B)$$
+
+Ahora, si se supone que $P(A \cap B) = P(A)P(B)$, entonces:
+
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A), \quad \text{donde } P(B) \neq 0$$
+
+De forma similar se demuestra que $P(B \mid A) = P(B)$. $\blacksquare$
+
+---
+
+## Probabilidad condicional — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+Con base en la información del ejemplo anterior, se eligen tres personas al azar y se definen los eventos $A$, $B$ y $C$ de la siguiente manera: $A$: "la escolaridad es primaria", $B$: "la escolaridad es secundaria" y $C$: "la escolaridad es universitaria". ¿Cuál es la probabilidad de haber elegido una persona con escolaridad de primaria, una persona con escolaridad secundaria y una universitaria?
+
+**Solución:**
+
+Asumiendo selección con reemplazo (eventos independientes):
+
+$$P(A \cap B \cap C) = P(A)P(B)P(C) = \frac{31}{80}\cdot\frac{33}{80}\cdot\frac{16}{80} \approx 0{,}032$$
+:::
+
+---
+
+## Probabilidad condicional — Regla del producto 2
+
+::: {.callout-note}
+### Teorema (Regla del producto 2)
+
+Sean $A$ y $B$ dos eventos sobre un espacio muestral $\Omega$, se cumple que:
+
+$$P(A \cap B) = P(A)P(B \mid A), \quad \text{si } P(A) \neq 0$$
+
+Debido a que $P(A \cap B) = P(B \cap A)$, entonces $P(A \cap B) = P(B)P(A \mid B)$, si $P(B) \neq 0$.
+
+La probabilidad condicional se generaliza de la siguiente forma: sean los eventos $A_1, A_2, \ldots, A_n$, entonces:
+
+$$P\!\left(\bigcap_{i=1}^{n} A_i\right) = P(A_1)\,P(A_2 \mid A_1)\,P(A_3 \mid A_1 \cap A_2)\cdots P(A_n \mid A_1 \cap A_2 \cap \cdots \cap A_{n-1})$$
+:::
+
+---
+
+## Probabilidad condicional — Ejemplo (Cartas)
+
+::: {.callout-tip}
+### Ejemplo
+
+Una baraja de cartas contiene 26 cartas negras y 26 cartas rojas. Si se seleccionan al azar dos cartas de la baraja sin reemplazarlas, ¿cuál es la probabilidad de que se elijan dos cartas rojas?
+
+**Solución:**
+
+Considere los eventos $A$: "Se extrae una carta roja en el primer intento" y $B$: "Se extrae una carta roja en el segundo intento".
+
+La probabilidad de elegir una carta roja en el primer intento es de $\dfrac{26}{52} = \dfrac{1}{2}$, y para el segundo intento, la probabilidad de elegir otra carta roja es de $\dfrac{25}{51}$, por lo que la probabilidad de que se elijan dos cartas rojas es de:
+
+$$P(A \cap B) = P(A)\,P(B \mid A) = \frac{1}{2}\cdot\frac{25}{51} \approx 0{,}245$$
+:::
+
+---
+
+## Probabilidad condicional — Teorema
+
+::: {.callout-note}
+### Teorema
+
+Sean $A$ y $B$ dos eventos independientes, entonces se cumple que:
+
+1. $\bar{A}$ y $B$ son independientes.
+2. $A$ y $\bar{B}$ son independientes.
+3. $\bar{A}$ y $\bar{B}$ son independientes.
+
+:::
+
+**Demostración de 2:** $A$ y $\bar{B}$ son independientes:
+
+$\begin{align}
+P\!\left(A \cap \bar{B}\right) &= P\!\left(A \cap (\Omega - B)\right) = P\!\left(A - (A \cap B)\right) \\
+&= P(A) - P(A \cap B) = P(A) - P(A)P(B) \\
+&= P(A)\bigl(1 - P(B)\bigr) = P(A)P\!\left(\bar{B}\right) \qquad \blacksquare
+\end{align}$
+
+::: {.callout-warning}
+### Ejercicio
+Demuestre las afirmaciones 1 y 3 del teorema.
+:::
+
+---
+
+## Probabilidad total — Introducción
+
+La ley de probabilidad total establece que, dado un conjunto de eventos mutuamente excluyentes y exhaustivos, es decir, que cubren todo el espacio muestral y no se superponen, la probabilidad de un evento puede ser calculada como la suma de las probabilidades condicionales del evento dado cada uno de los subconjuntos del espacio muestral.
+
+```{=html}
+<div style="text-align:center;margin:0.4em 0 0.2em;">
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;max-width:500px;display:inline-block;">
+
+  <!-- Elipse exterior (Omega) -->
+  <ellipse cx="280" cy="195" rx="252" ry="100"
+           fill="#f0f0f0" stroke="#333" stroke-width="2"/>
+
+  <!-- Líneas de sector desde el vértice superior (280, 95) -->
+  <line x1="280" y1="95" x2="52"  y2="238" stroke="#444" stroke-width="1.4"/>
+  <line x1="280" y1="95" x2="137" y2="278" stroke="#444" stroke-width="1.4"/>
+  <line x1="280" y1="95" x2="248" y2="294" stroke="#444" stroke-width="1.4"/>
+  <line x1="280" y1="95" x2="340" y2="293" stroke="#444" stroke-width="1.4"/>
+  <line x1="280" y1="95" x2="468" y2="263" stroke="#444" stroke-width="1.4"/>
+
+  <!-- Elipse interior gris (B) -->
+  <ellipse cx="305" cy="158" rx="128" ry="58"
+           fill="#bbbbbb" fill-opacity="0.72" stroke="#666" stroke-width="1.6"/>
+
+  <!-- Etiqueta Omega -->
+  <text x="280" y="86" text-anchor="middle" font-size="17"
+        font-family="serif" font-weight="bold" fill="#111">&#937;</text>
+
+  <!-- Etiqueta B -->
+  <text x="348" y="150" font-size="16" font-family="serif"
+        font-style="italic" fill="#111">B</text>
+
+  <!-- Etiquetas de sectores -->
+  <text x="104" y="182" font-size="18" font-family="serif" font-style="italic" fill="#111">A<tspan dy="4" font-size="18">1</tspan></text>
+<text x="130" y="235" font-size="18" font-family="serif" font-style="italic" fill="#111">A<tspan dy="4" font-size="18">2</tspan></text>
+  <text x="172" y="265" font-size="18" font-family="serif" font-style="italic" fill="#111">A<tspan dy="4" font-size="18">3</tspan></text>
+  <text x="258" y="283" font-size="18" font-family="serif" font-style="italic" fill="#111">A<tspan dy="4" font-size="18">4</tspan></text>
+  <text x="360" y="265" font-size="18" font-family="serif" fill="#555">&#8230;</text>
+  <text x="475" y="220" font-size="18" font-family="serif" font-style="italic" fill="#111">A<tspan dy="4" font-size="12">n</tspan></text>
+</svg>
+</div>
+```
+
+$$B = (A_1 \cap B) \cup (A_2 \cap B) \cup \cdots \cup (A_n \cap B)$$
+
+**Figura 6.1.** División del evento $B$ entre todos los eventos $A_i$.
+
+---
+
+## Probabilidad total
+
+::: {.callout-note}
+### Teorema (Probabilidad total)
+
+Sean $A_1, \ldots, A_n$ eventos mutuamente excluyentes y exhaustivos. Entonces, para cualquier otro evento $B$:
+
+$$P(B) = P(B \mid A_1)P(A_1) + \cdots + P(B \mid A_n)P(A_n) = \sum_{i=1}^{n} P(B \mid A_i)P(A_i)$$
+:::
+
+---
+
+## Probabilidad total — Demostración
+
+**Demostración:**
+
+Note que:
+
+$$P(B) = P\!\left(\bigcup_{i=1}^{n}(A_i \cap B)\right)$$
+
+Además, por ser eventos disjuntos:
+
+$$= \sum_{i=1}^{n} P(A_i \cap B)$$
+
+Y por la Regla del producto (Teorema regla del producto 2):
+
+$$= \sum_{i=1}^{n} P(A_i)P(B \mid A_i) \qquad \blacksquare$$
+
+---
+
+## Probabilidad total — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+Una fábrica de autos elabora tres diferentes clases de autos, $A_1$, $A_2$ y $A_3$, con una proporción de cada tipo de 0,4; 0,5; 0,1. Además, la probabilidad de que un auto del tipo $A_1$ se averíe durante el primer año es 0,07; la probabilidad de que se averíe uno del tipo $A_2$ es de 0,04 y del tipo $A_3$ es de 0,09. Determine la probabilidad de que un auto producido por esa fábrica tenga una avería en el primer año.
+
+**Solución:**
+
+Se define el evento $B$ = "Un auto producido por esa fábrica tenga una avería en el primer año".
+$$\begin{align}
+P(B) &= 0{,}4 \cdot 0{,}07 + 0{,}5 \cdot 0{,}04 + 0{,}1 \cdot 0{,}09 \\
+     &= 0{,}028 + 0{,}020 + 0{,}009 = 0{,}057
+\end{align}$$
+
+Por lo que la probabilidad de que un auto producido por la fábrica tenga una avería el primer año es de 0,057.
+:::
+
+---
+
+## Probabilidad total — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+Se dispone de tres cajas con bombillas. La primera contiene 10 bombillas de las cuales cuatro están fundidas; en la segunda hay seis bombillas de las cuales hay una fundida, y la tercera caja contiene tres bombillas fundidas de un total de ocho. ¿Cuál es la probabilidad de que, al tomar una bombilla al azar, esté fundida?
+
+**Solución:**
+
+Sea $B$ = "Una bombilla tomada al azar está fundida", $A_1$: "la bombilla es de la primera caja", $A_2$: "la bombilla es de la segunda caja" y $A_3$: "la bombilla es de la tercera caja". Entonces:
+
+$$P(B) = \frac{1}{3}\cdot\frac{4}{10} + \frac{1}{3}\cdot\frac{1}{6} + \frac{1}{3}\cdot\frac{3}{8} \approx 0{,}31$$
+
+Por lo que la probabilidad de que se tome una bombilla fundida es aproximadamente 0,31.
+:::
+
+---
+
+## Regla de Bayes — Introducción
+
+El teorema de Bayes es una herramienta fundamental en la teoría de la probabilidad, que permite actualizar la probabilidad de un evento $A$ en función de la información proporcionada por otro evento $B$. En otras palabras, nos permite calcular la probabilidad de que ocurra $A$, dado que sabemos que $B$ ha ocurrido.
+
+::: {.callout-note}
+### Teorema (Regla de Bayes)
+
+Sean $A_1, \ldots, A_n$ eventos mutuamente excluyentes y exhaustivos. Entonces, para $A_i$ y $B$ dos eventos arbitrarios, con $B$ no vacío:
+
+$$P(A_i \mid B) = \frac{P(B \mid A_i)P(A_i)}{P(B)} = \frac{P(B \mid A_i)P(A_i)}{\displaystyle\sum_{j=1}^{n} P(A_j)P(B \mid A_j)}$$
+:::
+
+---
+
+## Regla de Bayes — Demostración
+
+**Demostración:**
+
+Para probar esta igualdad, se parte de $P(A_i \mid B)$. Primero, por definición de probabilidad condicional:
+
+$$P(A_i \mid B) = \frac{P(A_i \cap B)}{P(B)}$$
+
+Luego, por la Regla del producto:
+
+$$= \frac{P(A_i)P(B \mid A_i)}{P(B)}$$
+
+Finalmente, por el Teorema de Probabilidad total:
+
+$$= \frac{P(B \mid A_i)P(A_i)}{\displaystyle\sum_{j=1}^{n} P(A_j)P(B \mid A_j)} \qquad \blacksquare$$
+
+---
+
+## Regla de Bayes — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+Cierta empresa se dedica a la fabricación de baterías; el 40% de ellas son del tipo A, el 35% del tipo AA y el 25% del tipo AAA. Un ingeniero de calidad ha determinado que el 30% de las baterías del tipo A son defectuosas, el 20% del tipo AA tiene ese mismo defecto, y en las del tipo AAA se ha determinado que ese defecto es del 10%.
+
+1. Determine la probabilidad de que al elegir al azar una batería sea defectuosa.
+2. Si se elige una batería al azar y resulta defectuosa, ¿cuál es la probabilidad de que sea del tipo AAA?
+:::
+
+---
+
+## Regla de Bayes — Solución
+
+**Solución:**
+
+$P(A_1)=0{,}4$; $P(A_2)=0{,}35$; $P(A_3)=0{,}25$; $P(B\mid A_1)=0{,}3$; $P(B\mid A_2)=0{,}2$; $P(B\mid A_3)=0{,}1$.
+
+1. Por el teorema de la probabilidad total:
+
+$$P(B) = 0{,}4\cdot 0{,}3 + 0{,}35\cdot 0{,}2 + 0{,}25\cdot 0{,}1 = 0{,}215$$
+
+2. Por el Teorema de Bayes:
+
+$$P(A_3 \mid B) = \frac{0{,}1\cdot 0{,}25}{0{,}215} \approx 0{,}1163$$
+
+---
+
+## Regla de Bayes — Ejemplo
+
+::: {.callout-tip}
+### Ejemplo
+
+En un aeropuerto se emplean tres tipos de escáner (A, B y C) para detectar armas en las maletas de los pasajeros. El control dura 12 horas, de las cuales el escáner A se emplea durante las primeras 5 horas, el escáner B se emplea 4 horas y el escáner C se emplea durante las últimas 3 horas. El escáner A tiene un 90% de confiabilidad en su detección de armas, el B tiene un 92% y el C tiene un 95%. Si en un día durante el control se detecta un arma en las maletas de un pasajero, ¿cuál es la probabilidad de que esa arma sea detectada por el escáner A?
+:::
+
+---
+
+## Regla de Bayes — Solución
+
+**Solución:**
+Considere los eventos $A:$ el escaner A en operación, $B$: el B en operación y $C:$ el C en operación, $D:$ se detecta un arma.
+
+$P(A)=\dfrac{5}{12}$; $P(B)=\dfrac{1}{3}$; $P(C)=\dfrac{1}{4}$; $P(D\mid A)=0{,}9$; $P(D\mid B)=0{,}92$; $P(D\mid C)=0{,}95$.
+
+Por el teorema de la probabilidad total:
+$$P(D) = \frac{5}{12}\cdot 0{,}9 + \frac{1}{3}\cdot 0{,}92 + \frac{1}{4}\cdot 0{,}95 \approx 0{,}9192$$
+Por teorema de bayes:
+$$P(A_1 \mid B) = \frac{0{,}9\cdot\dfrac{5}{12}}{0{,}9192} \approx 0{,}41$$
+Por lo tanto, la probabilidad de que el arma haya sido detectada durante la operación del escáner A es de un 41%.
+
+---
+
+## Ejercicios
+
+**1.** En una casa hay tres llaveros A, B y C; el primero contiene cinco llaves, el segundo siete llaves y el tercero ocho. Cada llavero contiene una llave que abre una caja fuerte. Se elige un llavero al azar y de él una llave.
+
+a) ¿Cuál es la probabilidad de que la llave abra la caja fuerte?
+b) Si la llave elegida abre la caja fuerte, ¿cuál es la probabilidad de que pertenezca al llavero A?
+
+<!-- SOLUCIONES EJERCICIO 1
+a) Sea B = "la llave abre la caja fuerte" y A1, A2, A3 los eventos de elegir el llavero A, B, C.
+   Por probabilidad total:
+   P(B) = (1/3)*(1/5) + (1/3)*(1/7) + (1/3)*(1/8)
+        = (56 + 40 + 35) / 840 = 131/840
+
+b) Por la Regla de Bayes:
+   P(A1|B) = [(1/5)*(1/3)] / (131/840)
+           = (1/15) / (131/840)
+           = (840/15) / 131
+           = 56 / 131
+-->
+
+---
+
+## Ejercicios
+
+**2.** Una empresa que fabrica camisetas posee tres máquinas A, B y C que producen el 45%, 30% y 25%, respectivamente, del total de las piezas producidas en la fábrica. Los porcentajes de producción defectuosa de estas máquinas son del 3%, 4% y 5% respectivamente.
+
+a) Si se selecciona una camiseta al azar, ¿cuál es la probabilidad de que salga defectuosa?
+b) Si se toma al azar una camiseta y resulta ser defectuosa, ¿cuál es la probabilidad de haber sido producida por la máquina B?
+c) ¿Qué máquina tiene la mayor probabilidad de haber producido una camiseta defectuosa?
+
+<!-- SOLUCIONES EJERCICIO 2
+a) P(D) = 0.45*0.03 + 0.30*0.04 + 0.25*0.05
+        = 0.0135 + 0.012 + 0.0125 = 0.038
+
+b) P(B|D) = (0.30*0.04) / 0.038 = 0.012 / 0.038 ≈ 0.316
+
+c) P(A|D) = (0.45*0.03) / 0.038 = 0.0135 / 0.038 ≈ 0.355
+   P(C|D) = (0.25*0.05) / 0.038 = 0.0125 / 0.038 ≈ 0.329
+   La máquina A tiene la mayor probabilidad con P(A|D) ≈ 0.355.
+-->
+
+---
+
+## Ejercicios
+
+**3.** Tenemos tres urnas: A con 3 bolas rojas y 5 negras, B con 2 bolas rojas y 1 negra, y C con 2 bolas rojas y 3 negras. Escogemos una urna al azar y extraemos una bola. Si la bola ha sido roja, ¿cuál es la probabilidad de haber sido extraída de la urna A?
+
+<!-- SOLUCIÓN EJERCICIO 3
+Por probabilidad total:
+P(R) = (1/3)*(3/8) + (1/3)*(2/3) + (1/3)*(2/5)
+     = 45/360 + 80/360 + 48/360 = 173/360
+
+Por Bayes:
+P(A|R) = [(1/3)*(3/8)] / (173/360)
+       = (1/8) / (173/360)
+       = 45 / 173 ≈ 0.260
+-->
+
+---
+
+## Ejercicios
+
+**4.** En la empresa "Alimentos Mr. Pollo" el 20% de los empleados son ingenieros y otro 20% son economistas. El 75% de los ingenieros ocupa un cargo directivo y el 50% de los economistas también, mientras que de los demás trabajadores (no ingenieros y no economistas) solamente el 20% ocupa un puesto directivo. ¿Cuál es la probabilidad de que un empleado directivo elegido al azar sea ingeniero?
+
+<!-- SOLUCIÓN EJERCICIO 4
+Sea D = "es directivo", I = "es ingeniero", E = "es economista", O = "otro".
+P(O) = 1 - 0.20 - 0.20 = 0.60
+
+P(D) = 0.20*0.75 + 0.20*0.50 + 0.60*0.20
+     = 0.15 + 0.10 + 0.12 = 0.37
+
+P(I|D) = (0.20*0.75) / 0.37 = 0.15 / 0.37 ≈ 0.405
+-->
+
+---
+
+## Ejercicios
+
+**5.** En una fábrica se embalan galletas (en cajas) en 4 cadenas de montaje: $A_1$, $A_2$, $A_3$ y $A_4$. El 35% de la producción total se embala en la cadena $A_1$ y el 20%, 24% y 21% en $A_2$, $A_3$ y $A_4$ respectivamente. Los datos indican que no se embalan correctamente un porcentaje pequeño de las cajas: el 1% de $A_1$, el 3% de $A_2$, el 2,5% de $A_3$ y el 2% de $A_4$.
+
+a) ¿Cuál es la probabilidad de que una caja elegida al azar de la producción total sea defectuosa?
+b) Dado que una caja es defectuosa, ¿cuál es la probabilidad de que provenga de la cadena $A_1$?
+
+<!-- SOLUCIONES EJERCICIO 5
+a) P(D) = 0.35*0.01 + 0.20*0.03 + 0.24*0.025 + 0.21*0.02
+        = 0.0035 + 0.006 + 0.006 + 0.0042 = 0.0197
+
+b) P(A1|D) = (0.35*0.01) / 0.0197 = 0.0035 / 0.0197 ≈ 0.1777
+-->
