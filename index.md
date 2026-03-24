@@ -24,5 +24,6 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 | Métodos de Conteo                                                                     | <a href="Clase2.html" target="_blank">Clase 2</a> |
 | Conteo y Probabilidad                                                                 | <a href="Clase3-ConteoProbabilidad.html" target="_blank">Clase 3</a> |
 | Enfoque Axiomático                                                                 | <a href="Clase4_axiomas.html" target="_blank">Clase 4</a> |
+| Probabilidad condicional                                                                 | <a href="Clase5_condicional.html" target="_blank">Clase 5</a> |
 
 
