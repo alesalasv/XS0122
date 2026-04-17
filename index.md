@@ -26,5 +26,6 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 | Enfoque Axiomático                                                                 | <a href="Clase4_axiomas.html" target="_blank">Clase 4</a> |
 | Probabilidad condicional                                                                 | <a href="Clase5_condicional_total_bayes.html" target="_blank">Clase 5</a> |
 | Variable Aleatoria                                                                 | <a href="Clase6.html" target="_blank">Clase 6</a> |
+| Distribuciones de probabilidad discretas                                                                 | <a href="Clase_7.html" target="_blank">Clase 6</a> |
 
 
