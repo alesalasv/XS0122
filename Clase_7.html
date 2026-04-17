@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="Clase_7_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Clase_7_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Clase_7_files/libs/quarto-html/popper.min.js"></script>
+<script src="Clase_7_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Clase_7_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Clase_7_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Clase_7_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="M.Sc. Alejandro Salas Vargas">
+  <title>Distribuciones de probabilidad discretas</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Clase_7_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Clase_7_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="Clase_7_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
+  <link rel="stylesheet" href="estilos.css">
+  <link href="Clase_7_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Clase_7_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Clase_7_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Clase_7_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Distribuciones de probabilidad discretas</h1>
+  <p class="subtitle"><a href="https://alesalasv.github.io/XS0122/">XS-0122 Modelos Probabilísticos I</a></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://alesalasv.github.io/XS0122/">M.Sc. Alejandro Salas Vargas</a> 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:alejandro.salasvargas@ucr.ac.cr">alejandro.salasvargas@ucr.ac.cr</a>
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="https://www.estadistica.ucr.ac.cr/">
+            Escuela de Estadística, Universidad de Costa Rica
+            </a>
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="distribución-uniforme-discreta" class="slide level2">
+<h2>Distribución uniforme discreta</h2>
+<p><strong>Definición.</strong> Una variable aleatoria uniforme discreta <span class="math inline">\(X\)</span> cuya distribución de probabilidad es:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dfrac{1}{N} &amp; x = 1, 2, 3, \ldots, N \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+
+<img data-src="Clase_7_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<section id="distribución-uniforme-discreta-1" class="slide level2">
+<h2>Distribución uniforme discreta</h2>
+<p>Sea <span class="math inline">\(X\)</span> una v.a.d. con distribución uniforme discreta, entonces:</p>
+<p><span class="math display">\[
+E(X) = \sum_{x=1}^{N} x\, f_X(x) = \sum_{x=1}^{N} x \cdot \frac{1}{N} = \frac{1}{N} \cdot \frac{N(N+1)}{2} = \frac{N+1}{2}
+\]</span></p>
+<p><span class="math display">\[
+\text{Var}(X) = E(X^2) - [E(X)]^2 = \frac{1}{N}\sum_{x=1}^{N}x^2 - \left(\frac{N+1}{2}\right)^2 = \frac{N^2-1}{12}
+\]</span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Resultados</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[E(X) = \frac{N+1}{2} \qquad \text{Var}(X) = \frac{N^2-1}{12}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="distribución-uniforme-discreta-2" class="slide level2">
+<h2>Distribución uniforme discreta</h2>
+<p><strong>Ejemplo.</strong> Se lanza un dado. Sea <span class="math inline">\(X\)</span> = número de puntos obtenido. Es evidente que la distribución de probabilidad de <span class="math inline">\(X\)</span> es una distribución uniforme con:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dfrac{1}{6} &amp; x = 1, 2, 3, \ldots, 6 \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+E(X) = \frac{N+1}{2} = \frac{7}{2} = 3{,}5 \qquad \text{Var}(X) = \frac{N^2-1}{12} = \frac{36-1}{12} = \frac{35}{12} \approx 2{,}917
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(E(X) = 3{,}5\)</span> y <span class="math inline">\(\text{Var}(X) = \dfrac{35}{12} \approx 2{,}917\)</span></p>
+</blockquote>
+</section>
+<section id="distribución-de-bernoulli" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p><strong>Definición.</strong> Una variable aleatoria <span class="math inline">\(X\)</span> cuya distribución de probabilidad es:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} p^x(1-p)^{1-x} &amp; x = 0, 1 \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>donde <span class="math inline">\(0 &lt; p &lt; 1\)</span>, se dice que tiene una <strong>distribución de Bernoulli</strong> de parámetro <span class="math inline">\(p\)</span>. También se dice que <span class="math inline">\(X\)</span> es una variable aleatoria Bernoulli.</p>
+
+<img data-src="Clase_7_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<section id="distribución-de-bernoulli-1" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(X\)</span> es una variable aleatoria discreta tal que <span class="math inline">\(X \sim \text{Ber}(p)\)</span>, entonces esta cumple con las siguientes propiedades:</p>
+<ol type="1">
+<li>Su función de distribución acumulada es:</li>
+</ol>
+<p><span class="math display">\[
+F_X(x) = \begin{cases} 0 &amp; x &lt; 0 \\ 1-p &amp; 0 \leq x &lt; 1 \\ 1 &amp; x \geq 1 \end{cases}
+\]</span></p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(E(X) = p\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = p(1-p)\)</span></p></li>
+</ol>
+</section>
+<section id="distribución-de-bernoulli-2" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p><strong>Definición.</strong> Un experimento aleatorio cuyos resultados pueden clasificarse en dos categorías, llamadas “éxito” y “fracaso”, se llama un <strong>experimento o ensayo de Bernoulli</strong>.</p>
+<p><strong>Ejemplo.</strong> Sea <span class="math inline">\(X\)</span> una variable aleatoria que toma el valor 1 si un experimento de Bernoulli resulta en un “éxito” y el valor 0 si el experimento resulta en un “fracaso”. Si llamamos con <span class="math inline">\(p\)</span> la probabilidad de que el experimento resulte en un “éxito”, es obvio que <span class="math inline">\(X\)</span> puede tomar los valores 0 y 1 con probabilidades <span class="math inline">\(1-p\)</span> y <span class="math inline">\(p\)</span> respectivamente. La distribución de <span class="math inline">\(X\)</span> es por lo tanto una distribución de Bernoulli <span class="math inline">\(f(x;\, p)\)</span>.</p>
+</section>
+<section id="distribución-de-bernoulli-3" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p><strong>Ejemplo.</strong> En una clase hay 20 estudiantes: 12 mujeres y 8 hombres. Se extrae al azar un estudiante. Clasifiquemos los resultados posibles en dos categorías: mujer (éxito), hombre (fracaso). Sea <span class="math inline">\(X = 1\)</span> si el resultado es un “éxito” y <span class="math inline">\(0\)</span> si es un “fracaso”. La distribución de <span class="math inline">\(X\)</span> es una distribución de Bernoulli con <span class="math inline">\(p = \tfrac{12}{20} = 0{,}6\)</span>. Es decir:</p>
+<p><span class="math display">\[
+f(x) = \begin{cases} 0{,}6^x\, 0{,}4^{1-x} &amp; x = 0, 1 \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(X \sim \text{Ber}(p = 0{,}6)\)</span>, con <span class="math inline">\(E(X) = 0{,}6\)</span> y <span class="math inline">\(\text{Var}(X) = 0{,}6 \times 0{,}4 = 0{,}24\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-de-bernoulli-4" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p>Sea <span class="math inline">\(X\)</span> una v.a.d. con distribución de Bernoulli, entonces <span class="math inline">\(E(X) = p\)</span> y <span class="math inline">\(\text{Var}(X) = p(1-p)\)</span>.</p>
+<p><strong>Demostración:</strong></p>
+<p><span class="math display">\[
+E(X) = \sum_{x=0}^{1} x\, p^x(1-p)^{1-x} = 0 \cdot p^0(1-p)^1 + 1 \cdot p^1(1-p)^0 = p
+\]</span></p>
+<p><span class="math display">\[
+\text{Var}(X) = E(X^2) - [E(X)]^2 = \sum_{x=0}^{1} x^2\, p^x(1-p)^{1-x} - p^2
+\]</span></p>
+<p><span class="math display">\[
+= \left[0^2 \cdot p^0(1-p)^1 + 1^2 \cdot p^1(1-p)^0\right] - p^2 = p - p^2 = p(1-p)
+\]</span></p>
+</section>
+<section id="distribución-de-bernoulli-5" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p>La v.a.d. que define el experimento de lanzamiento de una moneda sigue una distribución de Bernoulli de parámetro <span class="math inline">\(p\)</span>, donde <span class="math inline">\(p\)</span> es la probabilidad del suceso de interés: escudo o corona.</p>
+</section>
+<section id="distribución-de-bernoulli-6" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p><strong>Ejemplo.</strong> Se realiza el experimento que consiste en lanzar un dado equilibrado, y se define el evento <span class="math inline">\(A\)</span>: se obtiene el número 3 como resultado.</p>
+<p>Si obtener un 3 es considerado como un éxito, entonces <span class="math inline">\(p = P(A) = \tfrac{1}{6}\)</span>, mientras que no obtener un 3 sería fracaso, con probabilidad <span class="math inline">\(1 - p = \tfrac{5}{6}\)</span>.</p>
+<p>Se define la variable aleatoria <span class="math inline">\(X\)</span>: número de veces que aparece el 3. Si no se obtiene un 3, <span class="math inline">\(X = 0\)</span> (fracaso); si se obtiene el 3, <span class="math inline">\(X = 1\)</span> (éxito). Esta variable <span class="math inline">\(X\)</span> sigue una distribución de Bernoulli: <span class="math inline">\(X \sim \text{Ber}\!\left(p = \tfrac{1}{6}\right)\)</span>.</p>
+</section>
+<section id="distribución-de-bernoulli-7" class="slide level2">
+<h2>Distribución de Bernoulli</h2>
+<p>La función de distribución de probabilidad del ejemplo anterior es:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \left(\dfrac{1}{6}\right)^x \left(\dfrac{5}{6}\right)^{1-x} &amp; x \in \{0,1\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>Por el teorema anterior, se tiene:</p>
+<ol type="1">
+<li><p><span class="math inline">\(F_X(x) = \begin{cases} 0 &amp; x &lt; 0 \\ \tfrac{5}{6} &amp; 0 \leq x &lt; 1 \\ 1 &amp; x \geq 1 \end{cases}\)</span></p></li>
+<li><p><span class="math inline">\(E(X) = \dfrac{1}{6}\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = \dfrac{1}{6}\!\left(\dfrac{5}{6}\right) = \dfrac{5}{36}\)</span></p></li>
+</ol>
+</section>
+<section id="distribución-binomial" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p>Ahora, si se realizan <span class="math inline">\(n\)</span> experimentos de Bernoulli y se define la variable aleatoria discreta <span class="math inline">\(X\)</span>: número de veces que se obtiene un éxito, entonces <span class="math inline">\(X\)</span> se distribuye como una <strong>distribución binomial</strong>.</p>
+<p>Todo experimento binomial debe cumplir con lo siguiente:</p>
+<ol type="1">
+<li>El experimento consiste en <span class="math inline">\(n\)</span> ensayos de Bernoulli idénticos.</li>
+<li>En cada uno de los <span class="math inline">\(n\)</span> ensayos se obtiene uno de los resultados: éxito o fracaso.</li>
+<li>La probabilidad de éxito en cada uno de los ensayos es igual a <span class="math inline">\(p\)</span>, mientras que la probabilidad de fracaso es igual a <span class="math inline">\(1-p\)</span>.</li>
+<li>Los ensayos son independientes.</li>
+<li>Interesa la variable aleatoria <span class="math inline">\(X\)</span>: el número de éxitos observados durante los <span class="math inline">\(n\)</span> ensayos.</li>
+</ol>
+</section>
+<section id="distribución-binomial-1" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p><strong>Definición.</strong> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> tiene una <strong>distribución binomial</strong> de parámetros <span class="math inline">\(n\)</span> y <span class="math inline">\(p\)</span>, con <span class="math inline">\(0 &lt; p &lt; 1\)</span> y <span class="math inline">\(n\)</span> entero, si posee una función de densidad de probabilidad:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dbinom{n}{x} p^x (1-p)^{n-x} &amp; x \in \{0, 1, 2, 3, \ldots, n\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>En ocasiones, a esta distribución se le denota por <span class="math inline">\(\text{Bin}(n,p)\)</span>.</p>
+<p>En el caso de una variable aleatoria con distribución de Bernoulli, esta es equivalente a una binomial para la cual <span class="math inline">\(n=1\)</span> con probabilidad de éxito <span class="math inline">\(p\)</span>, es decir, <span class="math inline">\(\text{Ber}(p) = \text{Bin}(1,p)\)</span>.</p>
+</section>
+<section id="distribución-binomial-2" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(X\)</span> es una variable aleatoria discreta tal que <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>, entonces esta cumple con las siguientes propiedades:</p>
+<ol type="1">
+<li>Su función de distribución acumulada es:</li>
+</ol>
+<p><span class="math display">\[
+F_X(x) = \begin{cases} 0 &amp; \text{si } x &lt; 0 \\ \displaystyle\sum_{k=0}^{\lfloor x \rfloor} \binom{n}{k} p^k(1-p)^{n-k} &amp; \text{si } 0 \leq x &lt; n \\ 1 &amp; \text{si } x \geq n \end{cases}
+\]</span></p>
+<p>con <span class="math inline">\(\lfloor x \rfloor\)</span> la parte entera de <span class="math inline">\(x\)</span>.</p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(E(X) = np\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = np(1-p)\)</span></p></li>
+</ol>
+</section>
+<section id="distribución-binomial-demostración" class="slide level2">
+<h2>Distribución Binomial — Demostración</h2>
+<p><strong>Demostración</strong> (propiedad 2):</p>
+<p><span class="math display">\[
+E(X) = \sum_{x=0}^{n} x \cdot \frac{n!}{x!(n-x)!}\, p^x(1-p)^{n-x}
+= np \sum_{x=1}^{n} \frac{(n-1)!}{(x-1)!(n-x)!}\, p^{x-1}(1-p)^{n-x}
+\]</span></p>
+<p><span class="math display">\[
+= np \sum_{x=0}^{n-1} \frac{(n-1)!}{x!\,((n-1)-x)!}\, p^x(1-p)^{(n-1)-x}
+= np\,(p + 1-p)^{n-1} = np
+\]</span></p>
+<p>usando el Binomio de Newton: <span class="math inline">\((a+b)^n = \displaystyle\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k\)</span>.</p>
+</section>
+<section id="distribución-binomial-demostración-1" class="slide level2">
+<h2>Distribución Binomial — Demostración</h2>
+<p><strong>Demostración</strong> (propiedad 3):</p>
+<p><span class="math display">\[
+\text{Var}(X) = E(X^2) - [E(X)]^2 = E(X(X-1)) + E(X) - n^2p^2
+\]</span></p>
+<p><span class="math display">\[
+= \sum_{x=0}^{n} x(x-1)\frac{n!}{x!(n-x)!}\,p^x(1-p)^{n-x} + np - n^2p^2
+\]</span></p>
+<p><span class="math display">\[
+= n(n-1)p^2 \sum_{x=2}^{n}\frac{(n-2)!}{(x-2)!(n-x)!}\,p^{x-2}(1-p)^{n-x} + np - n^2p^2
+\]</span></p>
+<p><span class="math display">\[
+= n(n-1)p^2(p+1-p)^{n-2} + np - n^2p^2
+= n^2p^2 - np^2 + np - n^2p^2 = np(1-p)
+\]</span></p>
+</section>
+<section id="distribución-binomial-3" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p><strong>Ejemplo.</strong> Se selecciona una muestra aleatoria de 3 personas del padrón de votantes de la última elección. Sea <span class="math inline">\(X\)</span> el número de personas que votaron por el partido Acción Ciudadana (PAC). Suponga que la probabilidad de que una persona del padrón vote por el PAC es de 0,40, y que la selección de los tres votantes son pruebas independientes. Determine la función de probabilidad, media y varianza de <span class="math inline">\(X\)</span>.</p>
+<p><span class="math inline">\(n = 3\)</span>, <span class="math inline">\(p = 0{,}40\)</span>, <span class="math inline">\(1-p = 0{,}60\)</span>.</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dbinom{3}{x} 0{,}4^x\, 0{,}6^{3-x} &amp; x \in \{0,1,2,3\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+E(X) = np = 3 \times 0{,}4 = 1{,}2 \qquad \text{Var}(X) = np(1-p) = 3 \times 0{,}4 \times 0{,}6 = 0{,}72
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(E(X) = 1{,}2\)</span> y <span class="math inline">\(\text{Var}(X) = 0{,}72\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-binomial-4" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p><strong>Ejemplo.</strong> Un dado equilibrado de seis caras se lanza 10 veces. Sea <span class="math inline">\(X\)</span> el número de veces que aparece el 3 en las 10 repeticiones. Entonces <span class="math inline">\(X \sim \text{Bin}\!\left(n=10,\, p=\tfrac{1}{6}\right)\)</span>.</p>
+<ol type="a">
+<li>Determine la función de probabilidad de <span class="math inline">\(X\)</span>.</li>
+<li>¿Cuál es la probabilidad de obtener 4 veces el número 3?</li>
+<li>¿Cuál es la probabilidad de obtener al menos 4 veces el número 3?</li>
+<li>¿Cuál es la probabilidad de obtener a lo sumo 2 veces el número 3?</li>
+<li>Determine el valor esperado <span class="math inline">\(E(X)\)</span> y la desviación estándar <span class="math inline">\(\sigma\)</span>.</li>
+</ol>
+</section>
+<section id="distribución-binomial-solución" class="slide level2">
+<h2>Distribución Binomial — Solución</h2>
+<p><strong>a)</strong> La función de probabilidad de <span class="math inline">\(X\)</span> es:</p>
+<p><span class="math display">\[
+P(X=x) = \begin{cases} \dbinom{10}{x}\!\left(\dfrac{1}{6}\right)^x\!\left(\dfrac{5}{6}\right)^{10-x} &amp; x \in \{0,1,2,\ldots,10\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p><strong>b)</strong> <span class="math inline">\(P(X=4) = \dbinom{10}{4}\!\left(\dfrac{1}{6}\right)^4\!\left(\dfrac{5}{6}\right)^{6} = \dfrac{10!}{4!\,6!}\!\left(\dfrac{1}{6}\right)^4\!\left(\dfrac{5}{6}\right)^{6} \approx 0{,}0543\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(P(X \geq 4) = 1 - P(X &lt; 4) = 1 - \displaystyle\sum_{x=0}^{3}\binom{10}{x}\!\left(\tfrac{1}{6}\right)^x\!\left(\tfrac{5}{6}\right)^{10-x}\)</span></p>
+<p><span class="math inline">\(\approx 1 - (0{,}1615 + 0{,}3230 + 0{,}2907 + 0{,}1550) \approx 0{,}0698\)</span></p>
+</section>
+<section id="distribución-binomial-solución-1" class="slide level2">
+<h2>Distribución Binomial — Solución</h2>
+<p><strong>d)</strong> <span class="math inline">\(P(X \leq 2) = \displaystyle\sum_{x=0}^{2}\binom{10}{x}\!\left(\tfrac{1}{6}\right)^x\!\left(\tfrac{5}{6}\right)^{10-x}\)</span></p>
+<p><span class="math inline">\(= P(X=0) + P(X=1) + P(X=2) \approx 0{,}1615 + 0{,}3230 + 0{,}2907 \approx 0{,}7752\)</span></p>
+<p><strong>e)</strong> <span class="math inline">\(E(X) = np = 10 \cdot \dfrac{1}{6} = \dfrac{5}{3} \approx 1{,}667\)</span></p>
+<p><span class="math display">\[\sigma = \sqrt{\text{Var}(X)} = \sqrt{np(1-p)} = \sqrt{10 \cdot \frac{1}{6} \cdot \frac{5}{6}} = \frac{5\sqrt{2}}{6} \approx 1{,}179\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X=4) \approx 0{,}0543\)</span>; <span class="math inline">\(P(X \geq 4) \approx 0{,}0698\)</span>; <span class="math inline">\(P(X \leq 2) \approx 0{,}7752\)</span>; <span class="math inline">\(E(X) \approx 1{,}667\)</span>; <span class="math inline">\(\sigma \approx 1{,}179\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-binomial-gráfica" class="slide level2">
+<h2>Distribución Binomial — Gráfica</h2>
+
+<img data-src="Clase_7_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>
+<section id="distribución-binomial-5" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p><strong>Ejemplo.</strong> Suponga que, en una fábrica de autos, la probabilidad de tener una unidad defectuosa en la línea de ensamble es de 0,05. Si al conjunto de 12 unidades terminadas se le puede ver como un conjunto de ensayos de Bernoulli independientes, determine:</p>
+<ol type="a">
+<li>La función de probabilidad de <span class="math inline">\(X\)</span>.</li>
+<li>¿Cuál es la probabilidad de que dos unidades estén defectuosas?</li>
+<li>¿Cuál es la probabilidad de que 2 o menos unidades estén defectuosas?</li>
+<li>¿Cuál es la probabilidad de que al menos 1 unidad esté defectuosa?</li>
+<li>La función generadora de momentos.</li>
+</ol>
+</section>
+<section id="distribución-binomial-solución-2" class="slide level2">
+<h2>Distribución Binomial — Solución</h2>
+<p><strong>a)</strong> Sea <span class="math inline">\(X\)</span> el número de unidades defectuosas en el conjunto de 12 unidades terminadas:</p>
+<p><span class="math display">\[
+P(X=x) = \begin{cases} \dbinom{12}{x}(0{,}05)^x(0{,}95)^{12-x} &amp; x \in \{0,1,2,\ldots,12\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p><strong>b)</strong> <span class="math inline">\(P(X=2) = \dbinom{12}{2}(0{,}05)^2(0{,}95)^{10} = \dfrac{12!}{2!\,10!}(0{,}05)^2(0{,}95)^{10} \approx 0{,}0988\)</span></p>
+<p><strong>c)</strong> <span class="math inline">\(P(X \leq 2) = P(X=0) + P(X=1) + P(X=2) \approx 0{,}5404 + 0{,}3413 + 0{,}0988 \approx 0{,}9804\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(P(X \geq 1) = 1 - P(X=0) = 1 - \dbinom{12}{0}(0{,}05)^0(0{,}95)^{12} \approx 1 - 0{,}5404 \approx 0{,}4596\)</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X=2) \approx 0{,}0988\)</span>; <span class="math inline">\(P(X \leq 2) \approx 0{,}9804\)</span>; <span class="math inline">\(P(X \geq 1) \approx 0{,}4596\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-binomial-6" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p>A causa de las condiciones económicas imperantes en el mercado, una empresa informa que el 30% de sus cuentas por cobrar están sobrevencidas. Si un contador toma una muestra aleatoria de cinco cuentas, determine la probabilidad de que:</p>
+<ul>
+<li>Ninguna esté sobrevencida.</li>
+<li>Exactamente tres estén sobrevencidas.</li>
+<li>Al menos tres cuentas estén sobrevencidas.</li>
+</ul>
+</section>
+<section id="distribución-binomial-7" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p>La probabilidad de que un paciente se recupere de una enfermedad en la sangre es del 40%. Si se sabe que 15 personas han contraído esta enfermedad, ¿cuál es la probabilidad de que sobrevivan:</p>
+<ul>
+<li>Exactamente 5 personas.</li>
+<li>Entre 3 y 8 personas inclusive.</li>
+<li>Al menos 10 personas.</li>
+<li>Determine el valor esperado y la desviación estándar de que una persona sobreviva a la enfermedad.</li>
+</ul>
+</section>
+<section id="distribución-binomial-8" class="slide level2">
+<h2>Distribución Binomial</h2>
+<p>El 30% de un determinado pueblo ve un concurso que hay en televisión. Desde el concurso se llama por teléfono a 10 personas del pueblo elegidas al azar.</p>
+<p>Calcular la probabilidad de que, entre las 10 personas, estuvieran viendo el programa:</p>
+<ol type="a">
+<li>Más de ocho personas.</li>
+<li>Al menos una persona.</li>
+<li>Calcular la media y desviación típica.</li>
+</ol>
+</section>
+<section id="distribución-hipergeométrica" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p>En la teoría de probabilidad, la distribución de probabilidad hipergeométrica es un modelo estadístico utilizado para describir la probabilidad de obtener un cierto número de éxitos en una muestra <strong>sin reemplazo</strong>, cuando se seleccionan elementos de una población finita que contiene tanto éxitos como fracasos. Esta distribución se caracteriza por tres parámetros: el tamaño de la población, el número de éxitos en la población y el tamaño de la muestra.</p>
+</section>
+<section id="distribución-hipergeométrica-1" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p><strong>Definición.</strong> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> tiene una <strong>distribución hipergeométrica</strong> de parámetros <span class="math inline">\(N\)</span>, <span class="math inline">\(K\)</span> y <span class="math inline">\(n\)</span>, si posee una función de densidad de probabilidad:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dfrac{\dbinom{K}{x}\dbinom{N-K}{n-x}}{\dbinom{N}{n}} &amp; \text{máx}\{0, n+K-N\} \leq x \leq \text{mín}\{n, K\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(N = 0,1,2,3,\ldots\)</span>: tamaño de la población,</li>
+<li><span class="math inline">\(K = 0,1,2,3,\ldots,N\)</span>: número de éxitos presentes en la población,</li>
+<li><span class="math inline">\(n = 0,1,2,3,\ldots,N\)</span>: número de extracciones (tamaño de la muestra),</li>
+<li><span class="math inline">\(x\)</span>: número de éxitos observados.</li>
+</ul>
+<p>A esta distribución se le denota por <span class="math inline">\(X \sim HG(N, K, n)\)</span>.</p>
+</section>
+<section id="distribución-hipergeométrica-2" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p>Las condiciones de un experimento hipergeométrico son:</p>
+<ol type="1">
+<li><p>El experimento consiste en extraer una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> <strong>sin reemplazo</strong> ni consideración de su orden, de un conjunto de <span class="math inline">\(N\)</span> elementos.</p></li>
+<li><p>De los <span class="math inline">\(N\)</span> objetos, <span class="math inline">\(K\)</span> poseen el rasgo de interés, mientras los otros <span class="math inline">\(N-K\)</span> objetos restantes no lo tienen.</p></li>
+<li><p>La variable aleatoria <span class="math inline">\(X\)</span> es el número de objetos de la muestra que posee el rasgo.</p></li>
+</ol>
+</section>
+<section id="distribución-hipergeométrica-3" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(X \sim HG(N,K,n)\)</span>, entonces esta cumple con las siguientes propiedades:</p>
+<ol type="1">
+<li>Su función de distribución acumulada es:</li>
+</ol>
+<p><span class="math display">\[
+F_X(x) = \begin{cases} 0 &amp; \text{si } x &lt; \text{máx}\{0, n+K-N\} \\ \displaystyle\sum_{i=0}^{\lfloor x \rfloor} \frac{\binom{K}{i}\binom{N-K}{n-i}}{\binom{N}{n}} &amp; \text{si } \text{máx}\{0,n+K-N\} \leq x \leq \text{mín}\{n,K\} \\ 1 &amp; \text{si } x &gt; \text{mín}\{n,K\} \end{cases}
+\]</span></p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(E(X) = \dfrac{nK}{N}\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = \dfrac{nK(N-K)}{N^2} \cdot \dfrac{N-n}{N-1}\)</span></p></li>
+</ol>
+</section>
+<section id="distribución-hipergeométrica-4" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p><strong>Ejemplo.</strong> Un lote de 40 microcomponentes electrónicos se considera aceptable, en un muestreo de aceptación de calidad, si tiene 3 o menos defectuosos. El proceso para muestrear el lote es la selección de 5 componentes al azar y rechazar el lote si se encuentra uno defectuoso.</p>
+<ol type="a">
+<li>¿Cuál es la probabilidad de que se encuentre exactamente uno defectuoso en la muestra, si hay tres defectuosos en todo el lote?</li>
+<li>Determine la media y varianza.</li>
+</ol>
+</section>
+<section id="distribución-hipergeométrica-solución" class="slide level2">
+<h2>Distribución hipergeométrica — Solución</h2>
+<p><strong>a)</strong> Sea <span class="math inline">\(X\)</span> el número de microcomponentes defectuosos. Los datos son: <span class="math inline">\(x=1\)</span>, <span class="math inline">\(n=5\)</span>, <span class="math inline">\(N=40\)</span>, <span class="math inline">\(K=3\)</span>.</p>
+<p><span class="math display">\[
+P(X=1) = \frac{\dbinom{3}{1}\dbinom{40-3}{5-1}}{\dbinom{40}{5}} = \frac{\dbinom{3}{1}\dbinom{37}{4}}{\dbinom{40}{5}} \approx 0{,}3011
+\]</span></p>
+<p>La probabilidad de encontrar un microcomponente defectuoso en la muestra es de 30,11%.</p>
+<p><strong>b)</strong> La media y la varianza son:</p>
+<p><span class="math display">\[
+E(X) = \frac{nK}{N} = \frac{5 \cdot 3}{40} = 0{,}375
+\]</span></p>
+<p><span class="math display">\[
+\text{Var}(X) = \frac{nK(N-K)}{N^2}\cdot\frac{N-n}{N-1} = \frac{5 \cdot 3 \cdot 37}{40^2}\cdot\frac{35}{39} \approx 0{,}311
+\]</span></p>
+</section>
+<section id="distribución-hipergeométrica-5" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p><strong>Ejemplo.</strong> Una fábrica de automóviles compra los motores a una empresa proveedora que tiene altos estándares de calidad. El fabricante recibe de esta empresa un lote de 100 motores; un ingeniero de esta fábrica selecciona 8 motores al azar del lote para la inspección, y establece que si no se encuentra con defectos entonces acepta el lote, caso contrario, lo rechaza. Si el lote contiene 2 motores defectuosos, ¿cuál es la probabilidad de que el ingeniero encuentre a lo sumo un motor defectuoso?</p>
+</section>
+<section id="distribución-hipergeométrica-solución-1" class="slide level2">
+<h2>Distribución hipergeométrica — Solución</h2>
+<p>Sea <span class="math inline">\(X\)</span> el número de motores defectuosos. Los datos son: <span class="math inline">\(n=8\)</span>, <span class="math inline">\(N=100\)</span>, <span class="math inline">\(K=2\)</span>.</p>
+<p><span class="math display">\[
+P(X \leq 1) = P(X=0) + P(X=1)
+= \frac{\dbinom{2}{0}\dbinom{98}{8}}{\dbinom{100}{8}} + \frac{\dbinom{2}{1}\dbinom{98}{7}}{\dbinom{100}{8}} \approx 0{,}9943
+\]</span></p>
+<p>La probabilidad de encontrar a lo sumo un motor defectuoso es de 99,43%.</p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X \leq 1) \approx 0{,}9943\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-hipergeométrica-6" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p><strong>Ejemplo.</strong> En una urna hay 8 canicas rojas y 45 blancas. Se toma una muestra al azar de 10 canicas sin reemplazo. ¿Cuál es la probabilidad de que 4 de las 10 canicas sean rojas?</p>
+<p><strong>Solución:</strong> Sea <span class="math inline">\(X\)</span> el número de canicas extraídas de color rojo. Los datos son: <span class="math inline">\(x=4\)</span>, <span class="math inline">\(n=10\)</span>, <span class="math inline">\(N=53\)</span>, <span class="math inline">\(K=8\)</span>.</p>
+<p><span class="math display">\[
+P(X=4) = \frac{\dbinom{8}{4}\dbinom{53-8}{10-4}}{\dbinom{53}{10}} = \frac{\dbinom{8}{4}\dbinom{45}{6}}{\dbinom{53}{10}} \approx 0{,}0292
+\]</span></p>
+<p>La probabilidad de que 4 canicas sean rojas es de aproximadamente 2,92%.</p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X=4) \approx 0{,}0292\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-hipergeométrica-relación-con-binomial" class="slide level2">
+<h2>Distribución hipergeométrica — Relación con Binomial</h2>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(X \sim HG(N,K,n)\)</span> y <span class="math inline">\(N \to \infty\)</span> con <span class="math inline">\(p = K/N\)</span> constante, entonces:</p>
+<p><span class="math display">\[
+\lim_{N \to \infty} \frac{\dbinom{K}{x}\dbinom{N-K}{n-x}}{\dbinom{N}{n}} = \binom{n}{x} p^x (1-p)^{n-x}
+\]</span></p>
+<p>Es decir, cuando el tamaño de la población es suficientemente grande respecto al tamaño de la muestra, la distribución hipergeométrica puede aproximarse mediante una distribución binomial con <span class="math inline">\(p = K/N\)</span>.</p>
+</section>
+<section id="distribución-hipergeométrica-7" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
+<p><strong>Ejemplo.</strong> En un lote de <span class="math inline">\(N=100\)</span> componentes electrónicos, hay 40 defectuosos. Sea <span class="math inline">\(X\)</span> el número de componentes defectuosos en una muestra aleatoria de tamaño 20. Encuentre <span class="math inline">\(P(X=10)\)</span> mediante la distribución hipergeométrica, y compárela con el resultado obtenido al emplear la distribución binomial.</p>
+<p><strong>Solución:</strong> Con la distribución hipergeométrica (<span class="math inline">\(K=40\)</span>, <span class="math inline">\(N=100\)</span>, <span class="math inline">\(n=20\)</span>): <span class="math inline">\(P(X=10) = \frac{\dbinom{40}{10}\dbinom{60}{10}}{\dbinom{100}{20}} \approx 0{,}1192\)</span></p>
+<p>Con la distribución binomial (<span class="math inline">\(p = K/N = 0{,}4\)</span>): <span class="math inline">\(P(X=10) = \dbinom{20}{10}(0{,}4)^{10}(0{,}6)^{10} \approx 0{,}117\)</span></p>
+<p>Se concluye que <span class="math inline">\(N=100\)</span> es suficientemente grande para obtener una buena aproximación de <span class="math inline">\(P(X=10)\)</span> mediante la distribución binomial.</p>
+</section>
+<section id="distribución-geométrica" class="slide level2">
+<h2>Distribución geométrica</h2>
+<p>La distribución geométrica se basa en lo aprendido de la distribución binomial. En este caso, el experimento continúa hasta que se produce un éxito o un fracaso, en lugar de un número determinado de ensayos. Hay cuatro características principales:</p>
+<ol type="1">
+<li>Hay uno o más ensayos de Bernoulli con todos los fracasos excepto el último, que es un éxito. En otras palabras, se sigue repitiendo el experimento hasta el primer éxito, y entonces se detiene.</li>
+<li>En teoría, el número de pruebas podría ser infinito.</li>
+<li>La probabilidad <span class="math inline">\(p\)</span> de un éxito y la probabilidad <span class="math inline">\(q = 1-p\)</span> de un fracaso es igual para cada ensayo.</li>
+<li><span class="math inline">\(X\)</span> = el número de ensayos independientes hasta el primer éxito.</li>
+</ol>
+</section>
+<section id="distribución-geométrica-1" class="slide level2">
+<h2>Distribución geométrica</h2>
+<p>Una v.a. <span class="math inline">\(X\)</span> cuya distribución de probabilidad es:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} p\,(1-p)^{x-1} &amp; x = 1, 2, 3, \ldots \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>con <span class="math inline">\(0 &lt; p &lt; 1\)</span>, se dice que tiene una <strong>distribución geométrica</strong> de parámetro <span class="math inline">\(p\)</span>.</p>
+<p>Para una distribución geométrica, el valor esperado y la varianza están dados por:</p>
+<p><span class="math display">\[
+E(X) = \frac{1}{p} \qquad \text{Var}(X) = \frac{1-p}{p^2}
+\]</span></p>
+</section>
+<section id="distribución-geométrica-2" class="slide level2">
+<h2>Distribución geométrica</h2>
+<p><strong>Ejemplo.</strong> Se lanzan dardos a una tabla hasta que se golpea el área central. La probabilidad de golpear el área central es <span class="math inline">\(p = 0{,}17\)</span>. ¿Cuál es la probabilidad de dar en el blanco en la tirada 5?</p>
+<p>Sea <span class="math inline">\(X\)</span> = número de tiradas hasta acertar en el blanco.</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} 0{,}17\,(0{,}83)^{x-1} &amp; x = 1, 2, 3, \ldots \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+P(X=5) = 0{,}17\,(0{,}83)^{4} \approx 0{,}0807
+\]</span></p>
+<p><span class="math display">\[
+E(X) = \frac{1}{0{,}17} \approx 5{,}882 \qquad \text{Var}(X) = \frac{0{,}83}{(0{,}17)^2} \approx 28{,}72
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X=5) \approx 0{,}0807\)</span>; <span class="math inline">\(E(X) \approx 5{,}882\)</span>; <span class="math inline">\(\text{Var}(X) \approx 28{,}72\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-binomial-negativa" class="slide level2">
+<h2>Distribución binomial negativa</h2>
+<p>Una v.a. <span class="math inline">\(X\)</span> cuya distribución de probabilidad es:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dbinom{x-1}{r-1} p^r (1-p)^{x-r} &amp; x = r,\, r+1,\, r+2, \ldots \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>donde <span class="math inline">\(r\)</span> es un entero positivo (<span class="math inline">\(r\)</span> = número de éxitos deseados), <span class="math inline">\(0 &lt; p &lt; 1\)</span>, se dice que tiene una <strong>distribución binomial negativa</strong> de parámetros <span class="math inline">\(r\)</span> y <span class="math inline">\(p\)</span>.</p>
+<p><span class="math display">\[
+E(X) = \frac{r}{p} \qquad \text{Var}(X) = \frac{r(1-p)}{p^2}
+\]</span></p>
+<p>Cuando <span class="math inline">\(r=1\)</span>, la distribución binomial negativa es la <strong>distribución geométrica</strong> de parámetro <span class="math inline">\(p\)</span>.</p>
+</section>
+<section id="distribución-binomial-negativa-1" class="slide level2">
+<h2>Distribución binomial negativa</h2>
+<p><strong>Ejemplo.</strong> Se lanzan dardos a una tabla hasta que se golpea el área central por tercera vez. La probabilidad de golpear el área central es <span class="math inline">\(p = 0{,}17\)</span>. ¿Cuál es la probabilidad de que el quinto lanzamiento sea el tercero en dar en el blanco?</p>
+<p>Sea <span class="math inline">\(X\)</span> = número de tiradas hasta obtener la tercera acertada. <span class="math inline">\(r=3\)</span>, <span class="math inline">\(x=5\)</span>, <span class="math inline">\(p=0{,}17\)</span>.</p>
+<p><span class="math display">\[
+P(X=5) = \binom{4}{2}(0{,}17)^3(0{,}83)^{5-3} = 6 \times (0{,}17)^3 \times (0{,}83)^2 \approx 0{,}0203
+\]</span></p>
+<p><span class="math display">\[
+E(X) = \frac{r}{p} = \frac{3}{0{,}17} \approx 17{,}647 \qquad \text{Var}(X) = \frac{3 \times 0{,}83}{(0{,}17)^2} \approx 86{,}159
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X=5) \approx 0{,}0203\)</span>; <span class="math inline">\(E(X) \approx 17{,}647\)</span>; <span class="math inline">\(\text{Var}(X) \approx 86{,}159\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-de-poisson" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p>Cuando se requiere modelar fenómenos aleatorios donde la variable discreta representa conteos, se emplea la <strong>distribución de Poisson</strong>. Por ejemplo, fenómenos tales como: el número de accidentes por semana en una autopista, número de llamadas que se reciben por minuto en una central telefónica, cantidad de autos que pasan por un determinado peaje en una hora, el número de bacterias por unidad de volumen, el número de llegadas de clientes al mostrador de una caja de un banco en un minuto determinado, entre muchos otros fenómenos.</p>
+<p>Para cada uno de los anteriores, <span class="math inline">\(X\)</span> representa el número de eventos que ocurren en un periodo o espacio, durante el cual se puede esperar que ocurra un promedio de <span class="math inline">\(\lambda\)</span> de estos eventos. Los supuestos necesarios son: las cuentas o eventos ocurren al azar y, además, deben ser independientes.</p>
+</section>
+<section id="distribución-de-poisson-1" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p><strong>Definición.</strong> Una variable aleatoria <span class="math inline">\(X\)</span> se dice que tiene una <strong>distribución de Poisson</strong> de parámetro <span class="math inline">\(\lambda &gt; 0\)</span>, si posee una función de densidad de probabilidad:</p>
+<p><span class="math display">\[
+f_X(x) = \begin{cases} \dfrac{\lambda^x e^{-\lambda}}{x!} &amp; x \in \{0, 1, 2, 3, \ldots\} \\ 0 &amp; \text{en otro caso} \end{cases}
+\]</span></p>
+<p>En ocasiones, a esta distribución se le denota por <span class="math inline">\(\text{Poiss}(\lambda)\)</span>.</p>
+<p>Además, <span class="math inline">\(\lambda = mt &gt; 0\)</span>, donde <span class="math inline">\(m\)</span> es el número promedio de resultados por unidad de tiempo, distancia, área o volumen.</p>
+</section>
+<section id="distribución-de-poisson-2" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(X \sim \text{Poiss}(\lambda)\)</span>, entonces esta cumple con las siguientes propiedades:</p>
+<ol type="1">
+<li>Su función de distribución acumulada es:</li>
+</ol>
+<p><span class="math display">\[
+F_X(x) = \begin{cases} 0 &amp; \text{si } x &lt; 0 \\ \displaystyle\sum_{k=0}^{\lfloor x \rfloor} \dfrac{\lambda^k e^{-\lambda}}{k!} &amp; \text{si } x \geq 0 \end{cases}
+\]</span></p>
+<p>con <span class="math inline">\(\lfloor x \rfloor\)</span> la parte entera de <span class="math inline">\(x\)</span>.</p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(E(X) = \lambda\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = \lambda\)</span></p></li>
+</ol>
+</section>
+<section id="distribución-de-poisson-3" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p><strong>Ejemplo.</strong> Sea <span class="math inline">\(X\)</span> la variable aleatoria que representa el número de accidentes mortales ocurridos en una cierta intersección vial, con un promedio de un accidente por día.</p>
+<ol type="a">
+<li>¿Cuál es la probabilidad de que ocurran más de 10 accidentes en una semana?</li>
+<li>¿Cuál es la probabilidad de que ocurran exactamente 20 accidentes en un mes?</li>
+</ol>
+</section>
+<section id="distribución-de-poisson-solución" class="slide level2">
+<h2>Distribución de Poisson — Solución</h2>
+<p><strong>a)</strong> <span class="math inline">\(m = 1\)</span> accidente/día, <span class="math inline">\(t = 7\)</span> días, <span class="math inline">\(\lambda = 1 \cdot 7 = 7\)</span>.</p>
+<p><span class="math display">\[
+P(X = x) = \frac{7^x e^{-7}}{x!}, \quad x = 0, 1, 2, \ldots
+\]</span></p>
+<p><span class="math display">\[
+P(X &gt; 10) = 1 - P(X \leq 10) = 1 - \sum_{x=0}^{10}\frac{7^x e^{-7}}{x!} \approx 1 - 0{,}9015 = 0{,}0985
+\]</span></p>
+<p><strong>b)</strong> <span class="math inline">\(m = 1\)</span> accidente/día, <span class="math inline">\(t = 30\)</span> días, <span class="math inline">\(\lambda = 1 \cdot 30 = 30\)</span>.</p>
+<p><span class="math display">\[
+P(X = 20) = \frac{30^{20} e^{-30}}{20!} \approx 0{,}0134
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X &gt; 10) \approx 0{,}0985\)</span>; <span class="math inline">\(P(X = 20) \approx 0{,}0134\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-de-poisson-4" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p><strong>Ejemplo.</strong> Suponga que el número de perros callejeros <span class="math inline">\(X\)</span> rescatados por día tiene una distribución de Poisson con un promedio de 3,2 perros rescatados por día. ¿Cuál es la probabilidad de que se rescaten menos de 5 perros en 2 días?</p>
+<p><strong>Solución:</strong> <span class="math inline">\(m = 3{,}2\)</span> perros/día, <span class="math inline">\(t = 2\)</span> días, <span class="math inline">\(\lambda = 3{,}2 \cdot 2 = 6{,}4\)</span>.</p>
+<p><span class="math display">\[
+P(X &lt; 5) = \sum_{x=0}^{4}\frac{6{,}4^x e^{-6{,}4}}{x!} = P(X=0)+P(X=1)+P(X=2)+P(X=3)+P(X=4)
+\]</span></p>
+<p><span class="math display">\[
+\approx 0{,}00166 + 0{,}01062 + 0{,}03398 + 0{,}07247 + 0{,}11596 \approx 0{,}2347
+\]</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X &lt; 5) \approx 0{,}2347\)</span>.</p>
+</blockquote>
+</section>
+<section id="distribución-de-poisson-relación-con-binomial" class="slide level2">
+<h2>Distribución de Poisson — Relación con Binomial</h2>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span> con <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(p \to 0\)</span> y <span class="math inline">\(\lambda = np\)</span> constante, entonces:</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} \binom{n}{x} p^x(1-p)^{n-x} = \frac{\lambda^x e^{-\lambda}}{x!}
+\]</span></p>
+<p>Es decir, cuando <span class="math inline">\(n\)</span> es grande y <span class="math inline">\(p\)</span> es pequeño, la distribución binomial puede aproximarse mediante una distribución de Poisson con <span class="math inline">\(\lambda = np\)</span>.</p>
+</section>
+<section id="distribución-de-poisson-5" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p><strong>Ejemplo.</strong> Si se sabe que la probabilidad de que un individuo sufra una reacción adversa a un determinado fármaco es de 0,001, determine la probabilidad de que, de 2000 individuos:</p>
+<ol type="a">
+<li>Exactamente tres individuos sufran una reacción adversa.</li>
+<li>Más de dos individuos sufran una reacción adversa.</li>
+</ol>
+<p><strong>Solución:</strong> <span class="math inline">\(X \sim \text{Bin}(2000;\, 0{,}001)\)</span>. Como <span class="math inline">\(n\)</span> es grande y <span class="math inline">\(p\)</span> es pequeño, se utiliza la aproximación de Poisson con <span class="math inline">\(\lambda = np = 2{,}000 \cdot 0{,}001 = 2\)</span>.</p>
+<p><strong>a)</strong> <span class="math inline">\(P(X=3) = \dfrac{2^3 e^{-2}}{3!} \approx 0{,}180\)</span></p>
+<p><strong>b)</strong> <span class="math inline">\(P(X &gt; 2) = 1 - P(X \leq 2) = 1 - 5e^{-2} \approx 1 - 0{,}677 = 0{,}323\)</span></p>
+<blockquote>
+<p><strong>R/</strong> <span class="math inline">\(P(X=3) \approx 0{,}180\)</span>; <span class="math inline">\(P(X &gt; 2) \approx 0{,}323\)</span>.</p>
+</blockquote>
+</section>
+<section id="ejercicios" class="slide level2">
+<h2>Ejercicios</h2>
+<ol type="1">
+<li><p>Una empresa de autobuses posee una flotilla de 23 unidades. Se sabe que 5 autobuses están en malas condiciones mecánicas por lo que es imposible que pasen revisión técnica vehicular; los demás se encuentran en perfectas condiciones. En la mañana de hoy están en la estación las 23 unidades y se eligen, al azar, cuatro autobuses para ir a revisión técnica.</p>
+<ol type="a">
+<li>¿Cuál es la probabilidad de que todos pasen la revisión técnica vehicular (RTV)?</li>
+<li>Halle la varianza y el valor esperado.</li>
+</ol></li>
+<li><p>Para evitar que lo descubran en la aduana, un viajero ha colocado 6 tabletas de narcótico en una botella que contiene 9 píldoras de vitamina que son similares en apariencia. Si el oficial de la aduana selecciona 3 tabletas aleatoriamente para analizarlas:</p>
+<ol type="a">
+<li>¿Cuál es la probabilidad de que el viajero sea arrestado por posesión de narcóticos?</li>
+<li>¿Cuál es la probabilidad de que no sea arrestado por posesión de narcóticos?</li>
+</ol></li>
+</ol>
+</section>
+<section id="ejercicios-1" class="slide level2">
+<h2>Ejercicios</h2>
+<ol start="3" type="1">
+<li><p>Un cierto proceso de manufactura se sabe que en promedio 1 de cada 100 piezas sale defectuosa. ¿Cuál es la probabilidad de que la quinta pieza sea la primera pieza defectuosa?</p></li>
+<li><p>Si la probabilidad de que un dispositivo de rastreo aéreo muestre una desviación del objetivo excesiva es del 5%, se someten a prueba varios equipos. ¿Cuál es la probabilidad de que el sexto de esos dispositivos de medición sometidos a prueba sea el primero en mostrar una desviación excesiva?</p></li>
+<li><p>Suponga que la probabilidad de mal funcionamiento de un motor durante cualquier periodo de una hora es 0,02. Encuentre la probabilidad de que un motor determinado funcione bien durante dos horas consecutivas.</p>
+<p><em>(Sugerencia: denote con <span class="math inline">\(X\)</span> el número de intervalos de tiempo de una hora hasta la primera falla del motor.)</em></p></li>
+</ol>
+</section>
+<section id="ejercicios-2" class="slide level2">
+<h2>Ejercicios</h2>
+<ol start="6" type="1">
+<li><p>Un estudio geológico indica que un pozo petrolero de exploración perforado en una región particular debe producir petróleo con probabilidad de 0,2. Encuentre la probabilidad de que el tercer descubrimiento de petróleo llegue en el quinto pozo perforado.</p></li>
+<li><p>El número promedio de reclamos presentados a una compañía de seguros por daños sufridos en vehículos es de 2 por hora. Calcule la probabilidad de que se presenten:</p>
+<ol type="a">
+<li>Exactamente 10 reclamos en 7,5 horas.</li>
+<li>2 o 6 reclamos en 4 horas.</li>
+<li>Al menos 4 reclamos en 3 horas.</li>
+<li>A lo sumo 5 reclamos en una hora.</li>
+<li>Entre 7 y menos de 14 reclamos en 6 horas.</li>
+</ol></li>
+</ol>
+</section>
+<section id="ejercicios-3" class="slide level2">
+<h2>Ejercicios</h2>
+<ol start="8" type="1">
+<li><p>El número promedio de accidentes de tránsito que ocurren en un tramo de la autopista General Cañas es de dos por semana. Suponiendo que los accidentes siguen una distribución de Poisson, obtenga la probabilidad de que en este tramo de la autopista:</p>
+<ol type="a">
+<li>Ningún accidente ocurra la próxima semana.</li>
+<li>A lo más ocurran tres accidentes en las próximas dos semanas.</li>
+</ol></li>
+<li><p>Una compañía de seguros garantiza pólizas de seguros individuales contra retrasos aéreos de más de doce horas. Una encuesta ha permitido estimar a lo largo de un año que cada persona tiene una probabilidad de 1 en mil de ser víctima de un retraso aéreo cubierto por este tipo de póliza, y que la compañía aseguradora podrá vender una media de cuatro mil pólizas al año. Se pide hallar las siguientes probabilidades:</p>
+<ol type="a">
+<li>Que el número de retrasos cubiertos por la póliza no pase de cuatro por año.</li>
+<li>Número de retrasos esperados por año.</li>
+<li>Que el número de retrasos sea superior a dos por año.</li>
+<li>Que ocurran doce retrasos por año.</li>
+</ol></li>
+</ol>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Clase_7_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Clase_7_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Clase_7_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Clase_7_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide","numbers":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
