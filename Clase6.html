@@ -394,12 +394,16 @@
 </section>
 <section id="función-de-distribución-acumulada-6" class="slide level2">
 <h2>Función de distribución acumulada</h2>
+<p><img src="Clase6_files\figure-revealjs\unnamed-chunk-6-2.png" alt="Description" width="900" height="550"></p>
+</section>
+<section id="función-de-distribución-acumulada-7" class="slide level2">
+<h2>Función de distribución acumulada</h2>
 <div style="background: #f5f5f5; padding: 14px; border-radius: 4px;">
 <p><strong>Ejemplo.</strong></p>
 <p>Se selecciona una muestra aleatoria de 3 personas del padrón de votantes de la última elección. Sea <span class="math inline">\(X\)</span> el número de personas que votaron por el partido Acción Ciudadana (PAC). Suponga que la probabilidad de que una persona del padrón vote por el PAC es de <span class="math inline">\(0.40\)</span>; además, suponga que la selección de los tres votantes son pruebas independientes.</p>
 </div>
 </section>
-<section id="función-de-distribución-acumulada-7" class="slide level2">
+<section id="función-de-distribución-acumulada-8" class="slide level2">
 <h2>Función de distribución acumulada</h2>
 <div style="background: #f5f5f5; padding: 14px; border-radius: 4px;">
 <p><strong>Solución:</strong> Aquí <span class="math inline">\(X: \Omega \to \{0,1,2,3\}\)</span>, vota PAC <span class="math inline">\((p = 0.4)\)</span>, no vota PAC <span class="math inline">\((q = 0.6)\)</span>. Donde</p>
@@ -408,7 +412,7 @@
 <p><span class="math display">\[f_X(x) = \begin{cases} 0.216 &amp; x = 0 \\ 0.432 &amp; x = 1 \\ 0.288 &amp; x = 2 \\ 0.064 &amp; x = 3 \end{cases} \qquad F_X(x) = \begin{cases} 0 &amp; x &lt; 0 \\ 0.216 &amp; 0 \leq x &lt; 1 \\ 0.648 &amp; 1 \leq x &lt; 2 \\ 0.936 &amp; 2 \leq x &lt; 3 \\ 1 &amp; x \geq 3 \end{cases}\]</span></p>
 </div>
 </section>
-<section id="función-de-distribución-acumulada-8" class="slide level2">
+<section id="función-de-distribución-acumulada-9" class="slide level2">
 <h2>Función de distribución acumulada</h2>
 <div style="background: #f5f5f5; padding: 14px; border-radius: 4px;">
 <p><strong>Ejemplo.</strong></p>
@@ -416,7 +420,7 @@
 <p>Establezca una distribución de probabilidad y distribución acumulada para la variable <span class="math inline">\(X\)</span>.</p>
 </div>
 </section>
-<section id="función-de-distribución-acumulada-9" class="slide level2">
+<section id="función-de-distribución-acumulada-10" class="slide level2">
 <h2>Función de distribución acumulada</h2>
 <div style="background: #f5f5f5; padding: 14px; border-radius: 4px;">
 <p><strong>Solución:</strong> Aquí <span class="math inline">\(X: \Omega \to \{2, 3, 4\}\)</span>,</p>
@@ -425,7 +429,7 @@
 <p><span class="math display">\[f_X(x) = \begin{cases} 1/6 &amp; x = 2 \\ 1/3 &amp; x = 3 \\ 1/2 &amp; x = 4 \end{cases} \qquad F_X(x) = \begin{cases} 0 &amp; x &lt; 2 \\ 1/6 &amp; 2 \leq x &lt; 3 \\ 1/2 &amp; 3 \leq x &lt; 4 \\ 1 &amp; x \geq 4 \end{cases}\]</span></p>
 </div>
 </section>
-<section id="función-de-distribución-acumulada-10" class="slide level2">
+<section id="función-de-distribución-acumulada-11" class="slide level2">
 <h2>Función de distribución acumulada</h2>
 <div style="border: 1px solid #000; padding: 12px;">
 <p><strong>Teorema.</strong> (Propiedades de la función de distribución acumulada)</p>
@@ -439,7 +443,7 @@
 </ol>
 </div>
 </section>
-<section id="función-de-distribución-acumulada-11" class="slide level2">
+<section id="función-de-distribución-acumulada-12" class="slide level2">
 <h2>Función de distribución acumulada</h2>
 <div style="border: 1px solid #000; padding: 12px; margin-bottom: 12px;">
 <p><strong>Definición.</strong> (Función de densidad discreta) <em>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta que toma los valores <span class="math inline">\(x_1, x_2, x_3, \ldots\)</span> tales que <span class="math inline">\(x_i \neq x_j\)</span> para todo <span class="math inline">\(i \neq j\)</span>. A la función <span class="math inline">\(f_X\)</span> sobre <span class="math inline">\(\mathbb{R}\)</span> definida por:</em></p>
@@ -752,6 +756,16 @@
 <li>Grafique <span class="math inline">\(f(y)\)</span> y <span class="math inline">\(F(y)\)</span>.</li>
 <li>Use <span class="math inline">\(F(y)\)</span> para hallar <span class="math inline">\(P(1 \leq Y \leq 2)\)</span>.</li>
 <li>Use <span class="math inline">\(f(y)\)</span> y geometría para hallar <span class="math inline">\(P(1 \leq Y \leq 2)\)</span>.</li>
+</ol>
+</section>
+<section id="ejercicios-4" class="slide level2 scrollable">
+<h2>Ejercicios</h2>
+<p>Sea <span class="math inline">\(X\)</span> una variable aleatoria con función de densidad dada por:</p>
+<p><span class="math display">\[f_X(x) = \begin{cases} \dfrac{x}{4}, &amp; 0 \leq x &lt; 2 \\[6pt] 1-\dfrac{x}{4}, &amp; 2 \leq x &lt; 4 \\[6pt] 0, &amp; \text{en otro caso} \end{cases}\]</span></p>
+<ol type="1">
+<li>Determine la función de distribución acumulada (CDF).</li>
+<li>Determine <span class="math inline">\(P\left(  X \le \dfrac{5}{2} \right. \left| X\ge\dfrac{3}{2} \right)\)</span>.</li>
+<li>Determine el rango intercuartil, es decir, <span class="math inline">\(\phi_{75}-\phi_{25}\)</span></li>
 </ol>
 
 </section>
