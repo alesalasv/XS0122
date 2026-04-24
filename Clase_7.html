@@ -535,6 +535,10 @@ P(X=4) = \frac{\dbinom{8}{4}\dbinom{53-8}{10-4}}{\dbinom{53}{10}} = \frac{\dbino
 </section>
 <section id="distribución-hipergeométrica-7" class="slide level2">
 <h2>Distribución hipergeométrica</h2>
+<p><strong>Demostración</strong> <img data-src="Clase_7_files\figure-revealjs\hiper-bin.png"></p>
+</section>
+<section id="distribución-hipergeométrica-8" class="slide level2">
+<h2>Distribución hipergeométrica</h2>
 <p><strong>Ejemplo.</strong> En un lote de <span class="math inline">\(N=100\)</span> componentes electrónicos, hay 40 defectuosos. Sea <span class="math inline">\(X\)</span> el número de componentes defectuosos en una muestra aleatoria de tamaño 20. Encuentre <span class="math inline">\(P(X=10)\)</span> mediante la distribución hipergeométrica, y compárela con el resultado obtenido al emplear la distribución binomial.</p>
 <p><strong>Solución:</strong> Con la distribución hipergeométrica (<span class="math inline">\(K=40\)</span>, <span class="math inline">\(N=100\)</span>, <span class="math inline">\(n=20\)</span>): <span class="math inline">\(P(X=10) = \frac{\dbinom{40}{10}\dbinom{60}{10}}{\dbinom{100}{20}} \approx 0{,}1192\)</span></p>
 <p>Con la distribución binomial (<span class="math inline">\(p = K/N = 0{,}4\)</span>): <span class="math inline">\(P(X=10) = \dbinom{20}{10}(0{,}4)^{10}(0{,}6)^{10} \approx 0{,}117\)</span></p>
@@ -682,6 +686,10 @@ P(X &lt; 5) = \sum_{x=0}^{4}\frac{6{,}4^x e^{-6{,}4}}{x!} = P(X=0)+P(X=1)+P(X=2)
 <p>Es decir, cuando <span class="math inline">\(n\)</span> es grande y <span class="math inline">\(p\)</span> es pequeño, la distribución binomial puede aproximarse mediante una distribución de Poisson con <span class="math inline">\(\lambda = np\)</span>.</p>
 </section>
 <section id="distribución-de-poisson-5" class="slide level2">
+<h2>Distribución de Poisson</h2>
+<p><strong>Demostración</strong> <img data-src="Clase_7_files\figure-revealjs\bin-poiss.png"></p>
+</section>
+<section id="distribución-de-poisson-6" class="slide level2">
 <h2>Distribución de Poisson</h2>
 <p><strong>Ejemplo.</strong> Si se sabe que la probabilidad de que un individuo sufra una reacción adversa a un determinado fármaco es de 0,001, determine la probabilidad de que, de 2000 individuos:</p>
 <ol type="a">

@@ -520,6 +520,12 @@ Es decir, cuando el tamaño de la población es suficientemente grande respecto 
 
 ## Distribución hipergeométrica
 
+**Demostración**
+![](Clase_7_files\figure-revealjs\hiper-bin.png)
+
+
+## Distribución hipergeométrica
+
 **Ejemplo.** En un lote de $N=100$ componentes electrónicos, hay 40 defectuosos. Sea $X$ el número de componentes defectuosos en una muestra aleatoria de tamaño 20. Encuentre $P(X=10)$ mediante la distribución hipergeométrica, y compárela con el resultado obtenido al emplear la distribución binomial.
 
 **Solución:** Con la distribución hipergeométrica ($K=40$, $N=100$, $n=20$): $P(X=10) = \frac{\dbinom{40}{10}\dbinom{60}{10}}{\dbinom{100}{20}} \approx 0{,}1192$
@@ -695,6 +701,11 @@ $$
 $$
 
 Es decir, cuando $n$ es grande y $p$ es pequeño, la distribución binomial puede aproximarse mediante una distribución de Poisson con $\lambda = np$.
+
+## Distribución de Poisson
+
+**Demostración**
+![](Clase_7_files\figure-revealjs\bin-poiss.png)
 
 ## Distribución de Poisson
 
