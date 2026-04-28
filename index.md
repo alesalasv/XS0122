@@ -27,5 +27,5 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 | Probabilidad Condicional                                                                 | <a href="Clase5_condicional_total_bayes.html" target="_blank">Clase 5</a> |
 | Variable Aleatoria                                                                 | <a href="Clase6.html" target="_blank">Clase 6</a> |
 | Distribuciones de Probabilidad Discretas                                                                 | <a href="Clase_7.html" target="_blank">Clase 7</a> |
-
+| Integrales impropias                                                                 | <a href="clase8_integralesImpropias.html" target="_blank">Clase 8</a> |
 
