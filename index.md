@@ -29,4 +29,6 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 | Distribuciones de Probabilidad Discretas                                                                 | <a href="Clase_7.html" target="_blank">Clase 7</a> |
 | Integrales impropias                                                                 | <a href="clase8_integralesImpropias.html" target="_blank">Clase 8</a> |
 | Uniforme y normal                                                                 | <a href="clase9_uniforme_normal.html" target="_blank">Clase 9</a> |
+| Distribución Gamma                                                                 | <a href="clase_10.html" target="_blank">Clase 10</a> |
+| istribución Exponencial, Chi Cuadrada y Beta                                                                 | <a href="clase_11.html" target="_blank">Clase 11</a> |
 
