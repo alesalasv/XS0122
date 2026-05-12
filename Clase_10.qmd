@@ -1,0 +1,146 @@
+---
+title: "Distribución Gamma"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Distribución Gamma
+
+Algunas variables aleatorias son siempre no negativas y, por varias razones, dan distribuciones de datos que están sesgadas (no simétricas) a la derecha.
+
+Esto es, casi toda el área bajo la función de densidad está ubicada cerca del origen y la función de densidad cae gradualmente conforme $y$ aumenta.
+
+Imagine una variable aleatoria distribuida como Poisson con parámetro $\lambda$; por ejemplo, el número de correos electrónicos que llegan a su bandeja de entrada en una semana, o el número de carros que entran al parqueo de Ciencias Económicas en un día. Ahora, hay una manera alternativa de definir el proceso: pensar en el tiempo que pasa entre la llegada de un correo (o un carro) y otro. Este tiempo se puede definir como una variable aleatoria i.i.d. Exponencial con parámetro $\lambda$.
+
+## Distribución Gamma
+
+Entonces, la suma de $n$ de estos tiempos nos daría el tiempo para la $n$-ésima llegada (el tiempo para que el $n$-ésimo correo llegue o para que el $n$-ésimo carro llegue), y como veremos más adelante, la suma de v.a. que son iid Exponenciales es una v.a. distribuida como $\text{Gamma}(n, \lambda)$.
+
+Estos intervalos de tiempo entre eventos (correos, carros, etc.) poseen una distribución de frecuencia sesgada, al igual que los intervalos de llegada en una fila de espera en las cajas de un supermercado (esto es, la fila de espera para llegar a la caja a pagar). La población asociada con estas variables aleatorias posee con frecuencia funciones de densidad que son modeladas de manera adecuada por una función de densidad gamma.
+
+## Distribución Gamma
+
+::: {.callout-note appearance="simple"}
+### Definición
+
+Se dice que una variable aleatoria $X$ tiene distribución de probabilidad **Gamma** con parámetros $\alpha > 0$ y $\beta > 0$ si y solo si la función de densidad de $X$ es
+
+$$f_X(x) = \begin{cases} \dfrac{x^{\alpha-1}\,e^{-x/\beta}}{\beta^{\alpha}\,\Gamma(\alpha)} & \text{si } 0 \leq x < \infty \\[6pt] 0 & \text{en cualquier otro punto,} \end{cases}$$
+
+donde $\displaystyle\Gamma(\alpha) = \int_0^{\infty} x^{\alpha-1}\,e^{-x}\,dx$.
+:::
+
+## Distribución Gamma
+
+La **Función Gamma** NO es lo mismo que la **Función de Densidad Gamma** (sino que la segunda incluye a la primera):
+
+- En inglés: <http://mathworld.wolfram.com/GammaFunction.html>
+- En español: <https://es.wikipedia.org/wiki/Funci%C3%B3n_gamma>
+
+Algunas igualdades útiles de la Función Gamma:
+
+- $\Gamma(z) = (z-1)!\,$ para $z \in \mathbb{Z}^+$
+- $\Gamma(z+1) = z\,\Gamma(z)$
+- $\Gamma(1) = 1$
+- $\Gamma(1-z)\,\Gamma(z) = \dfrac{\pi}{\sin(\pi z)},$ donde $z \notin \mathbb{Z}$
+- $\Gamma\!\left(\dfrac{1}{2}\right) = \sqrt{\pi}$
+
+## Distribución Gamma
+
+```{r}
+#| echo: true
+#| fig-align: center
+#| out-width: "80%"
+vargamma <- rgamma(10000000, 1, scale = 1)
+hist(vargamma, freq = FALSE,
+     main = "Histograma de una v.a. Gamma con alpha=1, beta=1",
+     ylim = c(0, 1), xlab = "vargamma")
+lines(seq(0, 10, 0.01), dgamma(seq(0, 10, 0.01), 1, scale = 1), col = 3)
+```
+
+## Distribución Gamma
+
+```{r}
+#| echo: true
+#| fig-align: center
+#| out-width: "80%"
+vargamma <- rgamma(10000000, 2, scale = 1)
+hist(vargamma, freq = FALSE,
+     main = "Histograma de una v.a. Gamma con alpha=2, beta=1",
+     ylim = c(0, 1), xlab = "vargamma")
+lines(seq(0, 10, 0.01), dgamma(seq(0, 10, 0.01), 2, scale = 1), col = 3)
+```
+
+## Distribución Gamma
+
+```{r}
+#| echo: true
+#| fig-align: center
+#| out-width: "80%"
+vargamma <- rgamma(10000000, 4, scale = 1)
+hist(vargamma, freq = FALSE,
+     main = "Histograma de una v.a. Gamma con alpha=4, beta=1",
+     ylim = c(0, 1), xlab = "vargamma")
+lines(seq(0, 10, 0.01), dgamma(seq(0, 10, 0.01), 4, scale = 1), col = 3)
+```
+
+## Distribución Gamma
+
+**Caso especial:** cuando $\alpha$ es un entero positivo (y $\alpha \neq 1$, caso en el que se reduce a una distribución Exponencial), es posible expresar la función de distribución acumulada de una variable aleatoria Gamma como una suma de probabilidades Poisson. Si $\alpha$ no es un entero y $0 < a < b < \infty$, entonces la integral
+
+$$\int_a^b \frac{x^{\alpha-1}\,e^{-x/\beta}}{\beta^{\alpha}\,\Gamma(\alpha)}\,dx$$
+
+no tiene expresión cerrada, por lo que se necesita software estadístico para evaluar $F_X(x)$.
+
+La distribución tiene dos parámetros: $\alpha$ (*shape* = forma) y $\beta$ (*scale* = escala).
+
+## Distribución Gamma
+
+::: {.callout-note appearance="simple"}
+### Teorema
+
+Si $X$ es una variable aleatoria distribuida como Gamma con parámetros $\alpha$ y $\beta$, entonces:
+
+$$E(X) = \alpha\beta \qquad \text{y} \qquad \mathrm{Var}(X) = \alpha\beta^2.$$
+:::
+
+**Prueba:**
+
+Sabemos que:
+
+$$E(X) = \int_{-\infty}^{\infty} x\,f(x)\,dx = \int_0^{\infty} x \cdot \frac{x^{\alpha-1}\,e^{-x/\beta}}{\beta^{\alpha}\,\Gamma(\alpha)}\,dx$$
+
+$$\int_0^{\infty} \frac{x^{\alpha-1}\,e^{-x/\beta}}{\beta^{\alpha}\,\Gamma(\alpha)}\,dx = 1 \implies \int_0^{\infty} x^{\alpha-1}\,e^{-x/\beta}\,dx = \beta^{\alpha}\,\Gamma(\alpha)$$
+
+## Distribución Gamma
+
+De la misma manera:
+
+$$E(X) = \frac{1}{\beta^{\alpha}\,\Gamma(\alpha)}\int_0^{\infty} x^{\alpha}\,e^{-x/\beta}\,dx = \frac{\beta^{\alpha+1}\,\Gamma(\alpha+1)}{\beta^{\alpha}\,\Gamma(\alpha)} = \frac{\beta\,\alpha\,\Gamma(\alpha)}{\Gamma(\alpha)} = \alpha\beta$$
+
+Para obtener $\mathrm{Var}(X)$, calculamos primero $E(X^2)$:
+
+$$E(X^2) = \int_{-\infty}^{\infty} x^2\,f(x)\,dx = \frac{1}{\beta^{\alpha}\,\Gamma(\alpha)}\int_0^{\infty} x^{\alpha+1}\,e^{-x/\beta}\,dx$$
+
+$$= \frac{\beta^{\alpha+2}\,\Gamma(\alpha+2)}{\beta^{\alpha}\,\Gamma(\alpha)} = \frac{\beta^2\,(\alpha+1)\,\alpha\,\Gamma(\alpha)}{\Gamma(\alpha)} = \alpha(\alpha+1)\beta^2$$
+
+Por lo tanto:
+
+$$\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = \alpha(\alpha+1)\beta^2 - \alpha^2\beta^2 = \alpha\beta^2 \qquad \blacksquare$$
+
+## Ejercicios
+
+**Gamma:** ejercicios 4.81 a 4.112.
