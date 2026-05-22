@@ -345,7 +345,30 @@ $$\therefore\quad P(X < 0.30) \approx 0.5797$$
 
 ## Ejercicios
 
+1. El tiempo de vida, en años, de cierto componente electrónico sigue una distribución exponencial con media 5 años.
+
+    a. Determine $f_X(x)$, $F_X(x)$
+    
+    b. Determine $E(x)$, $Var(x)$ 
+    
+    c. Determine la probabilidad de que el tiempo promedio de vida de un componente electrónico sea de almenos 8 años.
+
+2. El tiempo de espera, en minutos, hasta la llegada de un cliente sigue una distribución exponencial con una frecuencia de llegada de 5 clientes por cada 4 minutos.
+
+    a. ¿Cuál es el tiempo de espera promedio hasta la llegada de un cliente? 
+    b. Determine $P(X\leq 4)$.
+
+3. Los errores en la medición del tiempo $(\mu s)$ de llegada de un frente de onda, desde una fuente acústica, se modela mediante una distribución beta de parámetros $\alpha = 2$ y $\beta = 6$.
+
+    a. ¿Cuál es la probabilidad de que el error de medición en un ejemplo seleccionado al azar sea a lo sumo de $0{,}5\,\mu s$?
+
+    b. ¿Cuántos errores de medición, en promedio, se reciben desde la fuente acústica?
+
+
+## Ejercicios
+
 1. Demuestre que $\mathrm{Var}(X) = \dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$ para una v.a. $X \sim \mathrm{Beta}(\alpha, \beta)$.
+
 
 **Ejercicios del libro de texto:**
 
