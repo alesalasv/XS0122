@@ -1,0 +1,313 @@
+---
+title: "Aproximaciones"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Aproximación de la binomial por medio de la Poisson
+
+**Teorema** *Si $X$ es una variable aleatoria discreta tal que $X \sim \text{Bin}(n,p)$ para la cual $n \to \infty$, $p \to 0$ y $\lambda = np$ constante, entonces:*
+
+$$\lim_{n \to \infty} \binom{n}{x} p^x (1-p)^{n-x} = \frac{\lambda^x e^{-\lambda}}{x!}$$
+
+> La distribución $\text{Bin}(n, p)$ con $n$ grande y $p$ pequeño se aproxima a una
+> $\text{Poisson}(\lambda = np)$.
+
+## Demostración {.smaller}
+
+$$\lim_{n \to \infty} \binom{n}{x} p^x (1-p)^{n-x}
+= \lim_{n \to \infty} \frac{n!}{x!(n-x)!}
+  \cdot\left(\frac{\lambda}{n}\right)^{\!x}
+  \left(1-\frac{\lambda}{n}\right)^{\!n-x}$$
+
+$$= \frac{\lambda^x}{x!} \lim_{n \to \infty} \frac{n!}{(n-x)!\,n^x}
+  \cdot\left(1-\frac{\lambda}{n}\right)^{\!n}
+  \left(1-\frac{\lambda}{n}\right)^{\!-x}$$
+
+$$= \frac{\lambda^x e^{-\lambda}}{x!}
+  \lim_{n \to \infty}
+  \frac{n(n-1)(n-2)\cdots(n-x+1)}{n^x}
+  \cdot\left(1-\frac{\lambda}{n}\right)^{\!-x}$$
+
+$$= \frac{\lambda^x e^{-\lambda}}{x!}
+  \lim_{n \to \infty}
+  1\cdot\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)
+  \cdots\left(1-\frac{x-1}{n}\right)
+  \cdot\left(1-\frac{\lambda}{n}\right)^{\!-x}$$
+
+$$= \frac{\lambda^x e^{-\lambda}}{x!}\cdot 1\cdot 1\cdots 1
+= \frac{\lambda^x e^{-\lambda}}{x!} \qquad \blacksquare$$
+
+## Ejemplo
+
+Si se sabe que la probabilidad de que un individuo sufra una reacción adversa a un
+determinado fármaco es de $0{,}001$, determine la probabilidad de que, de 2000 individuos:
+
+a) Exactamente tres individuos sufran una reacción adversa.
+b) Más de dos individuos sufran una reacción adversa.
+
+## Solución {.smaller}
+
+**a)** Sea $X$ el número de individuos que sufren una reacción adversa. Entonces
+$X \sim \text{Bin}(2000;\,0{,}001)$. Como $n$ es grande y $p$ es pequeño, se puede
+utilizar la aproximación de Poisson con $\lambda = np = 2$, por lo que la probabilidad
+de que exactamente tres individuos sufran una reacción adversa es:
+
+$$P(X = 3) = \frac{2^3 \cdot e^{-2}}{3!} \approx 0{,}18$$
+
+**R/** Existe aproximadamente un 18% de probabilidad de que exactamente tres individuos de los 2000 sufran una reacción adversa.
+
+**b)** La probabilidad de que más de dos individuos sufran una reacción adversa:
+
+$$P(Y > 2) = 1 - P(Y \le 2) = 1 - P(Y=0) - P(Y=1) - P(Y=2)
+= 1 - 5e^{-2} \approx 0{,}323$$
+
+**R/** Existe aproximadamente un 32,3% de probabilidades de que más de dos personas
+presenten una reacción adversa.
+
+## Ejercicio
+
+Se sabe que un 4% de los libros empastados en una librería tienen encuadernaciones
+defectuosas. Si se cuenta con una muestra de 100 libros, calcule la probabilidad
+de que:
+
+1. Exactamente 3 libros estén defectuosos.
+2. A lo sumo 10 libros estén defectuosos.
+3. Más de 2 pero menos de 8 libros estén defectuosos.
+4. 3 ó 5 libros estén defectuosos.
+
+---
+
+**Solución:**
+
+$\lambda = np = 100 \times 0{,}04 = 4$
+
+1. $P(X=3) = \dfrac{4^3 e^{-4}}{3!} \approx 0{,}1954$
+
+2. $P(X \le 10) = \displaystyle\sum_{x=0}^{10} \frac{4^x e^{-4}}{x!} \approx 0{,}9972$
+
+3. $P(3 \le X \le 7) = P(X=3)+\cdots+P(X=7) \approx 0{,}7108$ 
+
+4. $P(X=3) + P(X=5) \approx 0{,}1954 + 0{,}1563 \approx 0{,}3517$
+
+## Ejercicio
+
+Una compañía de seguros de vida asegura a 5000 hombres trabajadores de 42 años de edad en una mina de carbón. Si los estudios actuariales muestran que la probabilidad de que un hombre de 42 años muera debido al trabajo en las minas en un cierto año es de 0,001, calcule la probabilidad de que la compañía pague una póliza de seguro al menos a 4 viudas de hombres fallecidos en las minas.
+
+---
+
+**Solución:** 
+
+$X \sim \text{Bin}(5000;\,0{,}001)$, se aproxima con $Y \sim \text{Poisson}(\lambda = 5000 \times 0{,}001 = 5)$.
+
+$$P(X \ge 4) = 1 - P(X \le 3) = 1 - e^{-5}\!\left(1 + 5 + \frac{25}{2} + \frac{125}{6}\right) = 1 - \frac{118}{3}\,e^{-5} \approx 0{,}7350$$
+
+**R/** La probabilidad de que la compañía pague al menos 4 pólizas es aproximadamente
+$\mathbf{0{,}7350}$.
+
+## Aproximación de la Hipergeométrica por medio de la Binomial
+
+**Teorema**.
+
+*Si $X$ es una variable aleatoria discreta tal que $X \sim HG(N,K,n)$ para la cual
+$N \to \infty$ y $p \to \dfrac{K}{N}$ permanece constante, entonces:*
+
+$$\lim_{N \to \infty}
+  \dfrac{\dbinom{K}{x}\dbinom{N-K}{n-x}}{\dbinom{N}{n}}
+  = \binom{n}{x} p^x (1-p)^{n-x}$$
+
+> Cuando $N$ es grande, muestrear con o sin reemplazo produce resultados similares,
+> y la distribución Hipergeométrica se aproxima a la Binomial con $p = K/N$.
+
+## Demostración {.smaller}
+
+$$\lim_{N \to \infty}\frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}= \lim_{N \to \infty}\frac{K!}{x!(K-x)!}\cdot\frac{(N-K)!}{(n-x)!(N-K-n+x)!}\cdot\frac{n!(N-n)!}{N!}$$
+
+$$= \binom{n}{x} \lim_{N \to \infty}
+  \frac{K(K-1)\cdots(K-x+1)\cdot(N-K)(N-K-1)\cdots(N-K-n+x+1)}
+       {N(N-1)(N-2)\cdots(N-x+1)\cdot(N-x)(N-x-1)\cdots(N-x-n+x+1)}$$
+
+$$= \binom{n}{x} \lim_{N \to \infty}
+  \left(\frac{K}{N}\cdot\frac{K-1}{N-1}\cdots\frac{K-(x-1)}{N-(x-1)}\right)
+  \left(\frac{N-K}{N-x}\cdot\frac{N-K-1}{N-x-1}\cdots\frac{N-K-(n-x-1)}{N-x-(n-x-1)}\right)$$
+
+$$\approx \binom{n}{x} p^x \cdot (1-p)^{n-x} \qquad \blacksquare$$
+
+## Ejemplo
+
+En un lote de $N = 100$ componentes electrónicos, hay 40 defectuosos. Sea $X$ el número de componentes defectuosos en una muestra aleatoria de tamaño 20. Encuentre $P(X = 10)$ mediante la distribución de probabilidad hipergeométrica, y compárela con el resultado obtenido al emplear la distribución de probabilidad binomial.
+
+## Ejemplo — Solución
+
+Con la distribución de probabilidad **hipergeométrica**:
+
+$$P(X = 10) = \frac{\dbinom{40}{10}\dbinom{60}{10}}{\dbinom{100}{20}} \approx 0{,}1192$$
+
+Con la distribución de probabilidad **binomial**, con $p = \dfrac{K}{N} = \dfrac{40}{100} = 0{,}4$:
+
+$$P(X = 10) = \binom{20}{10}(0{,}4)^{10}(0{,}6)^{10}
+= \frac{20!}{10!\,10!}(0{,}4)^{10}(0{,}6)^{10} \approx 0{,}117$$
+
+Se concluye que $N = 100$ es suficientemente grande para obtener una buena
+aproximación de $P(X = 10)$ mediante la distribución binomial.
+
+## Ejercicio
+
+En la biblioteca de un profesor hay 150 libros: 90 de estadística y 60 de matemáticas. Se escogen 5 libros al azar para regalárselos a un amigo. ¿Cuál es la probabilidad de que el amigo reciba exactamente dos libros de estadística?
+
+---
+
+**Solución:** 
+
+$X \sim HG(N=150,\; K=90,\; n=5)$
+
+$$P(X=2) = \frac{\dbinom{90}{2}\dbinom{60}{3}}{\dbinom{150}{5}}
+= \frac{4005 \times 34220}{591\,600\,030} \approx 0{,}2317$$
+
+Aproximación binomial con $p = \dfrac{90}{150} = 0{,}6$:
+
+$$P(X=2) = \binom{5}{2}(0{,}6)^2(0{,}4)^3 = 10 \times 0{,}36 \times 0{,}064 = 0{,}2304$$
+
+**R/** La probabilidad de que el amigo reciba exactamente dos libros de estadística es aproximadamente $\mathbf{0{,}2317}$ (hipergeométrica) o $\mathbf{0{,}2304}$ (aproximación binomial).
+
+
+## Teorema de Tchebysheff
+
+**Intuición:** el conocimiento de las medias y las desviaciones estándar asociadas a una distribución nos permiten deducir límites significativos para las probabilidades de eventos, **aunque** no conozcamos las distribuciones exactas de interés.
+
+**Usos:** Para obtener límites para probabilidades que necesitan de integrales muy tediosas para su cálculo. También, permite obtener medias y varianzas de variables aleatorias sin especificar la distribución de la variable.
+
+
+**Teorema**. 
+
+Sea $X$ una variable aleatoria con media finita $\mu$ y varianza $\sigma^2$. Entonces, para cualquier $k > 0$:
+
+$$P\!\left(|X - \mu| < k\sigma\right) \ge 1 - \frac{1}{k^2}$$
+
+$$P\!\left(|X - \mu| \ge k\sigma\right) \le \frac{1}{k^2}$$
+
+---
+
+## Ejemplo
+
+Sea $X$ el puntaje en una prueba de estadística; además, se sabe que
+$\mu_X = 60$ y $\sigma_X = 10$. Calcule la probabilidad de que las notas en una muestra de exámenes estén entre 40 y 80.
+
+**Solución:**
+
+$$P(40 < X < 80) = P(40 - 60 < X - 60 < 80 - 60)$$
+$$= P(-20 < X - 60 < 20) = P(|X - 60| < 20)$$
+$$= P\!\left(|X - 60| < 2 \cdot 10\right) \ge 1 - \frac{1}{2^2} = 0{,}75$$
+
+**R/** La probabilidad de que las notas estén entre 40 y 80 es de
+**al menos el 75%**.
+
+## Ejercicio
+
+Sea $X$ una variable aleatoria discreta con $\mu_X = 100$ y $\sigma_X = 8$.
+Calcule los valores de $a$ y $b$ tal que $P(a < X < b) \ge 0{,}95$.
+
+**Solución:**
+
+$$P(a < X < b) \ge 1 - \frac{1}{k^2} = 0{,}95 \implies \frac{1}{k^2} = 0{,}05 \implies k = \sqrt{20} \approx 4{,}47$$
+
+$$a = \mu_X - k\sigma_X = 100 - 4{,}47 \times 8 = 64{,}24$$
+
+$$b = \mu_X + k\sigma_X = 100 + 4{,}47 \times 8 = 135{,}76$$
+
+**R/**
+
+$$P(64{,}24 < X < 135{,}76) \ge 0{,}95$$
+
+## Ejercicio
+
+Una empresa fabrica una bombilla de 100 watts; de acuerdo con las especificaciones de la caja, esta tiene una vida media de 900 horas y una desviación estándar de 50 horas. A lo sumo, ¿qué porcentaje de las bombillas no dura al menos 700 horas?
+Suponga una distribución simétrica alrededor de la media.
+
+---
+
+**Solución:** $\mu = 900$, $\sigma = 50$.
+
+"No durar al menos 700 horas" equivale a $X < 700$. La distancia al valor central es:
+
+$$\mu - 700 = 900 - 700 = 200 = 4\sigma \implies k = 4$$
+
+Por Tchebysheff: $P(|X - 900| \ge 4 \cdot 50) \le \dfrac{1}{4^2} = \dfrac{1}{16}$
+
+Por simetría de la distribución:
+
+$$P(X < 700) \le \frac{1}{2} \cdot \frac{1}{16} = \frac{1}{32} \approx 3{,}125\%$$
+
+**R/** A lo sumo el $\mathbf{3{,}125\%}$ $\left(\dfrac{1}{32}\right)$ de las bombillas no
+dura al menos 700 horas.
+
+## Ejercicio
+
+**Ejemplo.** En una fábrica de toneles de madera existe una gran variabilidad en la producción entre los días, dado que depende de la calidad de la madera que se utiliza en su fabricación. Se conoce que se producen en promedio 150 toneles correctos cada día, con una desviación típica de 10 toneles.
+
+a) ¿Qué porcentaje de días la producción está entre 135 y 165 toneles?
+b) ¿En qué cantidad de toneles se desvía la producción de la media el 25% de los días?
+c) ¿Qué se puede decir acerca del porcentaje de días que se fabrican más de 175 toneles?
+
+## Solución — parte a)
+
+¿Qué porcentaje de días la producción está entre 135 y 165 toneles?
+Note que aquí se desconoce cómo se distribuye $X$.
+
+Sea $X$ el número de toneles fabricados correctamente cada día.
+
+$$P(135 < X < 165) = P(135 - 150 < X - 150 < 165 - 150)$$
+$$= P(-15 < X - \mu < 15) = P\!\left(-1{,}5\sigma < X - \mu < 1{,}5\sigma\right)$$
+
+$$P\!\left(|X - \mu| < 1{,}5\sigma\right) \ge 1 - \frac{1}{(1{,}5)^2} = 1 - \frac{4}{9} \approx 0{,}556$$
+
+**R/** Al menos el **55,6%** de los días, la producción está entre 135 y 165 toneles.
+
+## Solución — parte b)
+
+¿En qué cantidad de toneles se desvía la producción de la media el 25% de los días?
+
+Recordemos que $P\!\left(|X - \mu| \ge k\sigma\right) \le \dfrac{1}{k^2}$
+
+$$\frac{1}{k^2} = 0{,}25 \implies k^2 = 4 \implies k = 2$$
+
+$$k\sigma = 2 \times 10 = 20 \text{ toneles}$$
+
+**R/** El 25% de los días la producción se desvía de la media en
+**al menos 20 toneles**.
+
+## Solución — parte c)
+
+¿Qué se puede decir acerca del porcentaje de días que se fabrican más de 175 toneles?
+
+$$k\sigma = 175 - 150 = 25 \implies k \cdot 10 = 25 \implies k = 2{,}5$$
+
+$$P(X > 175) = P(X - \mu > 25) \le P(|X - \mu| > 25) \le \frac{1}{(2{,}5)^2} = \frac{1}{6{,}25} \approx 0{,}16$$
+
+**R/** El porcentaje de días en que se fabrican más de 175 toneles es
+**a lo sumo el 16%**.
+
+## Otra versión
+
+**Teorema** (Tchebysheff — forma alternativa).
+
+Sea $X$ una variable aleatoria con varianza finita y $\varepsilon > 0$. Entonces:
+
+$$P\!\left(|X - E(X)| \ge \varepsilon\right) \le \frac{\text{Var}(X)}{\varepsilon^2}$$
+
+Esta forma equivale a tomar $k\sigma = \varepsilon$, es decir, $\varepsilon$ actúa
+directamente como la distancia a la media, sin necesidad de expresarla en unidades
+de desviación estándar.
