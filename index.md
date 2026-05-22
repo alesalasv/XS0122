@@ -31,4 +31,5 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 | Uniforme y normal                                                                 | <a href="clase9_uniforme_normal.html" target="_blank">Clase 9</a> |
 | Distribución Gamma                                                                 | <a href="Clase_10.html" target="_blank">Clase 10</a> |
 | Distribución Exponencial, Chi Cuadrada y Beta                                                                 | <a href="Clase_11.html" target="_blank">Clase 11</a> |
+| Aproximaciones                                                                | <a href="Clase12.html" target="_blank">Clase 12</a> |
 
