@@ -4,6 +4,10 @@ subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS01
 format:
   clean-revealjs:
     css: estilos.css
+    width: 1200
+    height: 700
+    pdf-max-pages-per-slide: 2
+    pdf-page-height-offset: 1    
 html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
