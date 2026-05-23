@@ -5,6 +5,10 @@ subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS01
 format:
   clean-revealjs:
     css: estilos.css
+    width: 1200
+    height: 700
+    pdf-max-pages-per-slide: 2
+    pdf-page-height-offset: 1
 html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -301,10 +305,7 @@ La varianza se obtiene de manera similar (ver ejercicio propuesto al final).
 
 ## Ejemplo: Distribución Beta
 
-Una distribuidora mayorista de gasolina tiene tanques de almacenamiento a granel que se
-llenan cada lunes. La proporción del suministro vendida durante la semana sigue una
-distribución beta con $\alpha = 4$ y $\beta = 2$. Encuentre la probabilidad de que la
-mayorista venda **al menos el 90%** de su existencia en una semana determinada.
+Una distribuidora mayorista de gasolina tiene tanques de almacenamiento a granel que se llenan cada lunes. La proporción del suministro vendida durante la semana sigue una distribución beta con $\alpha = 4$ y $\beta = 2$. Encuentre la probabilidad de que la mayorista venda **al menos el 90%** de su existencia en una semana determinada.
 
 . . .
 
@@ -314,7 +315,7 @@ Notando que $\dfrac{\Gamma(6)}{\Gamma(4)\Gamma(2)} = \dfrac{5!}{3!\,1!} = 20$:
 
 $$P(X \geq 0.90) = 20\int_{0.9}^{1}(x^3 - x^4)\,dx
 = 20\left[\frac{x^4}{4} - \frac{x^5}{5}\right]_{0.9}^{1}
-= 20\left(0.05 - 0.04593\right) = 20(0.00407) \approx 0.08$$
+= 20\left(0.05 - 0.04593\right) \approx 0.08$$
 
 ```{r, echo=TRUE}
 1 - pbeta(0.90, shape1 = 4, shape2 = 2)
@@ -323,8 +324,7 @@ $$P(X \geq 0.90) = 20\int_{0.9}^{1}(x^3 - x^4)\,dx
 ## Ejemplo: Distribución Beta
 
 La proporción diaria de defectos en un proceso de manufactura sigue una distribución
-$\mathrm{Beta}(\alpha = 2,\, \beta = 5)$. Encuentre $E(X)$, $\mathrm{Var}(X)$ y la
-probabilidad de que la proporción de defectos sea **menor al 30%**.
+$\mathrm{Beta}(\alpha = 2,\, \beta = 5)$. Encuentre $E(X)$, $\mathrm{Var}(X)$ y la probabilidad de que la proporción de defectos sea **menor al 30%**.
 
 . . .
 
