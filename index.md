@@ -32,4 +32,5 @@ La teoría de probabilidad es requisito fundamental para introducir al estudiant
 | Distribución Gamma                                                                 | <a href="Clase_10.html" target="_blank">Clase 10</a> |
 | Distribución Exponencial, Chi Cuadrada y Beta                                                                 | <a href="Clase_11.html" target="_blank">Clase 11</a> |
 | Aproximaciones                                                                | <a href="Clase12.html" target="_blank">Clase 12</a> |
+| Generatriz de Momentos y de Probabilidades                                                                          | <a href="Clase13.html" target="_blank">Clase 13</a> |
 
