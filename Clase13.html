@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="Clase13_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Clase13_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Clase13_files/libs/quarto-html/popper.min.js"></script>
+<script src="Clase13_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Clase13_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Clase13_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Clase13_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="M.Sc. Alejandro Salas Vargas">
+  <title>Función generadora de momentos y generadora de probabilidad</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Clase13_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Clase13_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="Clase13_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
+  <link rel="stylesheet" href="estilos.css">
+  <link href="Clase13_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Clase13_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Clase13_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Clase13_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Función generadora de momentos y generadora de probabilidad</h1>
+  <p class="subtitle"><a href="https://alesalasv.github.io/XS0122/">XS-0122 Modelos Probabilísticos I</a></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://alesalasv.github.io/XS0122/">M.Sc. Alejandro Salas Vargas</a> 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:alejandro.salasvargas@ucr.ac.cr">alejandro.salasvargas@ucr.ac.cr</a>
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="https://www.estadistica.ucr.ac.cr/">
+            Escuela de Estadística, Universidad de Costa Rica
+            </a>
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="función-generadora-de-momentos" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p>La función generadora de momentos se emplea en la teoría de probabilidades para caracterizar una distribución de probabilidad. Esta función permite obtener momentos y momentos centrales de una distribución, lo que proporciona información sobre la forma y las características de dicha distribución; a partir de esta función se puede obtener la media, varianza, asimetría y curtosis de una variable aleatoria.</p>
+</section>
+<section id="función-generadora-de-momentos-1" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Definición (Momento al origen)</strong></p>
+<p><em>El <span class="math inline">\(r\)</span>-ésimo momento alrededor del origen de una variable aleatoria <span class="math inline">\(X\)</span> está dado por:</em></p>
+<p><span class="math display">\[\mu'_r = E\left(X^r\right) = \sum_{x_i \in R_X} x_i^r \, f_X(x_i)\]</span></p>
+<p>El primer y segundo momentos alrededor del origen están dados por <span class="math inline">\(\mu'_1 = E(X)\)</span> y <span class="math inline">\(\mu'_2 = E(X^2)\)</span>; entonces, se puede escribir la media y la varianza de una variable aleatoria <span class="math inline">\(X\)</span> como</p>
+<p><span class="math display">\[\mu = \mu'_1 \quad \text{y} \quad \sigma^2 = \mu'_2 - \mu^2.\]</span></p>
+</section>
+<section id="función-generadora-de-momentos-2" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Definición (Función generadora de momentos)</strong></p>
+<p><em>La función generadora de momentos para una variable aleatoria discreta <span class="math inline">\(X\)</span>, denotada por <span class="math inline">\(M_X(t)\)</span>, es:</em></p>
+<p><span class="math display">\[M_X(t) = E(e^{tX})\]</span></p>
+<p><strong>Teorema</strong></p>
+<p><em>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con función generadora de momentos <span class="math inline">\(M_X(t)\)</span>, se tiene que:</em></p>
+<p><span class="math display">\[M_X(t) = \sum_{k=0}^{\infty} \frac{t^k}{k!} E\left(X^k\right)\]</span></p>
+</section>
+<section id="función-generadora-de-momentos-3" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Teorema (Teorema de unicidad)</strong></p>
+<p><em>Sean <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> dos variables aleatorias con funciones generadoras de momentos <span class="math inline">\(M_X(t)\)</span> y <span class="math inline">\(M_Y(t)\)</span>, respectivamente. Si <span class="math inline">\(M_X(t) = M_Y(t)\)</span>, para todos los valores de <span class="math inline">\(t\)</span>, entonces <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> tienen la misma distribución de probabilidad.</em></p>
+</section>
+<section id="función-generadora-de-momentos-4" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Demostración:</strong> Para demostrar el teorema anterior, se utiliza el desarrollo en series de potencia de Taylor de la función <span class="math inline">\(e^x = 1 + x + \dfrac{x^2}{2!} + \cdots\)</span>, <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
+<p><span class="math display">\[\Rightarrow M_X(t) = M_Y(t) \Rightarrow E\left(e^{tX}\right) = E\left(e^{tY}\right)\]</span> <span class="math display">\[\Rightarrow E\!\left(1 + tX + \frac{t^2 X^2}{2!} + \cdots\right) = E\!\left(1 + tY + \frac{t^2 Y^2}{2!} + \cdots\right)\]</span> <span class="math display">\[\Rightarrow 1 + tE(X) + \frac{t^2}{2!}E(X^2) + \cdots = 1 + tE(Y) + \frac{t^2}{2!}E(Y^2) + \cdots\]</span> <span class="math display">\[\Rightarrow 1 + \mu_X t + \sigma^2_X \frac{t^2}{2!} + \cdots = 1 + \mu_Y t + \sigma^2_Y \frac{t^2}{2!} + \cdots\]</span></p>
+<p>Comparando los coeficientes de ambos desarrollos en las series de Taylor, se llega a que las medias y varianzas de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> deben ser iguales, es decir, <span class="math inline">\(\mu_X = \mu_Y\)</span> y <span class="math inline">\(\sigma^2_X = \sigma^2_Y\)</span>. Por lo tanto, <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> tienen la misma distribución de probabilidad. <span class="math inline">\(\blacksquare\)</span></p>
+</section>
+<section id="función-generadora-de-momentos-5" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Ejemplo</strong></p>
+<p>Considere la siguiente función de densidad de probabilidad de una variable aleatoria <span class="math inline">\(X\)</span>, dada por:</p>
+<p><span class="math display">\[f_X(x) = \begin{cases} \dfrac{1}{6}, &amp; x \in \{1, 2, \ldots, 6\} \\ 0, &amp; \text{en otro caso} \end{cases}\]</span></p>
+<p>Determine su función generadora de momentos.</p>
+</section>
+<section id="función-generadora-de-momentos-6" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Solución:</strong></p>
+<p><span class="math display">\[M_X(t) = E\left(e^{tX}\right)\]</span> <span class="math display">\[= \frac{1}{6}\left(e^t + e^{2t} + e^{3t} + \cdots + e^{6t}\right)\]</span> <span class="math display">\[= \frac{e^t}{6}\left(1 + e^t + e^{2t} + \cdots + e^{5t}\right)\]</span> <span class="math display">\[= \frac{e^t}{6}\left(\frac{1 - e^{6t}}{1 - e^t}\right) \quad (*)\]</span></p>
+<p>R/ <span class="math inline">\(\displaystyle M_X(t) = \frac{e^t}{6}\cdot\frac{1 - e^{6t}}{1 - e^t}\)</span></p>
+<p><span class="math inline">\((*)\)</span> por progresión geométrica.</p>
+</section>
+<section id="función-generadora-de-momentos-7" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Ejemplo</strong></p>
+<p>Considere la siguiente función de densidad de probabilidad de una variable aleatoria <span class="math inline">\(X\)</span>, dada por:</p>
+<p><span class="math display">\[f_X(x) = \begin{cases} \dfrac{1}{2^x}, &amp; x \in \{1, 2, \ldots\} \\ 0, &amp; \text{en otro caso} \end{cases}\]</span></p>
+<p>Determine su función generadora de momentos de <span class="math inline">\(X\)</span>.</p>
+</section>
+<section id="función-generadora-de-momentos-8" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Solución:</strong></p>
+<p><span class="math display">\[M_X(t) = E\left(e^{tX}\right) = \sum_{x=1}^{\infty} e^{tx} \cdot \frac{1}{2^x}\]</span> <span class="math display">\[= \sum_{x=1}^{\infty} \left(\frac{e^t}{2}\right)^x\]</span> <span class="math display">\[= \sum_{x=0}^{\infty} \left(\frac{e^t}{2}\right)^x - \left(\frac{e^t}{2}\right)^0\]</span> <span class="math display">\[= \frac{1}{1 - \dfrac{e^t}{2}} - 1 = \frac{e^t}{2 - e^t}\]</span></p>
+<p>R/ <span class="math inline">\(\displaystyle M_X(t) = \frac{e^t}{2 - e^t}\)</span>, para <span class="math inline">\(t &lt; \ln 2\)</span>.</p>
+</section>
+<section id="función-generadora-de-momentos-9" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Teorema</strong></p>
+<p><em>Sea <span class="math inline">\(X\)</span> una variable aleatoria con función generadora de momentos <span class="math inline">\(M_X(t)\)</span>. Entonces:</em></p>
+<p><span class="math display">\[\left.\frac{d^n M_X(t)}{dt^n}\right|_{t=0} = E\left(X^n\right)\]</span></p>
+</section>
+<section id="función-generadora-de-momentos-10" class="slide level2">
+<h2>Función generadora de momentos</h2>
+<p><strong>Ejemplo</strong></p>
+<p>Utilice la función generadora de momentos para determinar la esperanza y la varianza de la distribución de la variable aleatoria <span class="math inline">\(X\)</span> del ejemplo anterior (con <span class="math inline">\(f_X(x) = 1/2^x\)</span>).</p>
+<p><strong>Solución:</strong> Como la función generadora de momentos de <span class="math inline">\(X\)</span> es <span class="math inline">\(M_X(t) = \dfrac{e^t}{2 - e^t}\)</span>, entonces:</p>
+<p><span class="math display">\[E(X) = \left.\frac{d\,M_X(t)}{dt}\right|_{t=0} = \left.\frac{2e^t}{\left(2 - e^t\right)^2}\right|_{t=0} = \frac{2}{(2-1)^2} = 2\]</span></p>
+<p><span class="math display">\[E(X^2) = \left.\frac{d^2 M_X(t)}{dt^2}\right|_{t=0} = \left.\frac{4e^t + 2e^{2t}}{\left(2 - e^t\right)^2}\right|_{t=0} = \frac{4 + 2}{(2-1)^2} = 6\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(\operatorname{Var}(X) = 6 - (2)^2 = 2\)</span>.</p>
+<p>R/ <span class="math inline">\(E(X) = 2\)</span>, <span class="math inline">\(\operatorname{Var}(X) = 2\)</span>.</p>
+</section>
+<section id="función-generadora-de-momentos-caso-continuo" class="slide level2">
+<h2>Función generadora de momentos — caso continuo</h2>
+<p><strong>Definición (Función generadora de momentos — caso continuo)</strong></p>
+<p>Si <span class="math inline">\(X\)</span> es una variable aleatoria continua, entonces la función generadora de momentos está dada por: <span class="math inline">\(m(t) = E(e^{tX})\)</span>. Se dice que existe la función generadora de momentos si existe una constante <span class="math inline">\(b &gt; 0\)</span> tal que <span class="math inline">\(m(t)\)</span> es finita para <span class="math inline">\(|t| \leq b\)</span>.</p>
+<p>De manera análoga al caso discreto, para variables continuas se cumple:</p>
+<p><span class="math display">\[E(e^{tX}) = \int_{-\infty}^{\infty} e^{tX} f(x)\,dx = \int_{-\infty}^{\infty}\!\left(1 + tx + \frac{t^2 x^2}{2!} + \frac{t^3 x^3}{3!} + \cdots\right)f(x)\,dx\]</span></p>
+<p><span class="math display">\[= \int_{-\infty}^{\infty} f(x)\,dx + \int_{-\infty}^{\infty} tx f(x)\,dx + \int_{-\infty}^{\infty} \frac{t^2 x^2}{2!} f(x)\,dx + \cdots\]</span></p>
+<p><span class="math display">\[= 1 + t\mu'_1 + \frac{t^2}{2!}\mu'_2 + \frac{t^3}{3!}\mu'_3 + \cdots = \sum_{k=0}^{\infty} \frac{t^k}{k!} E(X^k) = \sum_{k=0}^{\infty} \frac{t^k}{k!}\,\mu'_k\]</span></p>
+</section>
+<section id="función-generadora-de-momentos-caso-continuo-1" class="slide level2">
+<h2>Función generadora de momentos — caso continuo</h2>
+<p>Para variables continuas también se cumple el teorema visto en el caso discreto:</p>
+<p><span class="math display">\[\left.\frac{d^k m(t)}{dt^k}\right|_{t=0} = \mu'_k\]</span></p>
+</section>
+<section id="función-generadora-de-probabilidad" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p>La <strong>función generadora de probabilidad</strong> (FGP) es otra herramienta importante en la teoría de probabilidades, especialmente útil para variables aleatorias discretas que toman valores en los enteros no negativos <span class="math inline">\(\{0, 1, 2, \ldots\}\)</span>.</p>
+<p><strong>Definición (Función generadora de probabilidad)</strong></p>
+<p><em>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta que toma valores en <span class="math inline">\(\{0, 1, 2, \ldots\}\)</span> con función de probabilidad <span class="math inline">\(P(X = k) = p_k\)</span>. La función generadora de probabilidad de <span class="math inline">\(X\)</span>, denotada por <span class="math inline">\(G_X(z)\)</span> o <span class="math inline">\(P_X(z)\)</span>, se define como:</em></p>
+<p><span class="math display">\[G_X(z) = E(z^X) = \sum_{k=0}^{\infty} p_k \, z^k\]</span></p>
+<p>donde <span class="math inline">\(z\)</span> es una variable compleja (o real) tal que la serie converge. En particular, siempre converge para <span class="math inline">\(|z| \leq 1\)</span>.</p>
+<p><strong>Observación:</strong> se puede notar que <span class="math inline">\(G_X(1) = \sum_{k=0}^{\infty} p_k = 1\)</span>, lo que verifica que las probabilidades suman uno.</p>
+</section>
+<section id="función-generadora-de-probabilidad-1" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Relación entre FGP y FGM</strong></p>
+<p>Existe una relación directa entre la función generadora de probabilidad y la función generadora de momentos: si se sustituye <span class="math inline">\(z = e^t\)</span> en <span class="math inline">\(G_X(z)\)</span>, se obtiene <span class="math inline">\(M_X(t)\)</span>:</p>
+<p><span class="math display">\[M_X(t) = G_X(e^t) = E(e^{tX})\]</span></p>
+<p>Esto muestra que ambas funciones contienen la misma información sobre la distribución de <span class="math inline">\(X\)</span>.</p>
+</section>
+<section id="función-generadora-de-probabilidad-2" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Teorema (Cálculo de momentos a partir de la FGP)</strong></p>
+<p><em>Sea <span class="math inline">\(X\)</span> una variable aleatoria con función generadora de probabilidad <span class="math inline">\(G_X(z)\)</span>. Entonces:</em></p>
+<p><span class="math display">\[G_X^{(r)}(1) = \left.\frac{d^r G_X(z)}{dz^r}\right|_{z=1} = E\bigl[X(X-1)(X-2)\cdots(X-r+1)\bigr] = \mu_{[r]}\]</span></p>
+<p>donde <span class="math inline">\(\mu_{[r]}\)</span> se denomina el <strong><span class="math inline">\(r\)</span>-ésimo momento factorial</strong> de <span class="math inline">\(X\)</span>.</p>
+<p>En particular:</p>
+<ul>
+<li><p><strong>Media:</strong> <span class="math inline">\(E(X) = G'_X(1)\)</span></p></li>
+<li><p><strong>Segundo momento factorial:</strong> <span class="math inline">\(E[X(X-1)] = G''_X(1)\)</span></p></li>
+<li><p><strong>Varianza:</strong> <span class="math inline">\(\operatorname{Var}(X) = G''_X(1) + G'_X(1) - \left[G'_X(1)\right]^2\)</span></p></li>
+</ul>
+</section>
+<section id="función-generadora-de-probabilidad-3" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Ejemplo (Distribución de Bernoulli)</strong></p>
+<p>Sea <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span>, con <span class="math inline">\(P(X=0)=1-p\)</span> y <span class="math inline">\(P(X=1)=p\)</span>.</p>
+<p><span class="math display">\[G_X(z) = (1-p) z^0 + p\, z^1 = (1-p) + pz = q + pz\]</span></p>
+<p>donde <span class="math inline">\(q = 1 - p\)</span>.</p>
+<ul>
+<li><span class="math inline">\(G'_X(z) = p\)</span>, por lo que <span class="math inline">\(E(X) = G'_X(1) = p\)</span>.</li>
+<li><span class="math inline">\(G''_X(z) = 0\)</span>, por lo que <span class="math inline">\(E[X(X-1)] = 0\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Var}(X) = 0 + p - p^2 = p(1-p) = pq\)</span>.</li>
+</ul>
+<p>R/ <span class="math inline">\(G_X(z) = q + pz\)</span>, <span class="math inline">\(E(X) = p\)</span>, <span class="math inline">\(\operatorname{Var}(X) = pq\)</span>.</p>
+</section>
+<section id="función-generadora-de-probabilidad-4" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Ejemplo (Distribución Binomial)</strong></p>
+<p>Sea <span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span>, con <span class="math inline">\(P(X = k) = \dbinom{n}{k} p^k (1-p)^{n-k}\)</span>, <span class="math inline">\(k = 0, 1, \ldots, n\)</span>.</p>
+<p><span class="math display">\[G_X(z) = \sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} z^k = \sum_{k=0}^{n} \binom{n}{k} (pz)^k q^{n-k} = (q + pz)^n\]</span></p>
+<p>donde <span class="math inline">\(q = 1-p\)</span>.</p>
+<ul>
+<li><span class="math inline">\(G'_X(z) = np(q+pz)^{n-1}\)</span>, entonces <span class="math inline">\(E(X) = G'_X(1) = np\)</span>.</li>
+<li><span class="math inline">\(G''_X(z) = n(n-1)p^2(q+pz)^{n-2}\)</span>, entonces <span class="math inline">\(E[X(X-1)] = G''_X(1) = n(n-1)p^2\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Var}(X) = n(n-1)p^2 + np - (np)^2 = np(1-p) = npq\)</span>.</li>
+</ul>
+<p>R/ <span class="math inline">\(G_X(z) = (q + pz)^n\)</span>, <span class="math inline">\(E(X) = np\)</span>, <span class="math inline">\(\operatorname{Var}(X) = npq\)</span>.</p>
+</section>
+<section id="función-generadora-de-probabilidad-5" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Ejemplo (Distribución de Poisson)</strong></p>
+<p>Sea <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span>, con <span class="math inline">\(P(X = k) = \dfrac{e^{-\lambda} \lambda^k}{k!}\)</span>, <span class="math inline">\(k = 0, 1, 2, \ldots\)</span></p>
+<p><span class="math display">\[G_X(z) = \sum_{k=0}^{\infty} \frac{e^{-\lambda} \lambda^k}{k!} z^k = e^{-\lambda} \sum_{k=0}^{\infty} \frac{(\lambda z)^k}{k!} = e^{-\lambda} e^{\lambda z} = e^{\lambda(z-1)}\]</span></p>
+<ul>
+<li><span class="math inline">\(G'_X(z) = \lambda e^{\lambda(z-1)}\)</span>, entonces <span class="math inline">\(E(X) = G'_X(1) = \lambda\)</span>.</li>
+<li><span class="math inline">\(G''_X(z) = \lambda^2 e^{\lambda(z-1)}\)</span>, entonces <span class="math inline">\(E[X(X-1)] = G''_X(1) = \lambda^2\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Var}(X) = \lambda^2 + \lambda - \lambda^2 = \lambda\)</span>.</li>
+</ul>
+<p>R/ <span class="math inline">\(G_X(z) = e^{\lambda(z-1)}\)</span>, <span class="math inline">\(E(X) = \lambda\)</span>, <span class="math inline">\(\operatorname{Var}(X) = \lambda\)</span>.</p>
+</section>
+<section id="función-generadora-de-probabilidad-6" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Ejemplo (Distribución Geométrica)</strong></p>
+<p>Sea <span class="math inline">\(X \sim \text{Geométrica}(p)\)</span>, con <span class="math inline">\(P(X = k) = (1-p)^{k-1} p\)</span>, <span class="math inline">\(k = 1, 2, 3, \ldots\)</span></p>
+<p><span class="math display">\[G_X(z) = \sum_{k=1}^{\infty} (1-p)^{k-1} p \, z^k = pz \sum_{k=1}^{\infty} \left[(1-p)z\right]^{k-1} = pz \cdot \frac{1}{1-(1-p)z} = \frac{pz}{1-qz}\]</span></p>
+<p>donde <span class="math inline">\(q = 1-p\)</span>, válido para <span class="math inline">\(|z| &lt; 1/q\)</span>.</p>
+<ul>
+<li><span class="math inline">\(G'_X(z) = \dfrac{p}{(1-qz)^2}\)</span>, entonces <span class="math inline">\(E(X) = G'_X(1) = \dfrac{p}{(1-q)^2} = \dfrac{1}{p}\)</span>.</li>
+<li><span class="math inline">\(G''_X(z) = \dfrac{2pq}{(1-qz)^3}\)</span>, entonces <span class="math inline">\(E[X(X-1)] = G''_X(1) = \dfrac{2q}{p^2}\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Var}(X) = \dfrac{2q}{p^2} + \dfrac{1}{p} - \dfrac{1}{p^2} = \dfrac{q}{p^2}\)</span>.</li>
+</ul>
+<p>R/ <span class="math inline">\(G_X(z) = \dfrac{pz}{1-qz}\)</span>, <span class="math inline">\(E(X) = \dfrac{1}{p}\)</span>, <span class="math inline">\(\operatorname{Var}(X) = \dfrac{q}{p^2}\)</span>.</p>
+</section>
+<section id="función-generadora-de-probabilidad-7" class="slide level2">
+<h2>Función generadora de probabilidad</h2>
+<p><strong>Ejemplo (Distribución Binomial Negativa)</strong></p>
+<p>Sea <span class="math inline">\(X \sim \text{Binomial Negativa}(r, p)\)</span>, con <span class="math inline">\(P(X = k) = \dbinom{k-1}{r-1} p^r (1-p)^{k-r}\)</span>, <span class="math inline">\(k = r, r+1, \ldots\)</span></p>
+<p><span class="math display">\[G_X(z) = \left(\frac{pz}{1-qz}\right)^r, \quad |z| &lt; \frac{1}{q}\]</span></p>
+<ul>
+<li><span class="math inline">\(E(X) = G'_X(1) = \dfrac{r}{p}\)</span></li>
+<li><span class="math inline">\(\operatorname{Var}(X) = \dfrac{rq}{p^2}\)</span></li>
+</ul>
+<p>R/ <span class="math inline">\(G_X(z) = \left(\dfrac{pz}{1-qz}\right)^r\)</span>, <span class="math inline">\(E(X) = \dfrac{r}{p}\)</span>, <span class="math inline">\(\operatorname{Var}(X) = \dfrac{rq}{p^2}\)</span>.</p>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Clase13_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Clase13_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Clase13_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Clase13_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'pdfMaxPagesPerSlide': 2,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide","numbers":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

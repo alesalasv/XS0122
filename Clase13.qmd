@@ -1,0 +1,326 @@
+---
+title: "Función generadora de momentos y generadora de probabilidad"
+subtitle: "[XS-0122 Modelos Probabilísticos I](https://alesalasv.github.io/XS0122/)"
+format:
+  clean-revealjs:
+    css: estilos.css
+    width: 1200
+    height: 700
+    pdf-max-pages-per-slide: 2
+    pdf-page-height-offset: 1
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: M.Sc. Alejandro Salas Vargas
+    url: https://alesalasv.github.io/XS0122/
+    email: alejandro.salasvargas@ucr.ac.cr
+    affiliations:
+      - name: Escuela de Estadística, Universidad de Costa Rica
+        url: https://www.estadistica.ucr.ac.cr/
+lang: es
+---
+
+## Función generadora de momentos
+
+La función generadora de momentos se emplea en la teoría de probabilidades para
+caracterizar una distribución de probabilidad. Esta función permite obtener momentos y
+momentos centrales de una distribución, lo que proporciona información sobre la forma y
+las características de dicha distribución; a partir de esta función se puede obtener la media,
+varianza, asimetría y curtosis de una variable aleatoria.
+
+---
+
+## Función generadora de momentos
+
+**Definición (Momento al origen)**
+
+*El $r$-ésimo momento alrededor del origen de una variable aleatoria $X$ está dado por:*
+
+$$\mu'_r = E\left(X^r\right) = \sum_{x_i \in R_X} x_i^r \, f_X(x_i)$$
+
+El primer y segundo momentos alrededor del origen están dados por $\mu'_1 = E(X)$ y
+$\mu'_2 = E(X^2)$; entonces, se puede escribir la media y la varianza de una variable aleatoria $X$ como
+
+$$\mu = \mu'_1 \quad \text{y} \quad \sigma^2 = \mu'_2 - \mu^2.$$
+
+---
+
+## Función generadora de momentos
+
+**Definición (Función generadora de momentos)**
+
+*La función generadora de momentos para una variable aleatoria discreta $X$, denotada por $M_X(t)$, es:*
+
+$$M_X(t) = E(e^{tX})$$
+
+**Teorema**
+
+*Sea $X$ una variable aleatoria discreta con función generadora de momentos $M_X(t)$, se tiene que:*
+
+$$M_X(t) = \sum_{k=0}^{\infty} \frac{t^k}{k!} E\left(X^k\right)$$
+
+---
+
+## Función generadora de momentos
+
+**Teorema (Teorema de unicidad)**
+
+*Sean $X$ e $Y$ dos variables aleatorias con funciones generadoras de momentos $M_X(t)$ y $M_Y(t)$,
+respectivamente. Si $M_X(t) = M_Y(t)$, para todos los valores de $t$, entonces $X$ e $Y$ tienen la misma
+distribución de probabilidad.*
+
+---
+
+## Función generadora de momentos
+
+**Demostración:** Para demostrar el teorema anterior, se utiliza el desarrollo en series de potencia de Taylor de la
+función $e^x = 1 + x + \dfrac{x^2}{2!} + \cdots$, $x \in \mathbb{R}$.
+
+$$\Rightarrow M_X(t) = M_Y(t) \Rightarrow E\left(e^{tX}\right) = E\left(e^{tY}\right)$$
+$$\Rightarrow E\!\left(1 + tX + \frac{t^2 X^2}{2!} + \cdots\right) = E\!\left(1 + tY + \frac{t^2 Y^2}{2!} + \cdots\right)$$
+$$\Rightarrow 1 + tE(X) + \frac{t^2}{2!}E(X^2) + \cdots = 1 + tE(Y) + \frac{t^2}{2!}E(Y^2) + \cdots$$
+$$\Rightarrow 1 + \mu_X t + \sigma^2_X \frac{t^2}{2!} + \cdots = 1 + \mu_Y t + \sigma^2_Y \frac{t^2}{2!} + \cdots$$
+
+Comparando los coeficientes de ambos desarrollos en las series de Taylor, se llega a que las medias
+y varianzas de $X$ e $Y$ deben ser iguales, es decir, $\mu_X = \mu_Y$ y $\sigma^2_X = \sigma^2_Y$. Por lo tanto, $X$ e $Y$ tienen la misma distribución de probabilidad. $\blacksquare$
+
+---
+
+## Función generadora de momentos
+
+**Ejemplo**
+
+Considere la siguiente función de densidad de probabilidad de una variable aleatoria $X$,
+dada por:
+
+$$f_X(x) = \begin{cases} \dfrac{1}{6}, & x \in \{1, 2, \ldots, 6\} \\ 0, & \text{en otro caso} \end{cases}$$
+
+Determine su función generadora de momentos.
+
+---
+
+## Función generadora de momentos
+
+**Solución:**
+
+$$M_X(t) = E\left(e^{tX}\right)$$
+$$= \frac{1}{6}\left(e^t + e^{2t} + e^{3t} + \cdots + e^{6t}\right)$$
+$$= \frac{e^t}{6}\left(1 + e^t + e^{2t} + \cdots + e^{5t}\right)$$
+$$= \frac{e^t}{6}\left(\frac{1 - e^{6t}}{1 - e^t}\right) \quad (*)$$
+
+R/ $\displaystyle M_X(t) = \frac{e^t}{6}\cdot\frac{1 - e^{6t}}{1 - e^t}$
+
+$(*)$ por progresión geométrica.
+
+---
+
+## Función generadora de momentos
+
+**Ejemplo**
+
+Considere la siguiente función de densidad de probabilidad de una variable aleatoria $X$,
+dada por:
+
+$$f_X(x) = \begin{cases} \dfrac{1}{2^x}, & x \in \{1, 2, \ldots\} \\ 0, & \text{en otro caso} \end{cases}$$
+
+Determine su función generadora de momentos de $X$.
+
+---
+
+## Función generadora de momentos
+
+**Solución:**
+
+$$M_X(t) = E\left(e^{tX}\right) = \sum_{x=1}^{\infty} e^{tx} \cdot \frac{1}{2^x}$$
+$$= \sum_{x=1}^{\infty} \left(\frac{e^t}{2}\right)^x$$
+$$= \sum_{x=0}^{\infty} \left(\frac{e^t}{2}\right)^x - \left(\frac{e^t}{2}\right)^0$$
+$$= \frac{1}{1 - \dfrac{e^t}{2}} - 1 = \frac{e^t}{2 - e^t}$$
+
+R/ $\displaystyle M_X(t) = \frac{e^t}{2 - e^t}$, para $t < \ln 2$.
+
+---
+
+## Función generadora de momentos
+
+**Teorema**
+
+*Sea $X$ una variable aleatoria con función generadora de momentos $M_X(t)$. Entonces:*
+
+$$\left.\frac{d^n M_X(t)}{dt^n}\right|_{t=0} = E\left(X^n\right)$$
+
+---
+
+## Función generadora de momentos
+
+**Ejemplo**
+
+Utilice la función generadora de momentos para determinar la esperanza y la varianza de
+la distribución de la variable aleatoria $X$ del ejemplo anterior (con $f_X(x) = 1/2^x$).
+
+**Solución:** Como la función generadora de momentos de $X$ es $M_X(t) = \dfrac{e^t}{2 - e^t}$, entonces:
+
+$$E(X) = \left.\frac{d\,M_X(t)}{dt}\right|_{t=0} = \left.\frac{2e^t}{\left(2 - e^t\right)^2}\right|_{t=0} = \frac{2}{(2-1)^2} = 2$$
+
+$$E(X^2) = \left.\frac{d^2 M_X(t)}{dt^2}\right|_{t=0} = \left.\frac{4e^t + 2e^{2t}}{\left(2 - e^t\right)^2}\right|_{t=0} = \frac{4 + 2}{(2-1)^2} = 6$$
+
+Por lo tanto, $\operatorname{Var}(X) = 6 - (2)^2 = 2$.
+
+R/ $E(X) = 2$, $\operatorname{Var}(X) = 2$.
+
+---
+
+## Función generadora de momentos — caso continuo
+
+**Definición (Función generadora de momentos — caso continuo)**
+
+Si $X$ es una variable aleatoria continua, entonces la función generadora de momentos está dada por: $m(t) = E(e^{tX})$. Se dice que existe la función generadora de momentos si existe una constante $b > 0$ tal que $m(t)$ es finita para $|t| \leq b$.
+
+De manera análoga al caso discreto, para variables continuas se cumple:
+
+$$E(e^{tX}) = \int_{-\infty}^{\infty} e^{tX} f(x)\,dx = \int_{-\infty}^{\infty}\!\left(1 + tx + \frac{t^2 x^2}{2!} + \frac{t^3 x^3}{3!} + \cdots\right)f(x)\,dx$$
+
+$$= \int_{-\infty}^{\infty} f(x)\,dx + \int_{-\infty}^{\infty} tx f(x)\,dx + \int_{-\infty}^{\infty} \frac{t^2 x^2}{2!} f(x)\,dx + \cdots$$
+
+$$= 1 + t\mu'_1 + \frac{t^2}{2!}\mu'_2 + \frac{t^3}{3!}\mu'_3 + \cdots = \sum_{k=0}^{\infty} \frac{t^k}{k!} E(X^k) = \sum_{k=0}^{\infty} \frac{t^k}{k!}\,\mu'_k$$
+
+---
+
+## Función generadora de momentos — caso continuo
+
+Para variables continuas también se cumple el teorema visto en el caso discreto:
+
+$$\left.\frac{d^k m(t)}{dt^k}\right|_{t=0} = \mu'_k$$
+
+---
+
+## Función generadora de probabilidad
+
+La **función generadora de probabilidad** (FGP) es otra herramienta importante en la teoría de probabilidades, especialmente útil para variables aleatorias discretas que toman valores en los enteros no negativos $\{0, 1, 2, \ldots\}$.
+
+**Definición (Función generadora de probabilidad)**
+
+*Sea $X$ una variable aleatoria discreta que toma valores en $\{0, 1, 2, \ldots\}$ con función de probabilidad $P(X = k) = p_k$. La función generadora de probabilidad de $X$, denotada por $G_X(z)$ o $P_X(z)$, se define como:*
+
+$$G_X(z) = E(z^X) = \sum_{k=0}^{\infty} p_k \, z^k$$
+
+donde $z$ es una variable compleja (o real) tal que la serie converge. En particular, siempre converge para $|z| \leq 1$.
+
+**Observación:** se puede notar que $G_X(1) = \sum_{k=0}^{\infty} p_k = 1$, lo que verifica que las probabilidades suman uno.
+
+---
+
+## Función generadora de probabilidad
+
+**Relación entre FGP y FGM**
+
+Existe una relación directa entre la función generadora de probabilidad y la función generadora de momentos: si se sustituye $z = e^t$ en $G_X(z)$, se obtiene $M_X(t)$:
+
+$$M_X(t) = G_X(e^t) = E(e^{tX})$$
+
+Esto muestra que ambas funciones contienen la misma información sobre la distribución de $X$.
+
+---
+
+## Función generadora de probabilidad
+
+**Teorema (Cálculo de momentos a partir de la FGP)**
+
+*Sea $X$ una variable aleatoria con función generadora de probabilidad $G_X(z)$. Entonces:*
+
+$$G_X^{(r)}(1) = \left.\frac{d^r G_X(z)}{dz^r}\right|_{z=1} = E\bigl[X(X-1)(X-2)\cdots(X-r+1)\bigr] = \mu_{[r]}$$
+
+donde $\mu_{[r]}$ se denomina el **$r$-ésimo momento factorial** de $X$.
+
+En particular:
+
+- **Media:** $E(X) = G'_X(1)$
+
+- **Segundo momento factorial:** $E[X(X-1)] = G''_X(1)$
+
+- **Varianza:** $\operatorname{Var}(X) = G''_X(1) + G'_X(1) - \left[G'_X(1)\right]^2$
+
+---
+
+## Función generadora de probabilidad
+
+**Ejemplo (Distribución de Bernoulli)**
+
+Sea $X \sim \text{Bernoulli}(p)$, con $P(X=0)=1-p$ y $P(X=1)=p$.
+
+$$G_X(z) = (1-p) z^0 + p\, z^1 = (1-p) + pz = q + pz$$
+
+donde $q = 1 - p$.
+
+- $G'_X(z) = p$, por lo que $E(X) = G'_X(1) = p$.
+- $G''_X(z) = 0$, por lo que $E[X(X-1)] = 0$.
+- $\operatorname{Var}(X) = 0 + p - p^2 = p(1-p) = pq$.
+
+R/ $G_X(z) = q + pz$, $E(X) = p$, $\operatorname{Var}(X) = pq$.
+
+---
+
+## Función generadora de probabilidad
+
+**Ejemplo (Distribución Binomial)**
+
+Sea $X \sim \text{Binomial}(n, p)$, con $P(X = k) = \dbinom{n}{k} p^k (1-p)^{n-k}$, $k = 0, 1, \ldots, n$.
+
+$$G_X(z) = \sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} z^k = \sum_{k=0}^{n} \binom{n}{k} (pz)^k q^{n-k} = (q + pz)^n$$
+
+donde $q = 1-p$.
+
+- $G'_X(z) = np(q+pz)^{n-1}$, entonces $E(X) = G'_X(1) = np$.
+- $G''_X(z) = n(n-1)p^2(q+pz)^{n-2}$, entonces $E[X(X-1)] = G''_X(1) = n(n-1)p^2$.
+- $\operatorname{Var}(X) = n(n-1)p^2 + np - (np)^2 = np(1-p) = npq$.
+
+R/ $G_X(z) = (q + pz)^n$, $E(X) = np$, $\operatorname{Var}(X) = npq$.
+
+---
+
+## Función generadora de probabilidad
+
+**Ejemplo (Distribución de Poisson)**
+
+Sea $X \sim \text{Poisson}(\lambda)$, con $P(X = k) = \dfrac{e^{-\lambda} \lambda^k}{k!}$, $k = 0, 1, 2, \ldots$
+
+$$G_X(z) = \sum_{k=0}^{\infty} \frac{e^{-\lambda} \lambda^k}{k!} z^k = e^{-\lambda} \sum_{k=0}^{\infty} \frac{(\lambda z)^k}{k!} = e^{-\lambda} e^{\lambda z} = e^{\lambda(z-1)}$$
+
+- $G'_X(z) = \lambda e^{\lambda(z-1)}$, entonces $E(X) = G'_X(1) = \lambda$.
+- $G''_X(z) = \lambda^2 e^{\lambda(z-1)}$, entonces $E[X(X-1)] = G''_X(1) = \lambda^2$.
+- $\operatorname{Var}(X) = \lambda^2 + \lambda - \lambda^2 = \lambda$.
+
+R/ $G_X(z) = e^{\lambda(z-1)}$, $E(X) = \lambda$, $\operatorname{Var}(X) = \lambda$.
+
+---
+
+## Función generadora de probabilidad
+
+**Ejemplo (Distribución Geométrica)**
+
+Sea $X \sim \text{Geométrica}(p)$, con $P(X = k) = (1-p)^{k-1} p$, $k = 1, 2, 3, \ldots$
+
+$$G_X(z) = \sum_{k=1}^{\infty} (1-p)^{k-1} p \, z^k = pz \sum_{k=1}^{\infty} \left[(1-p)z\right]^{k-1} = pz \cdot \frac{1}{1-(1-p)z} = \frac{pz}{1-qz}$$
+
+donde $q = 1-p$, válido para $|z| < 1/q$.
+
+- $G'_X(z) = \dfrac{p}{(1-qz)^2}$, entonces $E(X) = G'_X(1) = \dfrac{p}{(1-q)^2} = \dfrac{1}{p}$.
+- $G''_X(z) = \dfrac{2pq}{(1-qz)^3}$, entonces $E[X(X-1)] = G''_X(1) = \dfrac{2q}{p^2}$.
+- $\operatorname{Var}(X) = \dfrac{2q}{p^2} + \dfrac{1}{p} - \dfrac{1}{p^2} = \dfrac{q}{p^2}$.
+
+R/ $G_X(z) = \dfrac{pz}{1-qz}$, $E(X) = \dfrac{1}{p}$, $\operatorname{Var}(X) = \dfrac{q}{p^2}$.
+
+---
+
+## Función generadora de probabilidad
+
+**Ejemplo (Distribución Binomial Negativa)**
+
+Sea $X \sim \text{Binomial Negativa}(r, p)$, con $P(X = k) = \dbinom{k-1}{r-1} p^r (1-p)^{k-r}$, $k = r, r+1, \ldots$
+
+$$G_X(z) = \left(\frac{pz}{1-qz}\right)^r, \quad |z| < \frac{1}{q}$$
+
+- $E(X) = G'_X(1) = \dfrac{r}{p}$
+- $\operatorname{Var}(X) = \dfrac{rq}{p^2}$
+
+R/ $G_X(z) = \left(\dfrac{pz}{1-qz}\right)^r$, $E(X) = \dfrac{r}{p}$, $\operatorname{Var}(X) = \dfrac{rq}{p^2}$.
