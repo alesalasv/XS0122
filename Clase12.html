@@ -276,6 +276,144 @@
 <p><span class="math display">\[P(X=2) = \binom{5}{2}(0{,}6)^2(0{,}4)^3 = 10 \times 0{,}36 \times 0{,}064 = 0{,}2304\]</span></p>
 <p><strong>R/</strong> La probabilidad de que el amigo reciba exactamente dos libros de estadística es aproximadamente <span class="math inline">\(\mathbf{0{,}2317}\)</span> (hipergeométrica) o <span class="math inline">\(\mathbf{0{,}2304}\)</span> (aproximación binomial).</p>
 </section>
+<section id="teorema-de-de-moivre-laplace" class="slide level2">
+<h2>Teorema de De Moivre – Laplace</h2>
+<p>Sea <span class="math inline">\(X \sim \text{Bin}(n, p)\)</span>, es decir, <span class="math inline">\(f(x) = \binom{n}{x}p^x(1-p)^{n-x}\)</span>. Cuando <span class="math inline">\(n\)</span> es grande, los cálculos exactos con la binomial se vuelven imprácticos. El teorema de De Moivre–Laplace establece dos resultados que permiten aproximar la binomial mediante la distribución normal.</p>
+</section>
+<section id="teorema-de-de-moivre-laplace-cont." class="slide level2">
+<h2>Teorema de De Moivre – Laplace (cont.)</h2>
+<p><strong>A) De Moivre</strong> — aproximación puntual</p>
+<p>Cuando <span class="math inline">\(n \to \infty\)</span>, la función de masa de la binomial se aproxima a la densidad normal:</p>
+<p><span class="math display">\[\lim_{n \to \infty} f(x) = \frac{1}{\sqrt{npq}\,\sqrt{2\pi}}\; e^{-\frac{1}{2}\left(\frac{x - np}{\sqrt{npq}}\right)^2}\]</span></p>
+<p>donde <span class="math inline">\(q = 1 - p\)</span>. Esto muestra que <span class="math inline">\(X\)</span> se comporta aproximadamente como una <span class="math inline">\(N(np,\, npq)\)</span>.</p>
+</section>
+<section id="teorema-de-de-moivre-laplace-cont.-1" class="slide level2">
+<h2>Teorema de De Moivre – Laplace (cont.)</h2>
+<p><strong>B) Laplace</strong> — aproximación de probabilidades acumuladas</p>
+<p>Para probabilidades en un intervalo, la estandarización de <span class="math inline">\(X\)</span> converge en distribución a una normal estándar <span class="math inline">\(Z\)</span>:</p>
+<p><span class="math display">\[P\!\left(np + a\sqrt{npq} \leq X \leq np + b\sqrt{npq}\right) = P\!\left(a \leq \frac{X - np}{\sqrt{npq}} \leq b\right)\]</span></p>
+<p><span class="math display">\[P(a \leq Z \leq b) \approx \int_a^b \frac{1}{\sqrt{2\pi}}\,e^{-\frac{1}{2}z^2}\,dz\]</span></p>
+<p>La cantidad <span class="math inline">\(Z = \dfrac{X - np}{\sqrt{npq}}\)</span> es la <strong>variable estandarizada</strong>, con media 0 y varianza 1.</p>
+</section>
+<section id="aproximación-de-la-binomial-por-la-normal" class="slide level2">
+<h2>Aproximación de la Binomial por la Normal</h2>
+<p>La regla de uso es: la aproximación es adecuada cuando</p>
+<p><span class="math display">\[np \geq 5 \quad \text{y} \quad nq \geq 5\]</span></p>
+<p>Para <span class="math inline">\(c\)</span> y <span class="math inline">\(d\)</span> enteros, la fórmula de aproximación con <strong>corrección de continuidad</strong> es:</p>
+<p><span class="math display">\[P(c \leq X \leq d) \approx \Phi\!\left(\frac{d + 0{,}5 - np}{\sqrt{npq}}\right) - \Phi\!\left(\frac{c - 0{,}5 - np}{\sqrt{npq}}\right)\]</span></p>
+<p>donde <span class="math inline">\(c = np + a\sqrt{npq}\)</span> y <span class="math inline">\(d = np + b\sqrt{npq}\)</span>, y <span class="math inline">\(\Phi(\cdot)\)</span> es la función de distribución acumulada de la normal estándar.</p>
+</section>
+<section id="por-qué-la-corrección-de-continuidad" class="slide level2">
+<h2>¿Por qué la corrección de continuidad?</h2>
+<p>La binomial es <strong>discreta</strong> y la normal es <strong>continua</strong>. Al aproximar, cada valor entero <span class="math inline">\(k\)</span> de la binomial se representa por el intervalo <span class="math inline">\([k - 0{,}5,\; k + 0{,}5]\)</span> en la normal continua.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Regla mnemotécnica</strong></p>
+</div>
+<div class="callout-content">
+<p>Si el extremo <strong>está incluido</strong> (<span class="math inline">\(\leq\)</span> o <span class="math inline">\(\geq\)</span>), se <strong>suma</strong> 0,5 en ese lado. Si el extremo <strong>no está incluido</strong> (<span class="math inline">\(&lt;\)</span> o <span class="math inline">\(&gt;\)</span>), se <strong>resta</strong> 0,5. La tabla siguiente sistematiza esta idea.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tabla-de-corrección-de-continuidad" class="slide level2">
+<h2>Tabla de corrección de continuidad</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Binomial <span class="math inline">\(B(n,p)\)</span></th>
+<th style="text-align: center;">Normal <span class="math inline">\(N\!\left(np,\,\sqrt{np(1-p)}\right)\)</span></th>
+<th style="text-align: center;">Incluye extremo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(X &lt; k)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(X' &lt; k - 0{,}5)\)</span></td>
+<td style="text-align: center;">no <span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(P(X \leq k)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(X' \leq k + 0{,}5)\)</span></td>
+<td style="text-align: center;">sí <span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(X = k)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(k - 0{,}5 &lt; X' &lt; k + 0{,}5)\)</span></td>
+<td style="text-align: center;">entorno <span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(P(X \geq k)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(X' &gt; k - 0{,}5)\)</span></td>
+<td style="text-align: center;">sí <span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(X &gt; k)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(X' &gt; k + 0{,}5)\)</span></td>
+<td style="text-align: center;">no <span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(P(k &lt; X &lt; l)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(k + 0{,}5 &lt; X' &lt; l - 0{,}5)\)</span></td>
+<td style="text-align: center;">no <span class="math inline">\(k\)</span> y no <span class="math inline">\(l\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(k &lt; X \leq l)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(k + 0{,}5 &lt; X' &lt; l + 0{,}5)\)</span></td>
+<td style="text-align: center;">no <span class="math inline">\(k\)</span> y sí <span class="math inline">\(l\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(P(k \leq X &lt; l)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(k - 0{,}5 &lt; X' &lt; l - 0{,}5)\)</span></td>
+<td style="text-align: center;">sí <span class="math inline">\(k\)</span> y no <span class="math inline">\(l\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(k \leq X \leq l)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(k - 0{,}5 &lt; X' &lt; l + 0{,}5)\)</span></td>
+<td style="text-align: center;">sí <span class="math inline">\(k\)</span> y sí <span class="math inline">\(l\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ejemplo-lanzamiento-de-un-dado" class="slide level2">
+<h2>Ejemplo: Lanzamiento de un dado</h2>
+<p>Un dado se lanza 3 000 veces. Calcule la probabilidad de que el número de unos (<span class="math inline">\(X\)</span>) sea mayor o igual a 480 y menor o igual a 530.</p>
+<p><strong>Identificación del modelo:</strong> <span class="math inline">\(X \sim \text{Bin}(3000,\; 1/6)\)</span>.</p>
+<p><strong>Verificación de condiciones:</strong> <span class="math display">\[np = 3000 \cdot \tfrac{1}{6} = 500 \geq 5, \qquad nq = 3000 \cdot \tfrac{5}{6} = 2500 \geq 5 \checkmark\]</span></p>
+<p><strong>Parámetros de la normal aproximante:</strong> <span class="math display">\[\mu = np = 500, \qquad \sigma = \sqrt{npq} = \sqrt{3000 \cdot \tfrac{1}{6} \cdot \tfrac{5}{6}} = \sqrt{416{,}\overline{6}} \approx 20{,}41\]</span></p>
+</section>
+<section id="ejemplo-lanzamiento-de-un-dado-cont." class="slide level2">
+<h2>Ejemplo: Lanzamiento de un dado (cont.)</h2>
+<p>Como <span class="math inline">\(P(480 \leq X \leq 530)\)</span> incluye ambos extremos, aplicamos corrección de continuidad en los dos lados:</p>
+<p><span class="math display">\[P(480 \leq X \leq 530) \approx \Phi\!\left(\frac{530 + 0{,}5 - 500}{20{,}41}\right) - \Phi\!\left(\frac{480 - 0{,}5 - 500}{20{,}41}\right)\]</span></p>
+<p><span class="math display">\[= \Phi(1{,}4943) - \Phi(-1{,}0045) \approx \Phi(1{,}49) - \Phi(-1{,}00)\]</span></p>
+<p><span class="math display">\[= 0{,}93189 - 0{,}15866 = 0{,}77323\]</span></p>
+<p>R/ <span class="math inline">\(P(480 \leq X \leq 530) \approx 0{,}773\)</span></p>
+</section>
+<section id="ejemplo-fusibles-eléctricos" class="slide level2">
+<h2>Ejemplo: Fusibles eléctricos</h2>
+<p>La confiabilidad de un fusible eléctrico es la probabilidad de que un fusible elegido al azar funcione. Se probó una muestra de 1 400 fusibles. Calcule la probabilidad aproximada de observar <strong>27 o más</strong> fusibles defectuosos, suponiendo una confiabilidad del 0,98.</p>
+<p><strong>Identificación del modelo:</strong> Si la confiabilidad es 0,98, la probabilidad de defecto es <span class="math inline">\(p = 0{,}02\)</span>, por lo que <span class="math inline">\(X \sim \text{Bin}(1400,\; 0{,}02)\)</span>.</p>
+<p><strong>Verificación de condiciones:</strong> <span class="math display">\[np = 1400 \cdot 0{,}02 = 28 \geq 5, \qquad nq = 1400 \cdot 0{,}98 = 1372 \geq 5 \checkmark\]</span></p>
+<p><strong>Parámetros de la normal aproximante:</strong> <span class="math display">\[\mu = np = 28, \qquad \sigma = \sqrt{npq} = \sqrt{1400 \cdot 0{,}02 \cdot 0{,}98} = \sqrt{27{,}44} \approx 5{,}238\]</span></p>
+</section>
+<section id="ejemplo-fusibles-eléctricos-cont." class="slide level2">
+<h2>Ejemplo: Fusibles eléctricos (cont.)</h2>
+<p>Buscamos <span class="math inline">\(P(X \geq 27)\)</span>. Como el extremo 27 <strong>está incluido</strong> (<span class="math inline">\(\geq\)</span>), la corrección de continuidad resta 0,5 en ese lado:</p>
+<p><span class="math display">\[P(X \geq 27) = 1 - P(X &lt; 27) \approx 1 - \Phi\!\left(\frac{27 - 0{,}5 - 28}{5{,}238}\right)\]</span></p>
+<p><span class="math display">\[= 1 - \Phi\!\left(\frac{-1{,}5}{5{,}238}\right) = 1 - \Phi(-0{,}2864) \approx 1 - \Phi(-0{,}286)\]</span></p>
+<p><span class="math display">\[= 1 - 0{,}387 = 0{,}613\]</span></p>
+<p>R/ <span class="math inline">\(P(X \geq 27) \approx 0{,}613\)</span></p>
+</section>
 <section id="teorema-de-tchebysheff" class="slide level2">
 <h2>Teorema de Tchebysheff</h2>
 <p><strong>Intuición:</strong> el conocimiento de las medias y las desviaciones estándar asociadas a una distribución nos permiten deducir límites significativos para las probabilidades de eventos, <strong>aunque</strong> no conozcamos las distribuciones exactas de interés.</p>

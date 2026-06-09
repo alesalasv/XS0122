@@ -188,6 +188,116 @@ $$P(X=2) = \binom{5}{2}(0{,}6)^2(0{,}4)^3 = 10 \times 0{,}36 \times 0{,}064 = 0{
 **R/** La probabilidad de que el amigo reciba exactamente dos libros de estadística es aproximadamente $\mathbf{0{,}2317}$ (hipergeométrica) o $\mathbf{0{,}2304}$ (aproximación binomial).
 
 
+## Teorema de De Moivre – Laplace
+
+Sea $X \sim \text{Bin}(n, p)$, es decir, $f(x) = \binom{n}{x}p^x(1-p)^{n-x}$. Cuando $n$ es grande, los cálculos exactos con la binomial se vuelven imprácticos. El teorema de De Moivre–Laplace establece dos resultados que permiten aproximar la binomial mediante la distribución normal.
+
+## Teorema de De Moivre – Laplace (cont.)
+
+**A) De Moivre** — aproximación puntual
+
+Cuando $n \to \infty$, la función de masa de la binomial se aproxima a la densidad normal:
+
+$$\lim_{n \to \infty} f(x) = \frac{1}{\sqrt{npq}\,\sqrt{2\pi}}\; e^{-\frac{1}{2}\left(\frac{x - np}{\sqrt{npq}}\right)^2}$$
+
+donde $q = 1 - p$. Esto muestra que $X$ se comporta aproximadamente como una $N(np,\, npq)$.
+
+## Teorema de De Moivre – Laplace (cont.)
+
+**B) Laplace** — aproximación de probabilidades acumuladas
+
+Para probabilidades en un intervalo, la estandarización de $X$ converge en distribución a una normal estándar $Z$:
+
+$$P\!\left(np + a\sqrt{npq} \leq X \leq np + b\sqrt{npq}\right) = P\!\left(a \leq \frac{X - np}{\sqrt{npq}} \leq b\right)$$
+
+$$P(a \leq Z \leq b) \approx \int_a^b \frac{1}{\sqrt{2\pi}}\,e^{-\frac{1}{2}z^2}\,dz$$
+
+La cantidad $Z = \dfrac{X - np}{\sqrt{npq}}$ es la **variable estandarizada**, con media 0 y varianza 1.
+
+## Aproximación de la Binomial por la Normal
+
+La regla de uso es: la aproximación es adecuada cuando
+
+$$np \geq 5 \quad \text{y} \quad nq \geq 5$$
+
+Para $c$ y $d$ enteros, la fórmula de aproximación con **corrección de continuidad** es:
+
+$$P(c \leq X \leq d) \approx \Phi\!\left(\frac{d + 0{,}5 - np}{\sqrt{npq}}\right) - \Phi\!\left(\frac{c - 0{,}5 - np}{\sqrt{npq}}\right)$$
+
+donde $c = np + a\sqrt{npq}$ y $d = np + b\sqrt{npq}$, y $\Phi(\cdot)$ es la función de distribución acumulada de la normal estándar.
+
+## ¿Por qué la corrección de continuidad?
+
+La binomial es **discreta** y la normal es **continua**. Al aproximar, cada valor entero $k$ de la binomial se representa por el intervalo $[k - 0{,}5,\; k + 0{,}5]$ en la normal continua.
+
+:::{.callout-tip}
+## Regla mnemotécnica
+Si el extremo **está incluido** ($\leq$ o $\geq$), se **suma** 0,5 en ese lado. Si el extremo **no está incluido** ($<$ o $>$), se **resta** 0,5. La tabla siguiente sistematiza esta idea.
+:::
+
+## Tabla de corrección de continuidad
+
+| Binomial $B(n,p)$ | Normal $N\!\left(np,\,\sqrt{np(1-p)}\right)$ | Incluye extremo |
+|:-:|:-:|:-:|
+| $P(X < k)$        | $P(X' < k - 0{,}5)$              | no $k$        |
+| $P(X \leq k)$     | $P(X' \leq k + 0{,}5)$           | sí $k$        |
+| $P(X = k)$        | $P(k - 0{,}5 < X' < k + 0{,}5)$ | entorno $k$   |
+| $P(X \geq k)$     | $P(X' > k - 0{,}5)$              | sí $k$        |
+| $P(X > k)$        | $P(X' > k + 0{,}5)$              | no $k$        |
+| $P(k < X < l)$    | $P(k + 0{,}5 < X' < l - 0{,}5)$ | no $k$ y no $l$ |
+| $P(k < X \leq l)$ | $P(k + 0{,}5 < X' < l + 0{,}5)$ | no $k$ y sí $l$ |
+| $P(k \leq X < l)$ | $P(k - 0{,}5 < X' < l - 0{,}5)$ | sí $k$ y no $l$ |
+| $P(k \leq X \leq l)$ | $P(k - 0{,}5 < X' < l + 0{,}5)$ | sí $k$ y sí $l$ |
+
+## Ejemplo: Lanzamiento de un dado
+
+Un dado se lanza 3 000 veces. Calcule la probabilidad de que el número de unos ($X$) sea mayor o igual a 480 y menor o igual a 530.
+
+**Identificación del modelo:** $X \sim \text{Bin}(3000,\; 1/6)$.
+
+**Verificación de condiciones:**
+$$np = 3000 \cdot \tfrac{1}{6} = 500 \geq 5, \qquad nq = 3000 \cdot \tfrac{5}{6} = 2500 \geq 5 \checkmark$$
+
+**Parámetros de la normal aproximante:**
+$$\mu = np = 500, \qquad \sigma = \sqrt{npq} = \sqrt{3000 \cdot \tfrac{1}{6} \cdot \tfrac{5}{6}} = \sqrt{416{,}\overline{6}} \approx 20{,}41$$
+
+## Ejemplo: Lanzamiento de un dado (cont.)
+
+Como $P(480 \leq X \leq 530)$ incluye ambos extremos, aplicamos corrección de continuidad en los dos lados:
+
+$$P(480 \leq X \leq 530) \approx \Phi\!\left(\frac{530 + 0{,}5 - 500}{20{,}41}\right) - \Phi\!\left(\frac{480 - 0{,}5 - 500}{20{,}41}\right)$$
+
+$$= \Phi(1{,}4943) - \Phi(-1{,}0045) \approx \Phi(1{,}49) - \Phi(-1{,}00)$$
+
+$$= 0{,}93189 - 0{,}15866 = 0{,}77323$$
+
+R/ $P(480 \leq X \leq 530) \approx 0{,}773$
+
+## Ejemplo: Fusibles eléctricos
+
+La confiabilidad de un fusible eléctrico es la probabilidad de que un fusible elegido al azar funcione. Se probó una muestra de 1 400 fusibles. Calcule la probabilidad aproximada de observar **27 o más** fusibles defectuosos, suponiendo una confiabilidad del 0,98.
+
+**Identificación del modelo:** Si la confiabilidad es 0,98, la probabilidad de defecto es $p = 0{,}02$, por lo que $X \sim \text{Bin}(1400,\; 0{,}02)$.
+
+**Verificación de condiciones:**
+$$np = 1400 \cdot 0{,}02 = 28 \geq 5, \qquad nq = 1400 \cdot 0{,}98 = 1372 \geq 5 \checkmark$$
+
+**Parámetros de la normal aproximante:**
+$$\mu = np = 28, \qquad \sigma = \sqrt{npq} = \sqrt{1400 \cdot 0{,}02 \cdot 0{,}98} = \sqrt{27{,}44} \approx 5{,}238$$
+
+## Ejemplo: Fusibles eléctricos (cont.)
+
+Buscamos $P(X \geq 27)$. Como el extremo 27 **está incluido** ($\geq$), la corrección de continuidad resta 0,5 en ese lado:
+
+$$P(X \geq 27) = 1 - P(X < 27) \approx 1 - \Phi\!\left(\frac{27 - 0{,}5 - 28}{5{,}238}\right)$$
+
+$$= 1 - \Phi\!\left(\frac{-1{,}5}{5{,}238}\right) = 1 - \Phi(-0{,}2864) \approx 1 - \Phi(-0{,}286)$$
+
+$$= 1 - 0{,}387 = 0{,}613$$
+
+R/ $P(X \geq 27) \approx 0{,}613$
+
+
 ## Teorema de Tchebysheff
 
 **Intuición:** el conocimiento de las medias y las desviaciones estándar asociadas a una distribución nos permiten deducir límites significativos para las probabilidades de eventos, **aunque** no conozcamos las distribuciones exactas de interés.
@@ -312,6 +422,9 @@ Sea $X$ una variable aleatoria con varianza finita y $\varepsilon > 0$. Entonces
 
 $$P\!\left(|X - E(X)| \ge \varepsilon\right) \le \frac{\text{Var}(X)}{\varepsilon^2}$$
 
-Esta forma equivale a tomar $k\sigma = \varepsilon$, es decir, $\varepsilon$ actúa
-directamente como la distancia a la media, sin necesidad de expresarla en unidades
-de desviación estándar.
+Esta forma equivale a tomar $k\sigma = \varepsilon$, es decir, $\varepsilon$ actúa directamente como la distancia a la media, sin necesidad de expresarla en unidades de desviación estándar.
+
+
+
+
+
